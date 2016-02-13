@@ -1,4 +1,5 @@
 <?php
+header('Access-Control-Allow-Origin: *');
 
 $db = new App\DB();
 $db->sync();

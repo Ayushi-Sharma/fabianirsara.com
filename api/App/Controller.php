@@ -37,6 +37,7 @@ class Controller
 
   public function json($data)
   {
+    $this->response = $this->response->withHeader('Content-type', 'application/json');
     return $this->output(json_encode($data));
   }
 

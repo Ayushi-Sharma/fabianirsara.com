@@ -8,9 +8,21 @@ class DB
   private $client = NULL;
   private $dataPath = NULL;
 
+  private static $instance;
+
+  public function __construct()
+  {
+    self::$instance = $this;
+  }
+
+  public static function instance()
+  {
+    return self::$instance;
+  }
+
   public function get()
   {
-    if ($this->data && isset($this->data['data']))
+    if ($this->data && isset($this->data->data))
     {
       return $this->data->data;
     }
