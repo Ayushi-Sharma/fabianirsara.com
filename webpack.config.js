@@ -12,7 +12,7 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, './public'),
-    filename: 'build.js',
+    filename: 'build.js'
   },
   module: {
     loaders: [
@@ -39,8 +39,8 @@ module.exports = {
       {
         test: /\.(png)$/,
         loader: 'url-loader?limit=100000'
-      },
-    ],
+      }
+    ]
   },
   resolve: {
     extensions: ['', '.js', '.jsx']

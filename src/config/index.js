@@ -1,11 +1,17 @@
 
 const config = {
   development: {
-    base: '/'
+    env: 'development',
+    debug: true,
+    base: '/',
+    api: 'http://127.0.0.1:8000/'
   },
 
   production: {
-    base: '/'
+    env: 'production',
+    debug: false,
+    base: '/',
+    api: '/api/'
   }
 }
 
