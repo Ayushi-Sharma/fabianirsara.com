@@ -23,3 +23,15 @@
   margin: 0;
   padding: 0;
 }
+
+.poster .gradient {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 25%;
+
+  background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, #282828 95%, #282828 100%);
+  background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%, #282828 95%, #282828 100%);
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, #282828 95%, #282828 100%);
+}

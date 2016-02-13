@@ -79,6 +79,7 @@ class Poster extends Component {
       return (
         <figure className={style.poster} style={css}>
           <img src={path} onLoad={::this.getImageSize} />
+          <div className={style.gradient} />
         </figure>
       )
     } else {
