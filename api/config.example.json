@@ -1,0 +1,40 @@
+{
+  "key": "INSERT_APP_KEY_HERE",
+  "secret": "INSERT_SECRET_HERE",
+  "token": "INSERT_ACCESS_TOKEN",
+  "storage": "storage",
+  "db": "portfolio",
+  "cache": 300,
+  "sizes": {
+    "full": {
+      "fit": {
+        "width": 2560,
+        "height": 2560
+      }
+    },
+    "large": {
+      "fit": {
+        "width": 1800,
+        "height": 1800
+      }
+    },
+    "medium": {
+      "fit": {
+        "width": 1200,
+        "height": 1200
+      }
+    },
+    "small": {
+      "fit": {
+        "width": 800,
+        "height": 800
+      }
+    },
+    "preview": {
+      "crop": {
+        "width": 500,
+        "height": 333
+      }
+    }
+  }
+}

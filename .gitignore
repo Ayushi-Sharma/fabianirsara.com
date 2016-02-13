@@ -5,3 +5,7 @@ public
 .ftppass
 *.log*
 
+api/config.json
+api/storage
+api/cache
+api/vendor
