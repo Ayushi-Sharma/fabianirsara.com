@@ -23,7 +23,9 @@ body {
   line-height: 1.4em;
   background: #282828;
   color: #fff;
-  font-weight: 300;
+  font-weight: 400;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 body,
@@ -39,6 +41,6 @@ body,
 }
 
 button,
-input[type="checkbox"] {
+input {
   outline: none;
 }

@@ -1,12 +1,12 @@
 
 export const days = [
+  'Sunday',
   'Monday',
   'Tuesday',
   'Wednesday',
   'Thursday',
   'Friday',
-  'Saturday',
-  'Sunday'
+  'Saturday'
 ]
 
 export default function weekday() {

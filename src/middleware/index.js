@@ -1,6 +1,8 @@
 
 import logger from './logger'
+import promise from 'redux-promise';
 
 export {
-  logger
+  logger,
+  promise
 }

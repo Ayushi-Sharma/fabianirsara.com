@@ -1,26 +1,45 @@
 
 .header {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 4;
+}
+
+.header .top {
+  position: fixed;
+  top: 50px;
+  left: 0;
+  width: 100%;
+}
+
+.header .text {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  transform: translate(0, -50%);
 }
 
 .header h1,
 .header h2 {
-  text-align: center;
   margin: 0;
   padding: 0;
-  margin-top: 0.5em;
 }
 
 .header h1 {
-  font-size: 24px;
-  text-align: center;
-  font-weight: 400;
+  font-size: responsive 24px 56px;
+  font-range: 420px 1280px;
+  font-weight: 300;
 }
 
 .header h2 {
-  font-size: 16px;
-  text-align: center;
-  font-weight: 600;
+  font-size: responsive 12px 32px;
+  font-range: 420px 1280px;
+  font-weight: 300;
+  margin-top: 2em;
 }
 
 .logo {
@@ -28,6 +47,9 @@
   width: 25px;
   height: 26px;
   margin: auto;
+  float: left;
+  padding-right: 10px;
+  padding-bottom: 10px;
 }
 .logo img {
   position: relative;
