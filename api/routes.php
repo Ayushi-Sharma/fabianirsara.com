@@ -9,3 +9,8 @@ $app->get('/data', function($request, $response, $args)
 {
   return (new App\Data($request, $response, $args))->getAction();
 });
+
+$app->get('/sync', function($request, $response, $args)
+{
+  return App\DB::instance()->sync();
+});

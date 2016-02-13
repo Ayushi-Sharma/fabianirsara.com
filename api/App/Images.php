@@ -10,6 +10,8 @@ class Images extends Controller
     $file = $this->param('file');
     $config = Config::get('sizes');
 
+    $file = str_replace('___', '/', $file);
+
     if (strpos(realpath(DOC_ROOT.$file), DOC_ROOT.'storage') === false)
     {
       $this->output('');

@@ -13,6 +13,12 @@ class DB
   public function __construct()
   {
     self::$instance = $this;
+    $this->dataPath = DOC_ROOT.Config::get('storage').'/data.json';
+
+    if (file_exists($this->dataPath))
+    {
+      $this->data = json_decode(file_get_contents($this->dataPath));
+    }
   }
 
   public static function instance()
@@ -26,21 +32,17 @@ class DB
     {
       return $this->data->data;
     }
+
+    return NULL;
   }
 
   public function sync()
   {
-    $this->dataPath = DOC_ROOT.Config::get('storage').'/data.json';
     $shouldSync = true;
 
-    if (file_exists($this->dataPath))
+    if ($this->data && isset($this->data->data) && (time() - $this->data->synched < Config::get('cache')))
     {
-      $this->data = json_decode(file_get_contents($this->dataPath));
-
-      if (time() - $this->data->synched < Config::get('cache'))
-      {
-        $shouldSync = false;
-      }
+      $shouldSync = false;
     }
 
     if ($shouldSync)
@@ -88,6 +90,12 @@ class DB
           {
             if ($this->oldData->files->$item['lpath']->modified !== $item['modified'])
             {
+              @unlink($localPath);
+              @unlink(DOC_ROOT.'cache/full_'.strtolower(Config::get('storage').'_'.str_replace('/', '_', $item['localFile'])));
+              @unlink(DOC_ROOT.'cache/large_'.strtolower(Config::get('storage').'_'.str_replace('/', '_', $item['localFile'])));
+              @unlink(DOC_ROOT.'cache/medium_'.strtolower(Config::get('storage').'_'.str_replace('/', '_', $item['localFile'])));
+              @unlink(DOC_ROOT.'cache/small_'.strtolower(Config::get('storage').'_'.str_replace('/', '_', $item['localFile'])));
+              @unlink(DOC_ROOT.'cache/preview_'.strtolower(Config::get('storage').'_'.str_replace('/', '_', $item['localFile'])));
               $shouldDownload = true;
             }
           }

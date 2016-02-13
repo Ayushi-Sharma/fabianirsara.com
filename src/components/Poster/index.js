@@ -15,6 +15,7 @@ class Poster extends Component {
   };
 
   componentDidMount() {
+    var _this = this;
     window.addEventListener('scroll', ::this.handleScroll)
     window.addEventListener('resize', ::this.handleResize)
     this.handleResize()

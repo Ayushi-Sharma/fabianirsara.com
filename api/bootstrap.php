@@ -2,7 +2,11 @@
 header('Access-Control-Allow-Origin: *');
 
 $db = new App\DB();
-$db->sync();
+
+if ($db->get() === NULL)
+{
+  $db->sync();
+}
 
 $container = new Slim\Container();
 
