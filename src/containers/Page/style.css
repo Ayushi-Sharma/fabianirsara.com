@@ -5,3 +5,31 @@
   left: 0;
   width: 100%;
 }
+
+.text {
+  font-size: responsive 16px 20px;
+  font-range: 420px 1280px;
+}
+
+.text h1 {
+  font-size: responsive 20px 48px;
+  font-range: 420px 1280px;
+  font-weight: 300;
+  text-align: center;
+}
+
+.text h2 {
+  font-size: responsive 16px 28px;
+  font-range: 420px 1280px;
+  font-weight: 300;
+  text-align: center;
+}
+
+.text img {
+  max-width: 100%;
+  height: auto;
+}
+
+.text * + * {
+  margin-top: 2em;
+}

@@ -1,6 +1,7 @@
 
 .nav {
   position: relative;
+  composes: clear from '../../assets/css/grid.css';
 }
 
 .nav ul {
@@ -31,4 +32,8 @@
 
 .nav a:hover {
   color: #eb2315;
+}
+
+.navInner {
+  position: relative;
 }

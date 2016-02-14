@@ -41,9 +41,11 @@ class Navigation extends Component {
 
     return (
       <nav className={classnames(this.props.className, style.nav)}>
-        <ul>
-          {pages.map(::this.renderPageItem)}
-        </ul>
+        <div className={style.navInner}>
+          <ul>
+            {pages.map(::this.renderPageItem)}
+          </ul>
+        </div>
       </nav>
     )
   }

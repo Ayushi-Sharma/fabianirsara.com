@@ -8,8 +8,7 @@ import imagepath from '../../utils/imagepath'
 import Title from './Title'
 
 import arrow from '../../assets/icons/arrow-bottom.png'
-import TweenLite from 'gsap'
-import ScrollToPlugin from '../../../node_modules/gsap/src/uncompressed/plugins/ScrollToPlugin'
+import scrollTo from '../../utils/scrollTo'
 
 import { POSTER_RATIO } from '../../constants'
 
@@ -26,8 +25,9 @@ class Poster extends Component {
   componentDidMount() {
     this._mounted = true
     this._oldScroll = null
-    this._scrollTimeout = requestAnimationFrame(::this.handleScroll)
-    window.addEventListener('resize', ::this.handleResize)
+    this._handleScroll = ::this.handleScroll
+    this._scrollTimeout = requestAnimationFrame(this._handleScroll)
+    window.addEventListener('resize', (this._handleResize = ::this.handleResize))
 
     this.handleResize()
     this.handleScroll()
@@ -36,7 +36,7 @@ class Poster extends Component {
   componentWillUnmount() {
     this._mounted = false
     if (this._scrollTimeout) cancelAnimationFrame(this._scrollTimeout)
-    window.removeEventListener('resize', ::this.handleResize)
+    window.removeEventListener('resize', this._handleResize)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -57,7 +57,7 @@ class Poster extends Component {
 
   handleScroll(event) {
     if (this._mounted) {
-      requestAnimationFrame(::this.handleScroll)
+      requestAnimationFrame(this._handleScroll)
     }
 
     if (this._oldScroll !== window.scrollY) {
@@ -74,15 +74,7 @@ class Poster extends Component {
   }
 
   scrollToContent() {
-    let distance = this.state.height - window.scrollY
-    let duration = (200 + distance / 3) / 1000 * 1.5
-
-    TweenLite.to(window, duration, {
-      scrollTo: {
-        y: this.state.height
-      },
-      ease: Quint.easeInOut
-    })
+    scrollTo(this.state.height)
   }
 
   render() {
@@ -107,13 +99,13 @@ class Poster extends Component {
         }
 
         let difference = (options.bgHeight - this.state.height) / 2
-        percentage = this.state.y / this.state.height
+        percentage = this.state.y / (this.state.height / 2)
         options.y = 0 - difference - percentage * difference * 0.9
         options.blur = Math.min(10, percentage * 2 * 10)
 
         arrowCss.opacity = Math.max(0, 1 - percentage * 2)
         css.opacity = Math.max(0, 1 - percentage / 1.5)
-        css.transform = 'translate(0, ' + (0 - this.state.y / 1.5) + 'px)'
+        css.transform = 'translate(0, ' + (0 - this.state.y / 4) + 'px)'
       }
 
       css.width = this.state.width + 'px'

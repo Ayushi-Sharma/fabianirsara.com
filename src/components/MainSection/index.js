@@ -8,12 +8,12 @@ class MainSection extends Component {
   componentDidMount() {
     this._node = ReactDOM.findDOMNode(this)
 
-    window.addEventListener('resize', ::this.handleResize)
+    window.addEventListener('resize', (this._handleResize = ::this.handleResize))
     this.handleResize()
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', ::this.handleResize)
+    window.removeEventListener('resize', this._handleResize)
   }
 
   handleResize() {

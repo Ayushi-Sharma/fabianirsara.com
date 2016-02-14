@@ -3,7 +3,21 @@
   position: relative;
   text-align: center;
   font-weight: 400;
-  padding-top: 80px;
+  padding-top: 100px;
+  padding-bottom: 100px;
   z-index: 10;
-  height: 8000px;
+}
+
+.text {
+  padding-top: 50px;
+}
+
+.footer .nav {
+  position: relative;
+  text-align: center;
+}
+
+.footer nav li {
+  display: inline-block;
+  float: none;
 }

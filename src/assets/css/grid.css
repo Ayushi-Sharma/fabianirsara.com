@@ -5,4 +5,14 @@
   margin-right: auto;
   padding-left: 100px;
   padding-right: 100px;
+
+  clear: fix;
+}
+
+.shortContainer {
+  max-width: 900px;
+}
+
+.clear {
+  clear: fix;
 }

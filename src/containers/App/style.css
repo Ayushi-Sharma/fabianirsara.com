@@ -38,6 +38,8 @@ body,
   -moz-text-rendering: optimizeLegibility;
   -ms-text-rendering: optimizeLegibility;
   text-rendering: optimizeLegibility;
+  margin: 0;
+  padding: 0;
 }
 
 button,

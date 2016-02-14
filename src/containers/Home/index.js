@@ -5,7 +5,9 @@ import Page from '../Page'
 class Home extends Component {
   render() {
     return (
-      <Page />
+      <Page location={this.props.location}>
+        <p>Test</p>
+      </Page>
     )
   }
 }
