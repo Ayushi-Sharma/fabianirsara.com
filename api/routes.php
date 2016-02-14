@@ -14,3 +14,8 @@ $app->get('/sync', function($request, $response, $args)
 {
   return App\DB::instance()->sync();
 });
+
+$app->get('/sync/force', function($request, $response, $args)
+{
+  return App\DB::instance()->sync(true);
+});

@@ -36,7 +36,7 @@ class DB
     return NULL;
   }
 
-  public function sync()
+  public function sync($force = false)
   {
     $shouldSync = true;
 
@@ -45,7 +45,7 @@ class DB
       $shouldSync = false;
     }
 
-    if ($shouldSync)
+    if ($shouldSync || $force)
     {
       $this->oldData = $this->data;
 
@@ -91,11 +91,11 @@ class DB
             if ($this->oldData->files->$item['lpath']->modified !== $item['modified'])
             {
               @unlink($localPath);
-              @unlink(DOC_ROOT.'cache/full_'.strtolower(Config::get('storage').'_'.str_replace('/', '_', $item['localFile'])));
-              @unlink(DOC_ROOT.'cache/large_'.strtolower(Config::get('storage').'_'.str_replace('/', '_', $item['localFile'])));
-              @unlink(DOC_ROOT.'cache/medium_'.strtolower(Config::get('storage').'_'.str_replace('/', '_', $item['localFile'])));
-              @unlink(DOC_ROOT.'cache/small_'.strtolower(Config::get('storage').'_'.str_replace('/', '_', $item['localFile'])));
-              @unlink(DOC_ROOT.'cache/preview_'.strtolower(Config::get('storage').'_'.str_replace('/', '_', $item['localFile'])));
+              @unlink(DOC_ROOT.'cache/full_'.strtolower(str_replace('/', '_', $item['localFile'])));
+              @unlink(DOC_ROOT.'cache/large_'.strtolower(str_replace('/', '_', $item['localFile'])));
+              @unlink(DOC_ROOT.'cache/medium_'.strtolower(str_replace('/', '_', $item['localFile'])));
+              @unlink(DOC_ROOT.'cache/small_'.strtolower(str_replace('/', '_', $item['localFile'])));
+              @unlink(DOC_ROOT.'cache/preview_'.strtolower(str_replace('/', '_', $item['localFile'])));
               $shouldDownload = true;
             }
           }
@@ -108,7 +108,7 @@ class DB
           fclose($file);
         }
 
-        if (substr($item['path'], -3) === '.md')
+        if (substr($item['path'], -3) === '.md' || substr($item['path'], -5) === '.yaml' || substr($item['path'], -5) === '.json' || substr($item['path'], -4) === '.txt')
         {
           $item['content'] = file_get_contents($localPath);
         }
