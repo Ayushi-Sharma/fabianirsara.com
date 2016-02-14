@@ -20,7 +20,7 @@ class API {
 
         resolve(data)
       }).fail(function(data){
-        reject(data);
+        reject(data)
       })
     })
   }

@@ -30,6 +30,8 @@
     "grunt-php": "^1.5.1",
     "grunt-shell": "^1.1.2",
     "gsap": "^1.18.2",
+    "js-yaml": "^3.5.3",
+    "json-loader": "^0.5.4",
     "postcss-loader": "^0.8.0",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",

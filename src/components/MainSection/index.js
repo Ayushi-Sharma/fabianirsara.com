@@ -1,14 +1,13 @@
 
 import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
+import ReactMarkdown from 'react-markdown'
 import style from './style.css'
 
 class MainSection extends Component {
-  state = {
-    width: 0,
-    height: 0
-  };
-
   componentDidMount() {
+    this._node = ReactDOM.findDOMNode(this)
+
     window.addEventListener('resize', ::this.handleResize)
     this.handleResize()
   }
@@ -18,20 +17,18 @@ class MainSection extends Component {
   }
 
   handleResize() {
-    this.setState({
-      width: window.innerWidth,
-      height: window.innerHeight / 6 * 5
-    })
+    this._node.style.paddingTop = (window.innerHeight / 6 * 5) + 'px'
   }
 
   render() {
-    let css = {}
-    css.paddingTop = this.state.height + 'px'
-
     const { children, data, content } = this.props
 
+    console.log('render')
+    //console.log(content.content)
+
     return (
-      <section className={style.main} style={css}>
+      <section className={style.main}>
+        <ReactMarkdown source={content} />
         {children}
       </section>
     )

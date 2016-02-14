@@ -9,6 +9,7 @@ import Footer from '../../components/Footer'
 import style from './style.css'
 
 import * as DataActions from '../../actions/data'
+import jsyaml from 'js-yaml'
 
 class App extends Component {
   state = {
@@ -27,14 +28,19 @@ class App extends Component {
         folder = data.pages[path]
       }
 
-      let poster = null;
-      let content = folder['index.md']
-      if (folder['poster.jpg']) poster = folder['poster.jpg'].localFile;
-      if (folder['poster.png']) poster = folder['poster.png'].localFile;
+      let poster = null
+      let content = null
+      let header = null
+      if (folder['poster.jpg']) poster = folder['poster.jpg'].localFile
+      if (folder['poster.png']) poster = folder['poster.png'].localFile
+
+      if (folder['index.md']) content = folder['index.md'].content
+      if (folder['header.yaml']) header = jsyaml.load(folder['header.yaml'].content)
+      if (folder['header.json']) header = JSON.parse(folder['header.json'].content)
 
       return (
         <div className={style.wrapper}>
-          <Header poster={poster} />
+          <Header poster={poster} content={header} />
           <MainSection content={content}>
             {children}
           </MainSection>
