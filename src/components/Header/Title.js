@@ -10,6 +10,12 @@ class Title extends Component {
 
     if (content && content.title) {
       let subtitle = null
+
+      if (content.words && ! Array.isArray(content.words)) {
+        content.subtitle = content.words
+        delete content.words
+      }
+
       if (content.words) subtitle = <h2><Claims words={content.words} /></h2>
       if (content.subtitle) subtitle = <h2>{content.subtitle}</h2>
 

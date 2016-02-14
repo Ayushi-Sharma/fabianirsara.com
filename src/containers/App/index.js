@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 import Header from '../../components/Header'
 import MainSection from '../../components/MainSection'
@@ -13,10 +14,6 @@ import * as DataActions from '../../actions/data'
 import jsyaml from 'js-yaml'
 
 class App extends Component {
-  state = {
-    poster: null
-  };
-
   render() {
     const { children, data } = this.props
 
@@ -43,13 +40,15 @@ class App extends Component {
       if (folder['header.json']) header = JSON.parse(folder['header.json'].content)
 
       return (
-        <div className={style.wrapper}>
-          <Header poster={poster} content={header} />
-          <MainSection content={content}>
-            {children}
-          </MainSection>
-          <Footer />
-        </div>
+        <ReactCSSTransitionGroup transitionName="page" component="div" transitionAppear={true} transitionAppearTimeout={500} transitionEnterTimeout={500} transitionLeaveTimeout={500}>
+          <div className={style.wrapper}>
+            <Header poster={poster} content={header} />
+            <MainSection content={content}>
+              {children}
+            </MainSection>
+            <Footer />
+          </div>
+        </ReactCSSTransitionGroup>
       )
     } else {
       return (

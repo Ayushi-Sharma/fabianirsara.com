@@ -32,8 +32,8 @@ class Claims extends Component {
     this.nextCycle()
 
     setTimeout(::this.cycle1, 17 + Math.random() * 1100)
-    setTimeout(::this.cycle2, 170 + Math.random() * 1100)
-    setTimeout(::this.cycle3, 300 + Math.random() * 1100)
+    setTimeout(::this.cycle2, 600 + Math.random() * 1100)
+    setTimeout(::this.cycle3, 900 + Math.random() * 1100)
   }
 
   cycle1() {

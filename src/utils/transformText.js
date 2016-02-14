@@ -1,7 +1,29 @@
 
 import TweenLite from 'gsap'
 import TextPlugin from '../../node_modules/gsap/src/uncompressed/plugins/TextPlugin'
+import shuffle from './shuffle'
 
 export default function transformText(node, text) {
-  TweenLite.to(node, 0.9, {text: text, ease: Quint.easeOut})
+  TweenLite.to(node, 0.9, {text: text, ease: Quint.easeOut, overwrite: 'all'})
+}
+
+export function rollText(node) {
+  if (node._isRollingText) return
+  node._isRollingText = true
+
+  var originalText = node.getAttribute('data-text')
+  var tmpText = shuffle(node.innerHTML.split(''))
+    .map(item => {
+      return String.fromCharCode(item.charCodeAt(0) + 1)
+    })
+    .join('')
+
+  node.style.width = Math.round(parseFloat(window.getComputedStyle(node).width.toString().replace('px', ''))) + 'px'
+
+  TweenLite.to(node, 0.1, {text: tmpText, ease: Linear.easeNone, overwrite: 'all', onComplete: function(){
+    TweenLite.to(node, 0.1, {text: originalText, ease: Linear.easeNone, overwrite: 'all', onComplete: function(){
+      node.style.width = ''
+      node._isRollingText = false
+    }});
+  }})
 }

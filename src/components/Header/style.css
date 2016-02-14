@@ -12,6 +12,7 @@
   top: 50px;
   left: 0;
   width: 100%;
+  z-index: 20;
 }
 
 .header .text {
@@ -63,4 +64,10 @@
 }
 .logo:hover {
   opacity: 1;
+}
+
+.header .nav {
+  float: right;
+  position: relative;
+  top: -13px;
 }

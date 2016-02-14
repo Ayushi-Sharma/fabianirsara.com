@@ -6,6 +6,34 @@
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
     <link rel="icon" href="/assets/public/favicon.png" type="image/x-icon">
     <link rel="shortcut icon" href="/assets/public/favicon.png" type="image/x-icon">
+    <style>
+      .page {
+        position: relative;
+      }
+
+      .page-appear,
+      .page-enter {
+        opacity: 0;
+        -webkit-filter: blur(8px) saturate(0%);
+      }
+
+      .page-enter.page-enter-active,
+      .page-appear.page-appear-active {
+        opacity: 1;
+        -webkit-filter: blur(0px) saturate(100%);
+        transition: all 500ms ease-out;
+      }
+
+      .page-leave {
+        opacity: 1;
+      }
+
+      .page-leave.page-leave-active {
+        opacity: 0;
+        -webkit-filter: blur(8px) saturate(0%);
+        transition: all 500ms ease-in;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
