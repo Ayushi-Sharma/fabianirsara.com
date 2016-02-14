@@ -35,6 +35,7 @@ class Footer extends Component {
       <footer className={style.footer}>
         <div className={grid.container}>
           <Navigation className={style.nav} />
+          <p className={style.text}>Handcrafted with ♥ in Austria.</p>
           <p className={style.text}>Have <span ref="word">{superb.prefix()}</span> {weekday()}</p>
         </div>
       </footer>
