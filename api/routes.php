@@ -19,3 +19,9 @@ $app->get('/sync/force', function($request, $response, $args)
 {
   return App\DB::instance()->sync(true);
 });
+
+$app->get('/bust', function($request, $response, $args)
+{
+  @unlink(DOC_ROOT.App\Config::get('storage').'/data.json');
+  return App\FS::rimraf(DOC_ROOT.'cache');
+});

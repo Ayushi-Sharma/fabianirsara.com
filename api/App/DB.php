@@ -30,7 +30,18 @@ class DB
   {
     if ($this->data && isset($this->data->data))
     {
-      return $this->data->data;
+      $filePrefix = '/'.strtolower(Config::get('db')).'/';
+
+      $data = $this->data->data;
+      $data->files = array();
+
+      foreach ($this->data->files as $key => $file)
+      {
+        $key = str_replace($filePrefix, '', $key);
+        $data->files[$key] = $file;
+      }
+
+      return $data;
     }
 
     return NULL;
