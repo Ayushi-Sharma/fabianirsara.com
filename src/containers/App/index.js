@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import Header from '../../components/Header'
 import MainSection from '../../components/MainSection'
 import Footer from '../../components/Footer'
+import store from '../../store'
 import style from './style.css'
 
 import * as DataActions from '../../actions/data'
@@ -27,6 +28,9 @@ class App extends Component {
       if (path.length > 0 && data.pages[path] && data.pages[path]['index.md']) {
         folder = data.pages[path]
       }
+
+      let state = store.getState()
+      state.path = 'pages/' + (path || 'home')
 
       let poster = null
       let content = null

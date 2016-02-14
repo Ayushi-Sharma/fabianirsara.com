@@ -6,7 +6,7 @@ import { browserHistory } from 'react-router'
 import { logger, promise } from '../middleware'
 import rootReducer from '../reducers'
 
-export default function configure(initialState) {
+export function configure(initialState) {
   const create = window.devToolsExtension
     ? window.devToolsExtension()(createStore)
     : createStore
@@ -28,3 +28,7 @@ export default function configure(initialState) {
 
   return store
 }
+
+const store = configure()
+
+export default store

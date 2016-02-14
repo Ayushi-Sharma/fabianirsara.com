@@ -9,10 +9,8 @@ import Home from './containers/Home'
 import Page from './containers/Page'
 import NoMatch from './containers/NoMatch'
 import Collection from './containers/Collection'
-import configure from './store'
+import store from './store'
 import config from './config'
-
-const store = configure()
 
 import * as DataActions from './actions/data'
 

@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom'
 import ReactMarkdown from 'react-markdown'
 import style from './style.css'
 
+import markdown from '../../utils/markdown'
+
 class MainSection extends Component {
   componentDidMount() {
     this._node = ReactDOM.findDOMNode(this)
@@ -23,12 +25,9 @@ class MainSection extends Component {
   render() {
     const { children, data, content } = this.props
 
-    console.log('render')
-    //console.log(content.content)
-
     return (
       <section className={style.main}>
-        <ReactMarkdown source={content} />
+        <ReactMarkdown source={content} walker={markdown.handle} />
         {children}
       </section>
     )
