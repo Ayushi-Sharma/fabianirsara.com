@@ -1,12 +1,17 @@
 
 import React, { Component } from 'react'
 
+import classnames from 'classnames'
 import style from './style.css'
 import imagepath from '../../utils/imagepath'
+
+import Title from './Title'
 
 import arrow from '../../assets/icons/arrow-bottom.png'
 import TweenLite from 'gsap'
 import ScrollToPlugin from '../../../node_modules/gsap/src/uncompressed/plugins/ScrollToPlugin'
+
+import { POSTER_RATIO } from '../../constants'
 
 class Poster extends Component {
   state = {
@@ -34,6 +39,14 @@ class Poster extends Component {
     window.removeEventListener('resize', ::this.handleResize)
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.file !== nextProps.file) {
+      this.setState({
+        loaded: false
+      })
+    }
+  }
+
   getImageSize(event) {
     this.setState({
       loaded: true,
@@ -56,7 +69,7 @@ class Poster extends Component {
   handleResize() {
     this.setState({
       width: window.innerWidth,
-      height: window.innerHeight / 6 * 5
+      height: window.innerHeight * POSTER_RATIO
     })
   }
 
@@ -69,17 +82,20 @@ class Poster extends Component {
         y: this.state.height
       },
       ease: Quint.easeInOut
-    });
+    })
   }
 
   render() {
-    const { file } = this.props
+    const { file, text } = this.props
 
     if (file) {
       const path = imagepath(file, 'large')
 
+      let percentage = 0
       let options = {}
       let arrowCss = {}
+      let css = {}
+      let imageCss = {}
 
       if (this.state.loaded) {
         if (this.state.width / this.state.height > this.state.imageWidth / this.state.imageHeight) {
@@ -91,24 +107,35 @@ class Poster extends Component {
         }
 
         let difference = (options.bgHeight - this.state.height) / 2
-        let percentage = Math.min(1, this.state.y / this.state.height)
+        percentage = this.state.y / this.state.height
         options.y = 0 - difference - percentage * difference * 0.9
-        options.blur = percentage * 20
+        options.blur = Math.min(10, percentage * 2 * 10)
 
         arrowCss.opacity = Math.max(0, 1 - percentage * 2)
+        css.opacity = Math.max(0, 1 - percentage / 1.5)
+        css.transform = 'translate(0, ' + (0 - this.state.y / 1.5) + 'px)'
       }
 
-      let css = {}
-      css.backgroundImage = this.state.loaded ? 'url(' + path + ')' : ''
-      css.backgroundPosition = '50% ' + options.y + 'px'
-      css.backgroundSize = options.bgWidth + 'px ' + options.bgHeight + 'px'
-      css.WebkitFilter = 'blur(' + options.blur + 'px)'
       css.width = this.state.width + 'px'
       css.height = this.state.height + 'px'
 
+      imageCss.backgroundImage = 'url(' + path + ')'
+      imageCss.backgroundPosition = '50% ' + options.y + 'px'
+      imageCss.backgroundSize = options.bgWidth + 'px ' + options.bgHeight + 'px'
+      imageCss.WebkitFilter = 'blur(' + options.blur + 'px)'
+
+      let className = classnames(
+        this.state.loaded ? style.loaded : null,
+        this.state.y > 50 ? style.scrolled : null,
+        style.poster
+      )
+
       return (
-        <figure className={style.poster} style={css}>
-          <img className={style.image} src={path} onLoad={::this.getImageSize} />
+        <figure className={className} style={css}>
+          <Title content={text} />
+          <div className={style.image} style={imageCss}>
+            <img src={path} onLoad={::this.getImageSize} />
+          </div>
           <div className={style.arrow} style={arrowCss} onClick={::this.scrollToContent}>
             <img src={arrow} />
           </div>

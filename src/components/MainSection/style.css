@@ -3,3 +3,8 @@
   position: relative;
   z-index: 2;
 }
+
+.mainWrapper {
+  position: relative;
+  padding-top: 400px;
+}

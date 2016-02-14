@@ -44,3 +44,39 @@ button,
 input {
   outline: none;
 }
+
+.pageEnter,
+.pageAppear {
+  z-index: 1;
+  opacity: 0;
+  -webkit-filter: blur(8px) saturate(0%);
+}
+
+.pageEnterActive,
+.pageAppearActive {
+  opacity: 1;
+  -webkit-filter: blur(0px) saturate(100%);
+  transition: all 500ms ease-out-quart;
+  transition-delay: 500ms;
+}
+
+.pageAppearActive {
+  transition: all 500ms ease-in-out;
+  transition-delay: 500ms;
+}
+
+.pageEnterActive {
+  transition: all 500ms ease-out-quart;
+  transition-delay: 500ms;
+}
+
+.pageLeave {
+  opacity: 1;
+  z-index: 2;
+}
+
+.pageLeaveActive {
+  opacity: 0;
+  -webkit-filter: blur(8px) saturate(0%);
+  transition: all 500ms ease-in-quart;
+}

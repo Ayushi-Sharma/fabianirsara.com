@@ -4,7 +4,9 @@ import TextPlugin from '../../node_modules/gsap/src/uncompressed/plugins/TextPlu
 import shuffle from './shuffle'
 
 export default function transformText(node, text) {
-  TweenLite.to(node, 0.9, {text: text, ease: Quint.easeOut, overwrite: 'all'})
+  try {
+    TweenLite.to(node, 0.9, {text: text, ease: Quint.easeOut, overwrite: 'all'})
+  } catch(e) {}
 }
 
 export function rollText(node) {
@@ -20,10 +22,12 @@ export function rollText(node) {
 
   node.style.width = Math.round(parseFloat(window.getComputedStyle(node).width.toString().replace('px', ''))) + 'px'
 
-  TweenLite.to(node, 0.1, {text: tmpText, ease: Linear.easeNone, overwrite: 'all', onComplete: function(){
-    TweenLite.to(node, 0.1, {text: originalText, ease: Linear.easeNone, overwrite: 'all', onComplete: function(){
-      node.style.width = ''
-      node._isRollingText = false
-    }});
-  }})
+  try {
+    TweenLite.to(node, 0.1, {text: tmpText, ease: Linear.easeNone, overwrite: 'all', onComplete: function(){
+      TweenLite.to(node, 0.1, {text: originalText, ease: Linear.easeNone, overwrite: 'all', onComplete: function(){
+        node.style.width = ''
+        node._isRollingText = false
+      }})
+    }})
+  } catch(e) {}
 }

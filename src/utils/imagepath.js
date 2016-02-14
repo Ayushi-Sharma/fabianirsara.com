@@ -11,9 +11,14 @@ export default function imagepath(url, size) {
   return config.api + 'images/' + (size || 'large') + '/' + url.replace(/\//g, '___')
 }
 
-export function fetch(url) {
+export function fetch(url, fromCurrentPath) {
   let state = store.getState()
-  url = path.normalize(state.path + '/' + url).toLowerCase()
+
+  if (fromCurrentPath === null || typeof fromCurrentPath === 'undefined') {
+    fromCurrentPath = state.data.path
+  }
+
+  url = path.normalize(fromCurrentPath + '/' + url).toLowerCase()
 
   return (state.data.files[url] && state.data.files[url].localFile)
     ? state.data.files[url].localFile

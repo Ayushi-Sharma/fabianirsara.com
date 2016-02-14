@@ -1,10 +1,8 @@
 
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import ReactMarkdown from 'react-markdown'
 import style from './style.css'
-
-import markdown from '../../utils/markdown'
+import { POSTER_RATIO } from '../../constants'
 
 class MainSection extends Component {
   componentDidMount() {
@@ -19,7 +17,7 @@ class MainSection extends Component {
   }
 
   handleResize() {
-    this._node.style.paddingTop = (window.innerHeight / 6 * 5) + 'px'
+    this._node.style.paddingTop = (window.innerHeight * POSTER_RATIO) + 'px'
   }
 
   render() {
@@ -27,8 +25,9 @@ class MainSection extends Component {
 
     return (
       <section className={style.main}>
-        <ReactMarkdown source={content} walker={markdown.handle} />
-        {children}
+        <div className={style.mainWrapper}>
+          {children}
+        </div>
       </section>
     )
   }

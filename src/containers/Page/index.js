@@ -1,35 +1,49 @@
 
 import React, { Component } from 'react'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
+import ReactDOM from 'react-dom'
+import ReactMarkdown from 'react-markdown'
 
-import * as DataActions from '../../actions/data'
+import MainSection from '../../components/MainSection'
+import Poster from '../../components/Poster'
+
+import markdown from '../../utils/markdown'
+import getPageContent from '../../utils/getPageContent'
+import style from './style.css'
+import grid from '../../assets/css/grid.css'
 
 class Page extends Component {
+  componentDidMount() {
+    window.addEventListener('resize', ::this.handleResize)
+    this.handleResize()
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', ::this.handleResize)
+  }
+
+  handleResize() {
+    let node = ReactDOM.findDOMNode(this)
+    node.parentNode.style.height = node.offsetHeight + 'px'
+  }
+
   render() {
-    console.log(this.props)
+    const { children } = this.props
+    const data = getPageContent(this.props.location.pathname)
+
+    this.path = data.path;
+
     return (
-      <div>
-        Page
+      <div className={style.page}>
+        <Poster file={data.poster} text={data.header} />
+        <MainSection content={data.content}>
+          <div className={grid.container}>
+            <ReactMarkdown source={data.content} walker={markdown.handle.bind(this)} />
+          </div>
+          {children}
+        </MainSection>
       </div>
     )
   }
 }
 
-function mapStateToProps(state) {
-  console.log('state', state)
-  return {
-    data: state.data
-  }
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(DataActions, dispatch)
-  }
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Page)
+export default Page

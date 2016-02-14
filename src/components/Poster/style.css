@@ -1,23 +1,55 @@
 
 .poster {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  z-index: 5;
   overflow: hidden;
   margin: 0;
   padding: 0;
+  transition: opacity 170ms ease-out-quint, top 170ms ease-out-quint, transform 170ms ease-out-quint;
+  will-change: opacity, top, -webkit-transform, transform;
+}
 
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  transition: background-position 170ms ease-out-quint;
+.poster:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  content: " ";
+  display: block;
+  box-shadow: inset 0 0 10vmax #282828;
 }
 
 .poster .image {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0;
+}
+
+.poster.loaded .image {
+  opacity: 1;
+  transition: all 170ms ease-out-quint;
+  will-change: background-position, -webkit-filter, opacity, -webkit-transform, -moz-transform, transform;
+}
+
+.poster.scrolled {
+  z-index: 1;
+}
+
+.poster .image img {
   opacity: 0;
   pointer-events: none;
-  width: 20%;
+  width: 100%;
   height: auto;
   display: block;
   margin: 0;
@@ -28,6 +60,7 @@
   position: absolute;
   left: 0;
   bottom: 0;
+  z-index: 3;
   width: 100%;
   height: 30%;
   min-height: 75px;
@@ -62,4 +95,33 @@
 
 .poster .arrow:hover {
   opacity: 1;
+}
+
+.poster .text {
+  position: absolute;
+  z-index: 10;
+  top: 40%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  transform: translate(0, -50%);
+}
+
+.poster h1,
+.poster h2 {
+  margin: 0;
+  padding: 0;
+}
+
+.poster h1 {
+  font-size: responsive 24px 56px;
+  font-range: 420px 1280px;
+  font-weight: 300;
+}
+
+.poster h2 {
+  font-size: responsive 12px 32px;
+  font-range: 420px 1280px;
+  font-weight: 300;
+  margin-top: 2em;
 }

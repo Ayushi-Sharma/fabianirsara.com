@@ -1,12 +1,11 @@
 
 import React, { Component } from 'react'
+import Page from '../Page'
 
 class Home extends Component {
   render() {
     return (
-      <div>
-        INDEX
-      </div>
+      <Page />
     )
   }
 }

@@ -1,46 +1,10 @@
 
 .header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 4;
-}
-
-.header .top {
   position: fixed;
   top: 50px;
   left: 0;
   width: 100%;
   z-index: 20;
-}
-
-.header .text {
-  position: absolute;
-  top: 40%;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  transform: translate(0, -50%);
-}
-
-.header h1,
-.header h2 {
-  margin: 0;
-  padding: 0;
-}
-
-.header h1 {
-  font-size: responsive 24px 56px;
-  font-range: 420px 1280px;
-  font-weight: 300;
-}
-
-.header h2 {
-  font-size: responsive 12px 32px;
-  font-range: 420px 1280px;
-  font-weight: 300;
-  margin-top: 2em;
 }
 
 .logo {
@@ -49,11 +13,11 @@
   height: 26px;
   margin: auto;
   float: left;
-  padding-right: 10px;
-  padding-bottom: 10px;
   opacity: 0.85;
   transition: opacity 170ms ease;
+  top: -20px;
 }
+
 .logo img {
   position: relative;
   width: 100%;
@@ -61,7 +25,10 @@
   display: block;
   margin: 0;
   padding: 0;
+  padding: 20px;
+  padding: 20px;
 }
+
 .logo:hover {
   opacity: 1;
 }

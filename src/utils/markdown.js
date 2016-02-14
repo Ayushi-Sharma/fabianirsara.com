@@ -7,7 +7,7 @@ let markdown = {}
 
 markdown.handle = function(item) {
   if (item.type === 'Image') {
-    item.destination = imagepath(fetch(item.destination), 'medium')
+    item.destination = imagepath(fetch(item.destination, this.path), 'medium')
   } else if (item.type === 'HtmlBlock' && item.literal.indexOf('<img') !== -1) {
     let match = null
     let url = null
@@ -18,7 +18,7 @@ markdown.handle = function(item) {
 
       url = match[1] || match[2] || match[3]
 
-      item.literal = item.literal.replace(`src="${url}"`, `src="${imagepath(fetch(url), 'medium')}"`, item.destination)
+      item.literal = item.literal.replace(`src="${url}"`, `src="${imagepath(fetch(url, this.path), 'medium')}"`, item.destination)
     }
   }
 }
