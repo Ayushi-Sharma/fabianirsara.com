@@ -3,19 +3,10 @@ import React, { Component } from 'react'
 import shuffle from '../../utils/shuffle'
 import transformText from '../../utils/transformText'
 
-const words = [
-  'Web Developer',
-  'Photographer',
-  'Traveller',
-  'Casual Nerd',
-  'Chocolate Lover',
-  'Coffee addict'
-]
-
 class Claims extends Component {
   componentDidMount() {
     this.list = []
-    this.nextCycle()
+    this.nextCycle(true)
   }
 
   componentWillUnmount() {
@@ -26,23 +17,23 @@ class Claims extends Component {
 
   getListItem() {
     if (this.list.length === 0) {
-      this.list = shuffle(words.concat([]))
+      this.list = shuffle(this.props.words.concat([]))
     }
 
     return this.list.shift()
   }
 
-  nextCycle() {
+  nextCycle(longDelay) {
     if (this._cycleTimeout) clearTimeout(this._cycleTimeout)
-    this._cycleTimeout = setTimeout(::this.cycle, 3500 + Math.random() * 900)
+    this._cycleTimeout = setTimeout(::this.cycle, (longDelay ? 4500 : 2500) + Math.random() * 900)
   }
 
   cycle() {
     this.nextCycle()
 
-    setTimeout(::this.cycle1, 17 + Math.random() * 900)
-    setTimeout(::this.cycle2, 170 + Math.random() * 900)
-    setTimeout(::this.cycle3, 300 + Math.random() * 900)
+    setTimeout(::this.cycle1, 17 + Math.random() * 1100)
+    setTimeout(::this.cycle2, 170 + Math.random() * 1100)
+    setTimeout(::this.cycle3, 300 + Math.random() * 1100)
   }
 
   cycle1() {
@@ -60,7 +51,7 @@ class Claims extends Component {
   render() {
     return (
       <span>
-        <span ref="word1">{words[0]}</span>, <span ref="word2">{words[1]}</span>, <span ref="word3">{words[2]}</span>
+        <span ref="word1">{this.props.words[0]}</span>, <span ref="word2">{this.props.words[1]}</span>, <span ref="word3">{this.props.words[2]}</span>
       </span>
     )
   }

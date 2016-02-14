@@ -50,6 +50,8 @@
   float: left;
   padding-right: 10px;
   padding-bottom: 10px;
+  opacity: 0.85;
+  transition: opacity 170ms ease;
 }
 .logo img {
   position: relative;
@@ -58,4 +60,7 @@
   display: block;
   margin: 0;
   padding: 0;
+}
+.logo:hover {
+  opacity: 1;
 }
