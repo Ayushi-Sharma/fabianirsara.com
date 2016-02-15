@@ -4,6 +4,10 @@
   top: 0;
   left: 0;
   width: 100%;
+
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 1px);
+  transform-style: preserve-3d;
 }
 
 .text {

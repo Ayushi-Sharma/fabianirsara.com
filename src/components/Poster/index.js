@@ -9,6 +9,7 @@ import Title from './Title'
 
 import arrow from '../../assets/icons/arrow-bottom.png'
 import scrollTo from '../../utils/scrollTo'
+import snap from '../../utils/snap'
 
 import { POSTER_RATIO } from '../../constants'
 
@@ -27,6 +28,7 @@ class Poster extends Component {
     this._oldScroll = null
     this._handleScroll = ::this.handleScroll
     this._scrollTimeout = requestAnimationFrame(this._handleScroll)
+    window.addEventListener('scroll', (this._handleScroll = ::this.handleScroll))
     window.addEventListener('resize', (this._handleResize = ::this.handleResize))
 
     this.handleResize()
@@ -36,6 +38,7 @@ class Poster extends Component {
   componentWillUnmount() {
     this._mounted = false
     if (this._scrollTimeout) cancelAnimationFrame(this._scrollTimeout)
+    window.removeEventListener('scroll', this._handleScroll)
     window.removeEventListener('resize', this._handleResize)
   }
 
@@ -101,11 +104,11 @@ class Poster extends Component {
         let difference = (options.bgHeight - this.state.height) / 2
         percentage = this.state.y / (this.state.height / 2)
         options.y = 0 - difference - percentage * difference * 0.9
-        options.blur = Math.min(10, percentage * 2 * 10)
+        options.blur = snap(Math.min(10, percentage * 2 * 14), 2)
 
         arrowCss.opacity = Math.max(0, 1 - percentage * 2)
         css.opacity = Math.max(0, 1 - percentage / 1.5)
-        css.transform = 'translate(0, ' + (0 - this.state.y / 4) + 'px)'
+        css.transform = 'translate3d(0, ' + (0 - this.state.y / 4) + 'px, 0px)'
       }
 
       css.width = this.state.width + 'px'

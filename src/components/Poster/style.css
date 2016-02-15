@@ -11,6 +11,10 @@
   padding: 0;
   transition: opacity 170ms ease-out-quint, top 170ms ease-out-quint, transform 170ms ease-out-quint;
   will-change: opacity, top, -webkit-transform, transform;
+
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 1px);
+  transform-style: preserve-3d;
 }
 
 .poster:after {
@@ -40,6 +44,10 @@
   opacity: 1;
   transition: all 170ms ease-out-quint;
   will-change: background-position, -webkit-filter, opacity, -webkit-transform, -moz-transform, transform;
+
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 1px);
+  transform-style: preserve-3d;
 }
 
 .poster.scrolled {
