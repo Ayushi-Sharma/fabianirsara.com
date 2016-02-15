@@ -5,9 +5,10 @@ import { browserHistory } from 'react-router'
 
 import { logger, promise } from '../middleware'
 import rootReducer from '../reducers'
+import config from '../config'
 
 export function configure(initialState) {
-  const create = window.devToolsExtension
+  const create = (window.devToolsExtension && config.debug)
     ? window.devToolsExtension()(createStore)
     : createStore
 
