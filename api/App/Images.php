@@ -31,6 +31,7 @@ class Images extends Controller
         @mkdir(dirname($cacheFile), 0777, true);
 
         $image = new ImageResize(DOC_ROOT.$file);
+        $image->quality_jpg = Config::get('quality_jpg');
 
         $sizeDefinition = $config->$size;
 
