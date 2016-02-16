@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import classnames from 'classnames'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 import Header from '../../components/Header'
@@ -32,6 +33,11 @@ class App extends Component {
 
       return (
         <div className={style.wrapper}>
+          <div className={classnames(style.line, style.left)} />
+          <div className={classnames(style.line, style.top)} />
+          <div className={classnames(style.line, style.right)} />
+          <div className={classnames(style.line, style.bottom)} />
+
           <Header poster={data.poster} content={data.header} />
           <ReactCSSTransitionGroup
             transitionName="page"

@@ -1,10 +1,16 @@
 
 .header {
   position: fixed;
-  top: 5%;
+  top: 100px;
   left: 0;
   width: 100%;
   z-index: 20;
+}
+
+@media screen and (max-width: 1025px) {
+  .header {
+    top: 5vw;
+  }
 }
 
 .header .nav {

@@ -66,7 +66,10 @@ class Poster extends Component {
 
     if (this._oldScroll !== window.scrollY) {
       this._oldScroll = window.scrollY
-      this.setState({y: window.scrollY})
+
+      if (! (this._oldScroll > window.innerHeight && window.scrollY > window.innerHeight)) {
+        this.setState({y: window.scrollY})
+      }
     }
   }
 

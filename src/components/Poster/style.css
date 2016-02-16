@@ -26,7 +26,7 @@
   z-index: 2;
   content: " ";
   display: block;
-  box-shadow: inset 0 0 10vmax #000;
+  box-shadow: inset 0 0 20vmax #000;
 }
 
 .poster .image {
@@ -127,16 +127,24 @@
 
 .poster h1 {
   font-size: responsive 24px 56px;
-  font-range: 420px 1280px;
+  font-range: 420px 1800px;
   font-weight: $header_title_font_weight;
   line-height: 1em;
 }
 
 .poster h2 {
   font-size: responsive 12px 32px;
-  font-range: 420px 1280px;
+  font-range: 420px 1800px;
   font-weight: $header_subtitle_font_weight;
   line-height: 1em;
+}
+
+.poster a {
+  color: $color_active;
+  text-decoration: none;
+}
+.poster a:hover {
+  color: $color_main;
 }
 
 .poster .titleText {

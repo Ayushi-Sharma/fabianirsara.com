@@ -6,7 +6,6 @@ class Home extends Component {
   render() {
     return (
       <Page location={this.props.location}>
-        <p>Test</p>
       </Page>
     )
   }

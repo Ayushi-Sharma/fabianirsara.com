@@ -12,7 +12,7 @@
 
 .text {
   font-size: responsive 16px 20px;
-  font-range: 420px 1280px;
+  font-range: 420px 1400px;
 }
 
 .text > * {
@@ -21,21 +21,21 @@
 
 .text h1 {
   font-size: responsive 20px 48px;
-  font-range: 420px 1280px;
+  font-range: 420px 1400px;
   font-weight: 300;
   text-align: center;
 }
 
 .text h2 {
   font-size: responsive 16px 28px;
-  font-range: 420px 1280px;
+  font-range: 420px 1400px;
   font-weight: 300;
   text-align: center;
 }
 
 .text p {
-  font-size: responsive 26px 60px;
-  font-range: 420px 1280px;
+  font-size: responsive 26px 72px;
+  font-range: 420px 1400px;
   font-weight: 700;
 }
 
@@ -52,8 +52,8 @@
 }
 
 .text p em {
-  font-size: responsive 12px 20px;
-  font-range: 420px 1280px;
+  font-size: responsive 12px 24px;
+  font-range: 420px 1400px;
   display: block;
   line-height: $line_height;
   margin-top: 0.5em;

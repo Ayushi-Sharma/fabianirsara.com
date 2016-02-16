@@ -1,4 +1,9 @@
 
+html,
+body {
+  margin: 0;
+}
+
 hr {
   outline: none;
   border: none;
@@ -52,12 +57,16 @@ body,
 * {
   -webkit-appearance: none;
   -moz-appearance: none;
-
-  text-rendering: optimizeLegibility;
+  appearance: none;
 
   -webkit-font-smoothing: antialiased;
-  -webkit-text-size-adjust: none;
-  -webkit-touch-callout: none;
+  -moz-font-smoothing: antialiased;
+  -ms-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  -webkit-text-rendering: optimizeLegibility;
+  -moz-text-rendering: optimizeLegibility;
+  -ms-text-rendering: optimizeLegibility;
+  text-rendering: optimizeLegibility;
 }
 
 @-webkit-viewport { width: device-width }

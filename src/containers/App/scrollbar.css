@@ -1,0 +1,16 @@
+
+::-webkit-scrollbar-track {
+  background-color: $color_main;
+}
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $background;
+  border-left: 9px solid $color_main;
+  border-right: 9px solid $color_main;
+  border-top: 20px solid $color_main;
+  border-bottom: 20px solid $color_main;
+}
