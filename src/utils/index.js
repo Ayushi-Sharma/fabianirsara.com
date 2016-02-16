@@ -7,6 +7,7 @@ import scrollTo from './scrollTo'
 import shuffle from './shuffle'
 import transformText from './transformText'
 import weekday from './weekday'
+import getConfig from './getConfig'
 
 const utils = {
   api,
@@ -16,7 +17,8 @@ const utils = {
   scrollTo,
   shuffle,
   transformText,
-  weekday
+  weekday,
+  getConfig
 }
 
 export default utils

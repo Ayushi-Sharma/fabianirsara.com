@@ -11,7 +11,7 @@ import style from './style.css'
 
 import * as DataActions from '../../actions/data'
 
-import getConfig from '../../utils/getConfig'
+import getConfig, { restyle } from '../../utils/getConfig'
 
 class App extends Component {
   render() {
@@ -19,6 +19,7 @@ class App extends Component {
 
     if (data.pages) {
       const config = getConfig()
+      restyle()
 
       let transitionClasses = {
         enter: style.pageEnter,

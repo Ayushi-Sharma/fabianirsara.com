@@ -2,7 +2,7 @@
 var rucksack = require('rucksack-css')
 var webpack = require('webpack')
 var path = require('path')
-var postcssSimpleVars = require('postcss-simple-vars')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
   context: path.join(__dirname, './src'),
@@ -23,11 +23,13 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loaders: [
+        loader: ExtractTextPlugin.extract(
           'style-loader',
-          'css-loader?modules&sourceMap&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
-          'postcss-loader'
-        ]
+          [
+            'css-loader?modules&sourceMap&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+            'postcss-loader'
+          ]
+        )
       },
       {
         test: /\.(js|jsx)$/,
@@ -53,8 +55,7 @@ module.exports = {
   postcss: [
     rucksack({
       autoprefixer: true
-    }),
-    postcssSimpleVars
+    })
   ],
   plugins: [
     new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),
@@ -62,7 +63,8 @@ module.exports = {
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development')
       }
-    })
+    }),
+    new ExtractTextPlugin('build.css')
   ],
   devServer: {
     contentBase: './src',

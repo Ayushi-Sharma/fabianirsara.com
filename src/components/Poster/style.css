@@ -26,7 +26,7 @@
   z-index: 2;
   content: " ";
   display: block;
-  box-shadow: inset 0 0 10vmax #282828;
+  box-shadow: inset 0 0 10vmax $background;
 }
 
 .poster .image {
@@ -74,9 +74,9 @@
   min-height: 75px;
   max-height: 300px;
 
-  background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, #282828 95%, #282828 100%);
-  background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%, #282828 95%, #282828 100%);
-  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, #282828 95%, #282828 100%);
+  background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, $background 95%, $background 100%);
+  background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%, $background 95%, $background 100%);
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, $background 95%, $background 100%);
 }
 
 .poster .arrow {

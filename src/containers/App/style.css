@@ -19,10 +19,11 @@ button {
 }
 
 body {
-  font: 14px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: $fontFamily;
+  font-size: $fontSize;
   line-height: 1.4em;
-  background: #282828;
-  color: #fff;
+  background: $background;
+  color: $color;
   font-weight: 400;
   overflow-y: scroll;
   overflow-x: hidden;
