@@ -124,6 +124,13 @@ class DB
           $item['content'] = file_get_contents($localPath);
         }
 
+        if (substr($item['path'], -4) === '.jpg' || substr($item['path'], -5) === '.jpeg' || substr($item['path'], -4) === '.png')
+        {
+          $size = getimagesize($localPath);
+          $item['width'] = $size[0];
+          $item['height'] = $size[1];
+        }
+
         $route = explode('/', str_replace('/'.strtolower(Config::get('db')).'/', '', $item['lpath']));
 
         $this->data['files'][$item['lpath']] = $item;

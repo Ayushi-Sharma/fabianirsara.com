@@ -124,6 +124,6 @@ module.exports = function(grunt){
 
   grunt.registerTask('ds', ['compile', 'ftp-deploy:staging', 'ftp-deploy:api_staging'])
   grunt.registerTask('dp', ['compile', 'ftp-deploy:production', 'ftp-deploy:api_production'])
-  grunt.registerTask('default', ['php'])
+  grunt.registerTask('default', ['compile'])
 
 }

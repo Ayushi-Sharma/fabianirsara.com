@@ -7,6 +7,12 @@
   z-index: 20;
 }
 
+.header .nav {
+  float: right;
+  position: relative;
+  top: -13px;
+}
+
 .logo {
   position: relative;
   margin: auto;
@@ -35,8 +41,18 @@
   opacity: 1;
 }
 
-.header .nav {
-  float: right;
+.logoWrap {
   position: relative;
-  top: -13px;
+}
+
+.logoActive {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 400ms ease-out-quint;
+}
+
+.logo:hover .logoActive {
+  opacity: 1;
 }

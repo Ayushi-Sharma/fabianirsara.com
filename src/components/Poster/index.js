@@ -7,7 +7,8 @@ import imagepath from '../../utils/imagepath'
 
 import Title from './Title'
 
-import arrow from '../../assets/icons/arrow-bottom.png'
+//import arrow from '../../assets/icons/arrow-bottom.png'
+const arrow = ''
 import scrollTo from '../../utils/scrollTo'
 import snap from '../../utils/snap'
 
