@@ -13,6 +13,7 @@ import getPageContent from '../../utils/getPageContent'
 import style from './style.css'
 import grid from '../../assets/css/grid.css'
 import scrollTo from '../../utils/scrollTo'
+import setSiteTitle from '../../utils/setSiteTitle'
 
 class Page extends Component {
   componentDidMount() {
@@ -36,6 +37,7 @@ class Page extends Component {
     const data = getPageContent(this.props.location.pathname)
 
     this.path = data.path
+    setSiteTitle(data)
 
     return (
       <div className={style.page}>

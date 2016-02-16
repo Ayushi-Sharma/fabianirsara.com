@@ -14,20 +14,20 @@ export default function getContent(pathname) {
 
   path = 'pages/' + (path || 'home')
 
-  let poster = null
-  let content = null
-  let header = null
-  if (folder['poster.jpg']) poster = folder['poster.jpg'].localFile
-  if (folder['poster.png']) poster = folder['poster.png'].localFile
-
-  if (folder['index.md']) content = folder['index.md'].content
-  if (folder['header.yaml']) header = jsyaml.load(folder['header.yaml'].content)
-  if (folder['header.json']) header = JSON.parse(folder['header.json'].content)
-
-  return {
-    poster,
-    content,
-    header,
+  let content = {
+    poster: null,
+    content: null,
+    header: null,
+    meta: null,
     path
   }
+
+  if (folder['poster.jpg']) content.poster = folder['poster.jpg'].localFile
+  if (folder['poster.png']) content.poster = folder['poster.png'].localFile
+
+  if (folder['index.md']) content.content = folder['index.md'].content
+  if (folder['header.yaml']) content.header = jsyaml.load(folder['header.yaml'].content)
+  if (folder['meta.yaml']) content.meta = jsyaml.load(folder['meta.yaml'].content)
+
+  return content
 }

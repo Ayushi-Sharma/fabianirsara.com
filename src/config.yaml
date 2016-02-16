@@ -1,5 +1,9 @@
 
-background: '#fefefe'
+site_title: 'Fabian Irsara | Web Developer, Photographer, Traveller'
+site_keywords: ''
+site_description: ''
+
+background_main: '#fefefe'
 color_main: '#181818'
 color_active: '#eb2315'
 nav_color_active: '#eb2315'

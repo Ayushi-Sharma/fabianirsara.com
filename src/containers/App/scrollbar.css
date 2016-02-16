@@ -8,7 +8,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: $background;
+  background-color: $background_main;
   border-left: 9px solid $color_main;
   border-right: 9px solid $color_main;
   border-top: 20px solid $color_main;

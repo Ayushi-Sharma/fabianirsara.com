@@ -8,6 +8,7 @@ import shuffle from './shuffle'
 import transformText from './transformText'
 import weekday from './weekday'
 import getConfig from './getConfig'
+import setSiteTitle from './setSiteTitle'
 
 const utils = {
   api,
@@ -18,7 +19,8 @@ const utils = {
   shuffle,
   transformText,
   weekday,
-  getConfig
+  getConfig,
+  setSiteTitle
 }
 
 export default utils

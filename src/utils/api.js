@@ -13,13 +13,13 @@ class API {
         method: 'get',
         url: config.api + path,
         crossOrigin: true
-      }).then(function(data){
+      }).then(function(data) {
         if (typeof data !== 'object') {
           data = JSON.parse(data)
         }
 
         resolve(data)
-      }).fail(function(data){
+      }).fail(function(data) {
         reject(data)
       })
     })

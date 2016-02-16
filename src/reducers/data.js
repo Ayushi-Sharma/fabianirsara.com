@@ -6,7 +6,7 @@ const initialState = {}
 
 export default handleActions({
   'pull data' (state, action) {
-    setTimeout(function(){
+    setTimeout(function() {
       api.request('sync')
     }, 2000)
 

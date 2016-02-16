@@ -37,7 +37,7 @@ export function restyle() {
     method: 'get',
     url: href,
     crossOrigin: true
-  }).then(function(data){
+  }).then(function(data) {
     let style = data
 
     for (let k in config) {

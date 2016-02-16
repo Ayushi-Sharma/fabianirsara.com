@@ -9,7 +9,7 @@ import grid from '../../assets/css/grid.css'
 import imagepath from '../../utils/imagepath'
 
 class Header extends Component {
-  getFile(name){
+  getFile(name) {
     const { data } = store.getState()
 
     let file = null
