@@ -1,6 +1,6 @@
 
 .container {
-  max-width: 14000px;
+  max-width: 1800px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 100px;
@@ -31,7 +31,7 @@
 }
 
 .shortContainer {
-  max-width: 14000px;
+  max-width: 1800px;
 }
 
 .clear {

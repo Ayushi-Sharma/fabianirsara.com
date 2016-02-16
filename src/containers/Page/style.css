@@ -11,26 +11,35 @@
 }
 
 .text {
-  font-size: responsive 16px 20px;
+  font-size: responsive 26px 72px;
   font-range: 420px 1400px;
+  font-weight: 700;
 }
 
 .text > * {
   line-height: $line_height;
 }
 
+.text > :first-child {
+  margin-top: 0 !important;
+}
+
+.text > :last-child {
+  margin-bottom: 0 !important;
+}
+
 .text h1 {
-  font-size: responsive 20px 48px;
+  font-size: responsive 52px 126px;
   font-range: 420px 1400px;
-  font-weight: 300;
-  text-align: center;
+  font-weight: 100;
+  margin-top: 1.5em;
 }
 
 .text h2 {
-  font-size: responsive 16px 28px;
+  font-size: responsive 52px 126px;
   font-range: 420px 1400px;
-  font-weight: 300;
-  text-align: center;
+  font-weight: 100;
+  margin-top: 1.5em;
 }
 
 .text p {
@@ -51,12 +60,20 @@
   font-weight: 500;
 }
 
-.text p em {
+.text p em,
+.text ul,
+.text ol {
   font-size: responsive 12px 24px;
   font-range: 420px 1400px;
+}
+.text p em {
   display: block;
   line-height: $line_height;
   margin-top: 0.5em;
+}
+
+.text li {
+  margin: 0 !important;
 }
 
 .text img {

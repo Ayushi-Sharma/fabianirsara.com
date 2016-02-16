@@ -37,11 +37,9 @@
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  opacity: 0;
 }
 
 .poster.loaded .image {
-  opacity: 1;
   transition: all 170ms ease-out-quint;
   will-change: background-position, -webkit-filter, opacity, -webkit-transform, -moz-transform, transform;
 
