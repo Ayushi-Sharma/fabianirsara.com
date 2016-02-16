@@ -1,12 +1,12 @@
 
-import reqwest from 'reqwest'
 import jsyaml from 'js-yaml'
 import store from '../store'
 import variables from '../config.yaml'
 
 let loaded = false
-let restyled = false
-export let config = {}
+export let config = {
+  ...variables
+}
 
 export default function getConfig() {
   if (loaded) return config
@@ -24,32 +24,4 @@ export default function getConfig() {
   }
 
   return config
-}
-
-export function restyle() {
-  if (restyled) return
-  restyled = true
-
-  let ss = document.getElementById('stylesheet')
-  let href = ss.getAttribute('href')
-
-  reqwest({
-    method: 'get',
-    url: href,
-    crossOrigin: true
-  }).then(function(data) {
-    let style = data
-
-    for (let k in config) {
-      let prop = '$' + k
-
-      while (style.indexOf(prop) !== -1) {
-        style = style.replace(prop, config[k])
-      }
-    }
-
-    let tag = document.createElement('style')
-    tag.innerHTML = style
-    document.getElementsByTagName('head')[0].appendChild(tag)
-  })
 }

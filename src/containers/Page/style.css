@@ -4,10 +4,6 @@
   top: 0;
   left: 0;
   width: 100%;
-
-  backface-visibility: hidden;
-  transform: translate3d(0, 0, 1px);
-  transform-style: preserve-3d;
 }
 
 .text {
@@ -40,12 +36,6 @@
   font-range: 420px 1400px;
   font-weight: 100;
   margin-top: 1.5em;
-}
-
-.text p {
-  font-size: responsive 26px 72px;
-  font-range: 420px 1400px;
-  font-weight: 700;
 }
 
 .text strong,

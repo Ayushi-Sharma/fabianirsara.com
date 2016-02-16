@@ -1,0 +1,14 @@
+
+background_main: '#fefefe'
+color_main: '#181818'
+color_active: '#eb2315'
+nav_color_active: '#eb2315'
+font_family: '"Geomanist", Helvetica, Arial, sans-serif'
+font_size: '14px'
+font_weight: 300
+line_height: 1.1
+header_title_font_weight: 700
+header_subtitle_font_weight: 500
+header_title_font_size: '150%'
+header_subtitle_font_size: '150%'
+header_title_spacing: '0.5em'

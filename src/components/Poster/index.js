@@ -12,7 +12,7 @@ const arrow = ''
 import scrollTo from '../../utils/scrollTo'
 import snap from '../../utils/snap'
 
-import { POSTER_RATIO } from '../../constants'
+import { config } from '../../utils/getConfig'
 
 class Poster extends Component {
   state = {
@@ -43,14 +43,6 @@ class Poster extends Component {
     window.removeEventListener('resize', this._handleResize)
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.file !== nextProps.file) {
-      this.setState({
-        loaded: false
-      })
-    }
-  }
-
   getImageSize(event) {
     this.setState({
       loaded: true,
@@ -67,7 +59,7 @@ class Poster extends Component {
     if (this._oldScroll !== window.scrollY) {
       this._oldScroll = window.scrollY
 
-      if (! (this._oldScroll > window.innerHeight && window.scrollY > window.innerHeight)) {
+      if (! (this._oldScroll > window.innerHeight * 1.2 && window.scrollY > window.innerHeight * 1.2)) {
         this.setState({y: window.scrollY})
       }
     }
@@ -76,7 +68,7 @@ class Poster extends Component {
   handleResize() {
     this.setState({
       width: window.innerWidth,
-      height: window.innerHeight * POSTER_RATIO
+      height: window.innerHeight * (config.poster_height / 100)
     })
   }
 
@@ -107,27 +99,43 @@ class Poster extends Component {
 
         let difference = (options.bgHeight - this.state.height) / 2
         percentage = this.state.y / (this.state.height / 2)
-        options.y = 0 - difference - percentage * difference * 0.9
-        options.blur = snap(Math.min(10, percentage * 2 * 14), 2)
+
+        let maxPercentage = Math.min(1, percentage)
+        let scale = 1 + 0.2 * maxPercentage
+
+        options.y = 0 - difference * maxPercentage
+        options.blur = snap(Math.min(20, maxPercentage * 2 * 20), 1)
 
         arrowCss.opacity = Math.max(0, 1 - percentage * 2)
         css.opacity = Math.max(0, 1 - percentage / 1.5)
-        css.transform = 'translate3d(0, ' + (0 - this.state.y / 4) + 'px, 0px)'
+
+        // if style === parallax
+        //css.transform = 'translate3d(0, ' + (0 - this.state.y / 4) + 'px, 0px)'
+
+        imageCss.width = options.bgWidth + 'px'
+        imageCss.height = options.bgHeight + 'px'
+        imageCss.top = (0 - difference) + 'px'
+        imageCss.left = (0 - (options.bgWidth - this.state.width) / 2) + 'px'
+        imageCss.transform = 'translate3d(0, ' + options.y + 'px, 0) scale(' + scale + ', ' + scale + ')'
       }
 
       css.width = this.state.width + 'px'
       css.height = this.state.height + 'px'
 
       imageCss.backgroundImage = 'url(' + path + ')'
-      imageCss.backgroundPosition = '50% ' + options.y + 'px'
       imageCss.backgroundSize = options.bgWidth + 'px ' + options.bgHeight + 'px'
       imageCss.WebkitFilter = 'blur(' + options.blur + 'px)'
 
       let className = classnames(
         this.state.loaded ? style.loaded : null,
+        config.poster_vignette ? style.vignette : null,
         this.state.y > 50 ? style.scrolled : null,
         style.poster
       )
+
+      let gradient = config.poster_gradient
+        ? <div className={style.gradient} />
+        : null
 
       return (
         <figure className={className} style={css}>
@@ -138,7 +146,7 @@ class Poster extends Component {
           <div className={style.arrow} style={arrowCss} onClick={::this.scrollToContent}>
             <img src={arrow} />
           </div>
-          <div className={style.gradient} />
+          {gradient}
         </figure>
       )
     } else {

@@ -12,14 +12,16 @@ import style from './style.css'
 
 import * as DataActions from '../../actions/data'
 
-import getConfig, { restyle } from '../../utils/getConfig'
+import getConfig from '../../utils/getConfig'
+import getStyle, { restyle } from '../../utils/getStyle'
 
 class App extends Component {
   render() {
     const { children, data, actions } = this.props
 
     if (data.pages) {
-      const config = getConfig()
+      getStyle()
+      getConfig()
       restyle()
 
       let transitionClasses = {
@@ -38,7 +40,7 @@ class App extends Component {
           <div className={classnames(style.line, style.right)} />
           <div className={classnames(style.line, style.bottom)} />
 
-          <Header poster={data.poster} content={data.header} />
+          <Header />
           <ReactCSSTransitionGroup
             transitionName="page"
             component="div"

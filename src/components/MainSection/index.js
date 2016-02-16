@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import style from './style.css'
-import { POSTER_RATIO } from '../../constants'
+import { config } from '../../utils/getConfig'
 
 class MainSection extends Component {
   componentDidMount() {
@@ -18,7 +18,7 @@ class MainSection extends Component {
 
   handleResize() {
     if (this.props.data.poster) {
-      this._node.style.paddingTop = (window.innerHeight * POSTER_RATIO) + 'px'
+      this._node.style.paddingTop = (window.innerHeight * (config.poster_height / 100)) + 'px'
     } else {
       this._node.style.paddingTop = ''
     }

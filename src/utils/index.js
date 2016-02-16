@@ -8,6 +8,7 @@ import shuffle from './shuffle'
 import transformText from './transformText'
 import weekday from './weekday'
 import getConfig from './getConfig'
+import getStyle from './getStyle'
 import setSiteTitle from './setSiteTitle'
 
 const utils = {
@@ -20,6 +21,7 @@ const utils = {
   transformText,
   weekday,
   getConfig,
+  getStyle,
   setSiteTitle
 }
 
