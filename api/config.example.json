@@ -5,6 +5,7 @@
   "storage": "storage",
   "db": "portfolio",
   "cache": 300,
+  "quality_jpg": 75,
   "sizes": {
     "full": {
       "fit": {
