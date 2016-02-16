@@ -12,7 +12,7 @@ module.exports = {
     vendor: ['react']
   },
   output: {
-    path: path.join(__dirname, './public'),
+    path: path.join(__dirname, './dist'),
     filename: 'build.js'
   },
   module: {
@@ -46,6 +46,13 @@ module.exports = {
       {
         test: /\.(json)$/,
         loader: 'json-loader'
+      },
+      {
+        test: /\.(yaml)$/,
+        loaders: [
+          'json-loader',
+          'yaml-loader'
+        ]
       }
     ]
   },

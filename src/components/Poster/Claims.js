@@ -51,7 +51,7 @@ class Claims extends Component {
   render() {
     return (
       <span>
-        <span ref="word1">{this.props.words[0]}</span>, <span ref="word2">{this.props.words[1]}</span>, <span ref="word3">{this.props.words[2]}</span>
+        <span ref="word1">{this.props.words[0]}</span>, &nbsp; <span ref="word2">{this.props.words[1]}</span>, &nbsp; <span ref="word3">{this.props.words[2]}</span>
       </span>
     )
   }

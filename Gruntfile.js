@@ -3,7 +3,7 @@ module.exports = function(grunt){
   grunt.initConfig({
 
     clean: {
-      dist: ['public']
+      dist: ['dist']
     },
 
     copy: {
@@ -12,7 +12,7 @@ module.exports = function(grunt){
           {
             expand: true,
             src: ['**/*', '!**/.DS_Store'],
-            dest: 'public/assets/public',
+            dest: 'dist/assets/public',
             cwd: 'src/assets/public'
           }
         ]
@@ -28,9 +28,9 @@ module.exports = function(grunt){
     uglify: {
       dist: {
         expand: true,
-        cwd: 'public/',
+        cwd: 'dist/',
         src: ['**/*.js'],
-        dest: 'public/',
+        dest: 'dist/',
         compress: true
       }
     },
@@ -43,11 +43,12 @@ module.exports = function(grunt){
       },
       assets: {
         src: [
-          'public/**/**.css',
-          'public/**/**.js'
+          'dist/**/**.css',
+          'dist/**/**.js',
+          '!dist/assets/public/fonts/**/**.css'
         ],
         dest: [
-          'public/**/**.html'
+          'dist/**/**.html'
         ]
       }
     },
@@ -59,7 +60,7 @@ module.exports = function(grunt){
           port: 21,
           authKey: 'staging'
         },
-        src: 'public',
+        src: 'dist',
         dest: '/'
       },
       production: {
@@ -68,7 +69,7 @@ module.exports = function(grunt){
           port: 21,
           authKey: 'production'
         },
-        src: 'public',
+        src: 'dist',
         dest: '/'
       },
       api_staging: {

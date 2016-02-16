@@ -1,6 +1,6 @@
 .DS_STORE
 node_modules
-public
+dist
 .module-cache
 .ftppass
 *.log*

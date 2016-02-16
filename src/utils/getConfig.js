@@ -2,7 +2,7 @@
 import reqwest from 'reqwest'
 import jsyaml from 'js-yaml'
 import store from '../store'
-import * as variables from '../variables'
+import variables from '../config.yaml'
 
 let loaded = false
 let restyled = false

@@ -35,7 +35,7 @@ class Page extends Component {
     const { children } = this.props
     const data = getPageContent(this.props.location.pathname)
 
-    this.path = data.path;
+    this.path = data.path
 
     return (
       <div className={style.page}>

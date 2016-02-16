@@ -26,7 +26,7 @@
   z-index: 2;
   content: " ";
   display: block;
-  box-shadow: inset 0 0 10vmax $background;
+  box-shadow: inset 0 0 10vmax #000;
 }
 
 .poster .image {
@@ -115,6 +115,10 @@
   transform: translate(0, -50%);
 }
 
+.poster .text span {
+  display: inline-block;
+}
+
 .poster h1,
 .poster h2 {
   margin: 0;
@@ -124,12 +128,24 @@
 .poster h1 {
   font-size: responsive 24px 56px;
   font-range: 420px 1280px;
-  font-weight: 300;
+  font-weight: $header_title_font_weight;
+  line-height: 1em;
 }
 
 .poster h2 {
   font-size: responsive 12px 32px;
   font-range: 420px 1280px;
-  font-weight: 300;
-  margin-top: 2em;
+  font-weight: $header_subtitle_font_weight;
+  line-height: 1em;
+}
+
+.poster .titleText {
+  font-size: $header_title_font_size;
+  line-height: 1em;
+}
+
+.poster .subtitleText {
+  font-size: $header_subtitle_font_size;
+  margin-top: $header_title_spacing;
+  line-height: 1em;
 }

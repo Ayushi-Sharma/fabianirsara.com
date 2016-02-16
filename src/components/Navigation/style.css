@@ -1,7 +1,7 @@
 
 .nav {
-  position: relative;
   composes: clear from '../../assets/css/grid.css';
+  position: relative;
 }
 
 .nav ul {
@@ -20,7 +20,7 @@
 .nav a {
   position: relative;
   display: block;
-  color: #fff;
+  color: $color_main;
   text-decoration: none;
   padding: 20px 15px;
   text-transform: uppercase;
@@ -31,7 +31,7 @@
 }
 
 .nav a:hover {
-  color: #eb2315;
+  color: $nav_color_active;
 }
 
 .navInner {
