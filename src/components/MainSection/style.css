@@ -6,5 +6,6 @@
 
 .mainWrapper {
   position: relative;
-  padding-top: 25vh;
+  padding-top: 10vw;
+  padding-bottom: 10vw;
 }

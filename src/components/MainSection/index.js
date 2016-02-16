@@ -17,7 +17,11 @@ class MainSection extends Component {
   }
 
   handleResize() {
-    this._node.style.paddingTop = (window.innerHeight * POSTER_RATIO) + 'px'
+    if (this.props.data.poster) {
+      this._node.style.paddingTop = (window.innerHeight * POSTER_RATIO) + 'px'
+    } else {
+      this._node.style.paddingTop = ''
+    }
   }
 
   render() {

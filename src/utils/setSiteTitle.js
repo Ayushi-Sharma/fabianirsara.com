@@ -3,9 +3,9 @@ import { config } from './getConfig'
 
 export default function setSiteTitle(data) {
   if (data.meta && data.meta.title) {
-    document.title = config.site_title
-  } else {
     document.title = [config.site_title, data.meta.title].join(' - ')
+  } else {
+    document.title = config.site_title
   }
 
   if (data.meta && data.meta.keywords) {

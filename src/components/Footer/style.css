@@ -1,7 +1,7 @@
 
 .footer {
   position: relative;
-  text-align: center;
+  text-align: left;
   font-weight: 400;
   padding-top: 100px;
   padding-bottom: 100px;
@@ -10,11 +10,14 @@
 
 .text {
   padding-top: 50px;
+  font-weight: 700;
+  font-size: responsive 26px 72px;
+  font-range: 420px 1400px;
 }
 
 .footer .nav {
   position: relative;
-  text-align: center;
+  text-align: left;
 }
 
 .footer nav li {

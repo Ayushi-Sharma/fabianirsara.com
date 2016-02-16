@@ -18,6 +18,7 @@ import setSiteTitle from '../../utils/setSiteTitle'
 class Page extends Component {
   componentDidMount() {
     this._node = ReactDOM.findDOMNode(this)
+    setSiteTitle(this.data)
 
     scrollTo(0)
     window.addEventListener('resize', (this._handleResize = ::this.handleResize))
@@ -34,17 +35,18 @@ class Page extends Component {
 
   render() {
     const { children } = this.props
-    const data = getPageContent(this.props.location.pathname)
 
-    this.path = data.path
-    setSiteTitle(data)
+    if (! this.data) {
+      this.data = getPageContent(this.props.location.pathname)
+      this.path = this.data.path
+    }
 
     return (
       <div className={style.page}>
-        <Poster file={data.poster} text={data.header} />
-        <MainSection content={data.content}>
+        <Poster file={this.data.poster} text={this.data.header} />
+        <MainSection data={this.data} content={this.data.content}>
           <div className={classnames(grid.container, grid.shortContainer)}>
-            <ReactMarkdown className={style.text} source={data.content} walker={markdown.handle.bind(this)} />
+            <ReactMarkdown className={style.text} source={this.data.content} walker={markdown.handle.bind(this)} />
           </div>
           {children}
         </MainSection>
