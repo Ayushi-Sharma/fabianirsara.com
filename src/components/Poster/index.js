@@ -59,7 +59,7 @@ class Poster extends Component {
     if (this._oldScroll !== window.scrollY) {
       this._oldScroll = window.scrollY
 
-      if (! (this._oldScroll > window.innerHeight * 1.2 && window.scrollY > window.innerHeight * 1.2)) {
+      if (! (this._oldScroll > window.innerHeight * 1.5 && window.scrollY > window.innerHeight * 1.5)) {
         this.setState({y: window.scrollY})
       }
     }
@@ -97,11 +97,11 @@ class Poster extends Component {
           options.bgWidth = Math.round(this.state.height / this.state.imageHeight * this.state.imageWidth)
         }
 
-        let difference = (options.bgHeight - this.state.height) / 2
+        let difference = Math.floor((options.bgHeight - this.state.height) / 2)
         percentage = this.state.y / (this.state.height / 2)
 
         let maxPercentage = Math.min(1, percentage)
-        let scale = 1 + 0.2 * maxPercentage
+        let scale = 1 + config.poster_scale * maxPercentage
 
         options.y = 0 - difference * maxPercentage
         options.blur = snap(Math.min(20, maxPercentage * 2 * 20), 1)
@@ -115,8 +115,8 @@ class Poster extends Component {
         imageCss.width = options.bgWidth + 'px'
         imageCss.height = options.bgHeight + 'px'
         imageCss.top = (0 - difference) + 'px'
-        imageCss.left = (0 - (options.bgWidth - this.state.width) / 2) + 'px'
-        imageCss.transform = 'translate3d(0, ' + options.y + 'px, 0) scale(' + scale + ', ' + scale + ')'
+        imageCss.left = (0 - Math.floor((options.bgWidth - this.state.width) / 2)) + 'px'
+        imageCss.transform = 'translate3d(0, ' + options.y + 'px, 0) scale(' + scale + ')'
       }
 
       css.width = this.state.width + 'px'

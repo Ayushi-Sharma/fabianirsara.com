@@ -4,6 +4,6 @@ site_keywords: ''
 site_description: ''
 
 poster_height: 100
-poster_animation: 'zoom'
+poster_scale: 0
 poster_vignette: false
 poster_gradient: false
