@@ -11,11 +11,15 @@ import style from './style.css'
 
 import * as DataActions from '../../actions/data'
 
+import getConfig from '../../utils/getConfig'
+
 class App extends Component {
   render() {
     const { children, data, actions } = this.props
 
     if (data.pages) {
+      const config = getConfig()
+
       let transitionClasses = {
         enter: style.pageEnter,
         enterActive: style.pageEnterActive,

@@ -2,6 +2,7 @@
 var rucksack = require('rucksack-css')
 var webpack = require('webpack')
 var path = require('path')
+var postcssSimpleVars = require('postcss-simple-vars')
 
 module.exports = {
   context: path.join(__dirname, './src'),
@@ -38,7 +39,7 @@ module.exports = {
       },
       {
         test: /\.(png)$/,
-        loader: 'url-loader?limit=100000'
+        loader: 'url-loader?limit=1'
       },
       {
         test: /\.(json)$/,
@@ -52,7 +53,8 @@ module.exports = {
   postcss: [
     rucksack({
       autoprefixer: true
-    })
+    }),
+    postcssSimpleVars
   ],
   plugins: [
     new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),
