@@ -31,7 +31,9 @@
 }
 
 .shortContainer {
-  max-width: 1800px;
+  max-width: 1400px;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .clear {
