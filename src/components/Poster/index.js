@@ -13,6 +13,7 @@ import Title from './Title'
 const arrow = ''
 import scrollTo from '../../utils/scrollTo'
 import snap from '../../utils/snap'
+import isTouch from '../../utils/isTouch'
 
 import { config } from '../../utils/getConfig'
 
@@ -30,9 +31,9 @@ class Poster extends Component {
     this._mounted = true
     this._oldScroll = null
     this._handleScroll = ::this.handleScroll
-    this._scrollTimeout = requestAnimationFrame(this._handleScroll)
-    window.addEventListener('scroll', (this._handleScroll = ::this.handleScroll))
+
     window.addEventListener('resize', (this._handleResize = ::this.handleResize))
+    window.addEventListener('scroll', (this._handleScroll = ::this.handleScroll))
 
     this.handleResize()
     this.handleScroll()
@@ -40,9 +41,8 @@ class Poster extends Component {
 
   componentWillUnmount() {
     this._mounted = false
-    if (this._scrollTimeout) cancelAnimationFrame(this._scrollTimeout)
-    window.removeEventListener('scroll', this._handleScroll)
     window.removeEventListener('resize', this._handleResize)
+    window.removeEventListener('scroll', this._handleScroll)
   }
 
   getImageSize(event) {
@@ -54,10 +54,6 @@ class Poster extends Component {
   }
 
   handleScroll(event) {
-    if (this._mounted) {
-      requestAnimationFrame(this._handleScroll)
-    }
-
     let top = Math.min(window.innerHeight * 1.5, window.scrollY)
 
     if (this._oldScroll !== top) {
@@ -67,10 +63,17 @@ class Poster extends Component {
   }
 
   handleResize() {
-    this.setState({
-      width: window.innerWidth,
-      height: window.innerHeight * (config.poster_height / 100)
-    })
+    if (isTouch() && screen.width < 1025) {
+      this.setState({
+        width: document.documentElement.clientWidth,
+        height: document.documentElement.clientHeight * (config.poster_height / 100)
+      })
+    } else {
+      this.setState({
+        width: window.innerWidth,
+        height: window.innerHeight * (config.poster_height / 100)
+      })
+    }
   }
 
   scrollToContent() {
@@ -105,13 +108,12 @@ class Poster extends Component {
         let scale = 1 + config.poster_scale * maxPercentage
 
         options.y = 0 - difference * maxPercentage
-        options.blur = snap(Math.min(20, maxPercentage * 2 * 20), 1)
+        options.blur = snap(Math.min(20, maxPercentage * 2 * 20), 1) * config.poster_blur
 
         arrowCss.opacity = Math.max(0, 1 - percentage * 2)
         css.opacity = Math.max(0, 1 - percentage / 1.5)
 
-        // if style === parallax
-        //css.transform = 'translate3d(0, ' + (0 - this.state.y / 4) + 'px, 0px)'
+        css.transform = 'translate3d(0, ' + (0 - this.state.y / 4 * config.poster_parallax) + 'px, 0px)'
 
         imageCss.width = options.bgWidth + 'px'
         imageCss.height = options.bgHeight + 'px'
@@ -131,6 +133,7 @@ class Poster extends Component {
         this.state.loaded ? style.loaded : null,
         config.poster_vignette ? style.vignette : null,
         this.state.y > 50 ? style.scrolled : null,
+        isTouch() && screen.width < 1025 ? style.touch : null,
         style.poster
       )
 

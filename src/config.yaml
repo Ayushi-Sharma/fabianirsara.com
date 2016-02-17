@@ -5,5 +5,7 @@ site_description: ''
 
 poster_height: 100
 poster_scale: 0.5
+poster_parallax: 0
+poster_blur: 1
 poster_vignette: false
 poster_gradient: false

@@ -157,3 +157,12 @@
   margin-top: $header_title_spacing;
   line-height: 1em;
 }
+
+.poster.touch {
+  position: absolute !important;
+  opacity: 1 !important;
+}
+
+.poster.touch .image {
+  -webkit-filter: none !important;
+}

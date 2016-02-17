@@ -10,6 +10,7 @@ import weekday from './weekday'
 import getConfig from './getConfig'
 import getStyle from './getStyle'
 import setSiteTitle from './setSiteTitle'
+import isTouch from './isTouch'
 
 const utils = {
   api,
@@ -22,7 +23,8 @@ const utils = {
   weekday,
   getConfig,
   getStyle,
-  setSiteTitle
+  setSiteTitle,
+  isTouch
 }
 
 export default utils
