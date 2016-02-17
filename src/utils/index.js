@@ -11,6 +11,7 @@ import getConfig from './getConfig'
 import getStyle from './getStyle'
 import setSiteTitle from './setSiteTitle'
 import isTouch from './isTouch'
+import screenSize from './screenSize'
 
 const utils = {
   api,
@@ -24,7 +25,8 @@ const utils = {
   getConfig,
   getStyle,
   setSiteTitle,
-  isTouch
+  isTouch,
+  screenSize
 }
 
 export default utils

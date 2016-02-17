@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import style from './style.css'
 import { config } from '../../utils/getConfig'
+import screenSize from '../../utils/screenSize'
 
 class MainSection extends Component {
   componentDidMount() {
@@ -18,7 +19,7 @@ class MainSection extends Component {
 
   handleResize() {
     if (this.props.data.poster) {
-      this._node.style.paddingTop = (window.innerHeight * (config.poster_height / 100)) + 'px'
+      this._node.style.paddingTop = (screenSize().height * (config.poster_height / 100)) + 'px'
     } else {
       this._node.style.paddingTop = ''
     }

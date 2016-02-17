@@ -1,6 +1,4 @@
 
-// TODO: preload all posters when first got data!!
-
 import React, { Component } from 'react'
 
 import classnames from 'classnames'
@@ -14,6 +12,7 @@ const arrow = ''
 import scrollTo from '../../utils/scrollTo'
 import snap from '../../utils/snap'
 import isTouch from '../../utils/isTouch'
+import screenSize from '../../utils/screenSize'
 
 import { config } from '../../utils/getConfig'
 
@@ -54,7 +53,7 @@ class Poster extends Component {
   }
 
   handleScroll(event) {
-    let top = Math.min(window.innerHeight * 1.5, window.scrollY)
+    let top = Math.min(screenSize().height * 1.5, window.scrollY)
 
     if (this._oldScroll !== top) {
       this._oldScroll = top
@@ -63,17 +62,10 @@ class Poster extends Component {
   }
 
   handleResize() {
-    if (isTouch() && screen.width < 1025) {
-      this.setState({
-        width: document.documentElement.clientWidth,
-        height: document.documentElement.clientHeight * (config.poster_height / 100)
-      })
-    } else {
-      this.setState({
-        width: window.innerWidth,
-        height: window.innerHeight * (config.poster_height / 100)
-      })
-    }
+    this.setState({
+      width: screenSize().width,
+      height: screenSize().height * (config.poster_height / 100)
+    })
   }
 
   scrollToContent() {
@@ -102,7 +94,7 @@ class Poster extends Component {
         }
 
         let difference = Math.floor((options.bgHeight - this.state.height) / 2)
-        percentage = this.state.y / (this.state.height / 2)
+        percentage = Math.max(0, this.state.y / (this.state.height / 2))
 
         let maxPercentage = Math.min(1, percentage)
         let scale = 1 + config.poster_scale * maxPercentage
