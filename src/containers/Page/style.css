@@ -89,3 +89,10 @@
   margin-top: 0;
   margin-bottom: 1.1em;
 }
+
+.text p em {
+  display: block;
+  line-height: $line_height;
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
+}

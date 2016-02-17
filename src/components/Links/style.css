@@ -1,0 +1,27 @@
+
+.links {
+  position: relative;
+}
+
+.links ul,
+.links li {
+  display: block;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.links ul {
+  margin-left: -0.5em;
+  margin-top: 2em;
+  margin-bottom: -0.5em;
+}
+
+.links li {
+  float: left;
+}
+
+.links li a {
+  display: block;
+  padding: 0.5em;
+}

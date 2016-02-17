@@ -1,5 +1,6 @@
 
 import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
 import ReactMarkdown from 'react-markdown'
 import classnames from 'classnames'
 
@@ -13,6 +14,7 @@ import style from './style.css'
 import grid from '../../assets/css/grid.css'
 import scrollTo from '../../utils/scrollTo'
 import setSiteTitle from '../../utils/setSiteTitle'
+import { rollText } from '../../utils/transformText'
 
 class Page extends Component {
   componentDidMount() {
@@ -21,6 +23,12 @@ class Page extends Component {
     scrollTo(0, 0.75)
     window.addEventListener('resize', (this._handleResize = ::this.handleResize))
     this.handleResize()
+
+    let tmp = this.refs.main.querySelectorAll('a')
+
+    for (let i = 0, _len = tmp.length; i < _len; i++) {
+      tmp[i].addEventListener('mouseover', this.handleMouseOver)
+    }
   }
 
   componentWillUnmount() {
@@ -29,6 +37,10 @@ class Page extends Component {
 
   handleResize() {
     this.refs.node.parentNode.style.height = this.refs.node.offsetHeight + 'px'
+  }
+
+  handleMouseOver(event) {
+    rollText(event.target)
   }
 
   render() {
@@ -43,7 +55,7 @@ class Page extends Component {
       <div ref="node" className={style.page}>
         <Poster file={this.data.poster} text={this.data.header} />
         <MainSection data={this.data} content={this.data.content}>
-          <div className={classnames(grid.container, grid.shortContainer)}>
+          <div ref="main" className={classnames(grid.container, grid.shortContainer)}>
             <ReactMarkdown className={style.text} source={this.data.content} walker={markdown.handle.bind(this)} />
           </div>
           {children}

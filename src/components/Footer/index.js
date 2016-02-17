@@ -3,11 +3,12 @@ import React, { Component } from 'react'
 import style from './style.css'
 import grid from '../../assets/css/grid.css'
 
-import Navigation from '../Navigation'
+import Links from '../Links'
 
 import superb from 'superb'
 import weekday from '../../utils/weekday'
 import transformText from '../../utils/transformText'
+import { config } from '../../utils/getConfig'
 
 class Footer extends Component {
   componentDidMount() {
@@ -35,7 +36,7 @@ class Footer extends Component {
       <footer className={style.footer}>
         <div className={grid.container}>
           <p className={style.text}>Have <span ref="word">{superb.prefix()}</span> {weekday()}</p>
-          <Navigation className={style.nav} />
+          <Links links={config.links} />
         </div>
       </footer>
     )

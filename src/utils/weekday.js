@@ -10,6 +10,6 @@ export const days = [
 ]
 
 export default function weekday() {
-  var now = new Date().getDay()
+  let now = new Date().getDay()
   return days[now]
 }

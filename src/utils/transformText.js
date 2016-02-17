@@ -13,19 +13,26 @@ export function rollText(node) {
   if (node._isRollingText) return
   node._isRollingText = true
 
-  var originalText = node.getAttribute('data-text')
-  var tmpText = shuffle(node.innerHTML.split(''))
+  let originalText = node.getAttribute('data-text')
+  if (! originalText) {
+    originalText = node.innerHTML;
+    node.setAttribute('data-text', originalText)
+  }
+
+  let tmpText = shuffle(node.innerHTML.split(''))
     .map(item => {
-      return String.fromCharCode(item.charCodeAt(0) + 1)
+      return String.fromCharCode(item.charCodeAt(0) + Math.floor(Math.random() * 10))
     })
     .join('')
 
   node.style.width = Math.round(parseFloat(window.getComputedStyle(node).width.toString().replace('px', ''))) + 'px'
+  node.style.textAlign = 'center'
 
   try {
     TweenLite.to(node, 0.1, {text: tmpText, ease: Linear.easeNone, overwrite: 'all', onComplete: function() {
       TweenLite.to(node, 0.1, {text: originalText, ease: Linear.easeNone, overwrite: 'all', onComplete: function() {
         node.style.width = ''
+        node.style.textAlign = ''
         node._isRollingText = false
       }})
     }})
