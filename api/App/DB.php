@@ -51,7 +51,7 @@ class DB
   {
     $shouldSync = true;
 
-    if ($this->data && isset($this->data->data) && (time() - $this->data->synched < Config::get('cache')))
+    if ($this->data && isset($this->data->data) && (time() - $this->data->synched < Config::get('cache_time')))
     {
       $shouldSync = false;
     }
@@ -102,11 +102,11 @@ class DB
             if ($this->oldData->files->$item['lpath']->modified !== $item['modified'])
             {
               @unlink($localPath);
-              @unlink(DOC_ROOT.'cache/full_'.strtolower(str_replace('/', '_', $item['localFile'])));
-              @unlink(DOC_ROOT.'cache/large_'.strtolower(str_replace('/', '_', $item['localFile'])));
-              @unlink(DOC_ROOT.'cache/medium_'.strtolower(str_replace('/', '_', $item['localFile'])));
-              @unlink(DOC_ROOT.'cache/small_'.strtolower(str_replace('/', '_', $item['localFile'])));
-              @unlink(DOC_ROOT.'cache/preview_'.strtolower(str_replace('/', '_', $item['localFile'])));
+              @unlink(DOC_ROOT.Config::get('cache').'/full_'.strtolower(str_replace('/', '_', $item['localFile'])));
+              @unlink(DOC_ROOT.Config::get('cache').'/large_'.strtolower(str_replace('/', '_', $item['localFile'])));
+              @unlink(DOC_ROOT.Config::get('cache').'/medium_'.strtolower(str_replace('/', '_', $item['localFile'])));
+              @unlink(DOC_ROOT.Config::get('cache').'/small_'.strtolower(str_replace('/', '_', $item['localFile'])));
+              @unlink(DOC_ROOT.Config::get('cache').'/preview_'.strtolower(str_replace('/', '_', $item['localFile'])));
               $shouldDownload = true;
             }
           }

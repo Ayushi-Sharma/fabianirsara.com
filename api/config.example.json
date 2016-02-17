@@ -3,8 +3,9 @@
   "secret": "INSERT_SECRET_HERE",
   "token": "INSERT_ACCESS_TOKEN",
   "storage": "storage",
+  "cache": "cache",
   "db": "portfolio",
-  "cache": 300,
+  "cache_time": 300,
   "quality_jpg": 75,
   "sizes": {
     "full": {

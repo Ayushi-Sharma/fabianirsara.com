@@ -22,7 +22,7 @@ class Images extends Controller
       $size = 'full';
     }
 
-    $cacheFile = DOC_ROOT.'cache/'.str_replace('/', '_', $size.'/'.$file);
+    $cacheFile = DOC_ROOT.Config::get('cache').'/'.str_replace('/', '_', $size.'/'.$file);
 
     if (file_exists(DOC_ROOT.$file))
     {

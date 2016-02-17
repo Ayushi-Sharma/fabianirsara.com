@@ -23,5 +23,5 @@ $app->get('/sync/force', function($request, $response, $args)
 $app->get('/bust', function($request, $response, $args)
 {
   @unlink(DOC_ROOT.App\Config::get('storage').'/data.json');
-  return App\FS::rimraf(DOC_ROOT.'cache');
+  return App\FS::rimraf(DOC_ROOT.App\Config::get('cache'));
 });
