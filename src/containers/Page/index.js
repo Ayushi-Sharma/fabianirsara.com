@@ -17,7 +17,6 @@ import setSiteTitle from '../../utils/setSiteTitle'
 
 class Page extends Component {
   componentDidMount() {
-    this._node = ReactDOM.findDOMNode(this)
     setSiteTitle(this.data)
 
     scrollTo(0, 0.75)
@@ -30,7 +29,7 @@ class Page extends Component {
   }
 
   handleResize() {
-    this._node.parentNode.style.height = this._node.offsetHeight + 'px'
+    this.refs.node.parentNode.style.height = this.refs.node.offsetHeight + 'px'
   }
 
   render() {
@@ -42,7 +41,7 @@ class Page extends Component {
     }
 
     return (
-      <div className={style.page}>
+      <div ref="node" className={style.page}>
         <Poster file={this.data.poster} text={this.data.header} />
         <MainSection data={this.data} content={this.data.content}>
           <div className={classnames(grid.container, grid.shortContainer)}>
