@@ -1,6 +1,5 @@
 
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
 import ReactMarkdown from 'react-markdown'
 import classnames from 'classnames'
 
