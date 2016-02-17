@@ -1,6 +1,6 @@
 
 .poster {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -15,6 +15,10 @@
   backface-visibility: hidden;
   transform: translate3d(0, 0, 1px);
   transform-style: preserve-3d;
+}
+
+.poster.fixed {
+  position: fixed;
 }
 
 .poster.vignette:after {

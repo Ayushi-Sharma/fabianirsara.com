@@ -98,11 +98,11 @@ class Poster extends Component {
         let maxPercentage = Math.min(1, percentage)
         let scale = 1 + config.poster_scale * maxPercentage
 
-        options.y = 0 - difference * maxPercentage
+        options.y = 0 - difference * maxPercentage * Math.min(1, config.poster_move)
         options.blur = snap(Math.min(20, maxPercentage * 2 * 20), 1) * config.poster_blur
 
-        arrowCss.opacity = Math.max(0, 1 - percentage * 2)
-        css.opacity = Math.max(0, 1 - percentage / 1.5)
+        arrowCss.opacity = Math.min(config.poster_fade, Math.max(0, 1 - percentage * 2 * config.poster_fade))
+        css.opacity = Math.min(config.poster_fade, Math.max(0, 1 - percentage / 1.5 * config.poster_fade))
 
         css.transform = 'translate3d(0, ' + (0 - this.state.y / 4 * config.poster_parallax) + 'px, 0px)'
 
@@ -123,6 +123,7 @@ class Poster extends Component {
       let className = classnames(
         this.state.loaded ? style.loaded : null,
         config.poster_vignette ? style.vignette : null,
+        config.poster_fixed ? style.fixed : null,
         this.state.y > 50 ? style.scrolled : null,
         isTouch() && screen.width < 1025 ? style.touch : null,
         style.poster
