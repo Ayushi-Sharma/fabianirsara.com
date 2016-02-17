@@ -6,9 +6,8 @@ import style from './style.css'
 import imagepath from '../../utils/imagepath'
 
 import Title from './Title'
+import Arrow from '../Arrow'
 
-//import arrow from '../../assets/icons/arrow-bottom.png'
-const arrow = ''
 import scrollTo from '../../utils/scrollTo'
 import snap from '../../utils/snap'
 import isTouch from '../../utils/isTouch'
@@ -140,7 +139,7 @@ class Poster extends Component {
             <img src={path} onLoad={::this.getImageSize} />
           </div>
           <div className={style.arrow} style={arrowCss} onClick={::this.scrollToContent}>
-            <img src={arrow} />
+            <Arrow bottom />
           </div>
           {gradient}
         </figure>

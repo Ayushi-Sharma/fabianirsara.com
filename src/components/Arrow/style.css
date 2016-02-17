@@ -1,0 +1,55 @@
+
+.arrow {
+  display: block;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.arrowInner {
+  display: block;
+  position: relative;
+}
+
+.line {
+  display: block;
+  position: absolute;
+  width: 30px;
+  height: 2px;
+  background: $color_main;
+}
+
+.line.first {
+  top: 50%;
+  left: 50%;
+  transform: rotate(45deg) translate(-50%, -50%);
+  transform-origin: 50% 50%;
+}
+
+.line.second {
+  top: 50%;
+  left: 50%;
+  transform: rotate(-45deg) translate(-50%, -50%);
+  transform-origin: 50% 50%;
+}
+
+.top .arrowInner {
+  transform: rotate(-90deg);
+}
+
+.right .arrowInner {
+  transform: rotate(0deg);
+}
+
+.left .arrowInner {
+  transform: rotate(180deg);
+}
+
+.bottom .arrowInner {
+  transform: rotate(90deg);
+}
+
+.menu .line {
+  background: $color_active;
+}

@@ -83,11 +83,10 @@
   position: absolute;
   bottom: 10%;
   left: 50%;
-  padding: 10px;
-  width: 32px;
-  height: 20px;
+  width: 80px;
+  height: 80px;
   cursor: pointer;
-  margin-left: -26px;
+  margin-left: -40px;
   z-index: 10;
   opacity: 0.85;
   transition: opacity 170ms ease;
