@@ -8,4 +8,11 @@
   position: relative;
   padding-top: 15vw;
   padding-bottom: 15vw;
+  font-size: responsive 10px 25px;
+  font-range: 420px 1400px;
+}
+
+.mainWrapperInner {
+  font-size: $font_size;
+  line-height: $line_height;
 }

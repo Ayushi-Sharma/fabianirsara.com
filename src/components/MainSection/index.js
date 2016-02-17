@@ -30,7 +30,9 @@ class MainSection extends Component {
     return (
       <section className={style.main}>
         <div className={style.mainWrapper}>
-          {children}
+          <div className={style.mainWrapperInner}>
+            {children}
+          </div>
         </div>
       </section>
     )

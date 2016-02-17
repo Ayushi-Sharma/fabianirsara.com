@@ -9,6 +9,7 @@ import Header from '../../components/Header'
 
 import store from '../../store'
 import style from './style.css'
+import transition from './transition.css'
 
 import * as DataActions from '../../actions/data'
 
@@ -25,12 +26,12 @@ class App extends Component {
       restyle()
 
       let transitionClasses = {
-        enter: style.pageEnter,
-        enterActive: style.pageEnterActive,
-        leave: style.pageLeave,
-        leaveActive: style.pageLeaveActive,
-        appear: style.pageAppear,
-        appearActive: style.pageAppearActive
+        enter: transition.pageEnter,
+        enterActive: transition.pageEnterActive,
+        leave: transition.pageLeave,
+        leaveActive: transition.pageLeaveActive,
+        appear: transition.pageAppear,
+        appearActive: transition.pageAppearActive
       }
 
       return (
@@ -47,8 +48,8 @@ class App extends Component {
             transitionName={transitionClasses}
             transitionAppear={true}
             transitionAppearTimeout={1500}
-            transitionEnterTimeout={1000}
-            transitionLeaveTimeout={1000}
+            transitionEnterTimeout={1300}
+            transitionLeaveTimeout={700}
           >
             {React.cloneElement(this.props.children, {
               key: this.props.location.pathname

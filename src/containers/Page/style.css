@@ -7,13 +7,17 @@
 }
 
 .text {
-  font-size: responsive 26px 72px;
-  font-range: 420px 1400px;
-  font-weight: 700;
+  font-size: 1em;
+  font-weight: $font_weight;
+  line-height: $line_height;
 }
 
 .text > * {
   line-height: $line_height;
+}
+
+.text * + * {
+  margin-top: $line_heightem;
 }
 
 .text > :first-child {
@@ -24,53 +28,64 @@
   margin-bottom: 0 !important;
 }
 
+.text img {
+  max-width: 100%;
+  height: auto;
+}
+
 .text h1 {
-  font-size: responsive 52px 126px;
-  font-range: 420px 1400px;
-  font-weight: 100;
-  margin-top: 1.5em;
+  font-size: $h1_font_size;
+  font-weight: $h1_font_weight;
+  margin-top: $h1_font_spacing;
 }
 
 .text h2 {
-  font-size: responsive 52px 126px;
-  font-range: 420px 1400px;
-  font-weight: 100;
-  margin-top: 1.5em;
+  font-size: $h2_font_size;
+  font-weight: $h2_font_weight;
+  margin-top: $h2_font_spacing;
+}
+
+.text h3 {
+  font-size: $h3_font_size;
+  font-weight: $h3_font_weight;
+  margin-top: $h3_font_spacing;
+}
+
+.text h4 {
+  font-size: $h4_font_size;
+  font-weight: $h4_font_weight;
+  margin-top: $h4_font_spacing;
+}
+
+.text h5 {
+  font-size: $h5_font_size;
+  font-weight: $h5_font_weight;
+  margin-top: $h5_font_spacing;
+}
+
+.text h6 {
+  font-size: $h6_font_size;
+  font-weight: $h6_font_weight;
+  margin-top: $h6_font_spacing;
 }
 
 .text strong,
 .text b {
-  font-weight: inherit;
-  color: $color_active;
+  font-weight: $strong_font_weight;
+  color: $strong_color;
 }
 
 .text em,
 .text i {
+  font-size: 0.5em;
   font-style: normal;
-  font-weight: 500;
-}
-
-.text p em,
-.text ul,
-.text ol {
-  font-size: responsive 12px 24px;
-  font-range: 420px 1400px;
-}
-.text p em {
-  display: block;
-  line-height: $line_height;
-  margin-top: 0.5em;
 }
 
 .text li {
   margin: 0 !important;
 }
 
-.text img {
-  max-width: 100%;
-  height: auto;
-}
-
-.text * + * {
-  margin-top: 1.1em;
+.text ul ul {
+  margin-top: 0;
+  margin-bottom: 1.1em;
 }

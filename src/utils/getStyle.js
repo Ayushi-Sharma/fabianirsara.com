@@ -53,5 +53,6 @@ export function restyle() {
     let tag = document.createElement('style')
     tag.innerHTML = css
     document.getElementsByTagName('head')[0].appendChild(tag)
+    ss.parentNode.removeChild(ss)
   })
 }

@@ -1,4 +1,6 @@
 
+// TODO: preload all posters when first got data!!
+
 import React, { Component } from 'react'
 
 import classnames from 'classnames'
@@ -56,12 +58,11 @@ class Poster extends Component {
       requestAnimationFrame(this._handleScroll)
     }
 
-    if (this._oldScroll !== window.scrollY) {
-      this._oldScroll = window.scrollY
+    let top = Math.min(window.innerHeight * 1.5, window.scrollY)
 
-      if (! (this._oldScroll > window.innerHeight * 1.5 && window.scrollY > window.innerHeight * 1.5)) {
-        this.setState({y: window.scrollY})
-      }
+    if (this._oldScroll !== top) {
+      this._oldScroll = top
+      this.setState({y: top})
     }
   }
 

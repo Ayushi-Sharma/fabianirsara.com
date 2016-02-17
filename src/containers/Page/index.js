@@ -20,7 +20,7 @@ class Page extends Component {
     this._node = ReactDOM.findDOMNode(this)
     setSiteTitle(this.data)
 
-    scrollTo(0)
+    scrollTo(0, 0.75)
     window.addEventListener('resize', (this._handleResize = ::this.handleResize))
     this.handleResize()
   }
@@ -49,8 +49,8 @@ class Page extends Component {
             <ReactMarkdown className={style.text} source={this.data.content} walker={markdown.handle.bind(this)} />
           </div>
           {children}
+          <Footer />
         </MainSection>
-        <Footer />
       </div>
     )
   }
