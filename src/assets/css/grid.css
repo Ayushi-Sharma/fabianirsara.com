@@ -1,33 +1,12 @@
 
 .container {
-  max-width: 9800px;
+  max-width: none;
   margin-left: 0;
   margin-right: 0;
-  padding-left: 100px;
-  padding-right: 100px;
+  padding-left: 7vw;
+  padding-right: 7vw;
 
   clear: fix;
-}
-
-@media screen and (max-width: 1200px) {
-  .container {
-    padding-left: 70px;
-    padding-right: 70px;
-  }
-}
-
-@media screen and (max-width: 900px) {
-  .container {
-    padding-left: 50px;
-    padding-right: 50px;
-  }
-}
-
-@media screen and (max-width: 700px) {
-  .container {
-    padding-left: 25px;
-    padding-right: 25px;
-  }
 }
 
 .shortContainer {
