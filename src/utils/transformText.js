@@ -15,7 +15,7 @@ export function rollText(node) {
 
   let originalText = node.getAttribute('data-text')
   if (! originalText) {
-    originalText = node.innerHTML;
+    originalText = node.innerHTML
     node.setAttribute('data-text', originalText)
   }
 

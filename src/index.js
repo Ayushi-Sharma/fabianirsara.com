@@ -5,7 +5,6 @@ import ReactDOM from 'react-dom'
 import React from 'react'
 
 import App from './containers/App'
-import Home from './containers/Home'
 import Page from './containers/Page'
 import Collection from './containers/Collection'
 import store from './store'
@@ -17,7 +16,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path={config.base} component={App} onEnter={()=>store.dispatch(DataActions.pullData())}>
-        <IndexRoute component={Home} />
+        <IndexRoute component={Page} />
         <Route path=":id" component={Page} />
         <Route path=":id/:collection" component={Page} />
       </Route>

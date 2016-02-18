@@ -1,0 +1,91 @@
+
+.text {
+  font-size: 1em;
+  font-weight: $font_weight;
+  line-height: $line_height;
+}
+
+.text > * {
+  line-height: $line_height;
+}
+
+.text * + * {
+  margin-top: $line_heightem;
+}
+
+.text > :first-child {
+  margin-top: 0 !important;
+}
+
+.text > :last-child {
+  margin-bottom: 0 !important;
+}
+
+.text img {
+  max-width: 100%;
+  height: auto;
+}
+
+.text h1 {
+  font-size: $h1_font_size;
+  font-weight: $h1_font_weight;
+  margin-top: $h1_font_spacing;
+}
+
+.text h2 {
+  font-size: $h2_font_size;
+  font-weight: $h2_font_weight;
+  margin-top: $h2_font_spacing;
+}
+
+.text h3 {
+  font-size: $h3_font_size;
+  font-weight: $h3_font_weight;
+  margin-top: $h3_font_spacing;
+}
+
+.text h4 {
+  font-size: $h4_font_size;
+  font-weight: $h4_font_weight;
+  margin-top: $h4_font_spacing;
+}
+
+.text h5 {
+  font-size: $h5_font_size;
+  font-weight: $h5_font_weight;
+  margin-top: $h5_font_spacing;
+}
+
+.text h6 {
+  font-size: $h6_font_size;
+  font-weight: $h6_font_weight;
+  margin-top: $h6_font_spacing;
+}
+
+.text strong,
+.text b {
+  font-weight: $strong_font_weight;
+  color: $strong_color;
+}
+
+.text em,
+.text i {
+  font-size: 0.5em;
+  font-style: normal;
+}
+
+.text li {
+  margin: 0 !important;
+}
+
+.text ul ul {
+  margin-top: 0;
+  margin-bottom: 1.1em;
+}
+
+.text p em {
+  display: block;
+  line-height: $line_height;
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
+}

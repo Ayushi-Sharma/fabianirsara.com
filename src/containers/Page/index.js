@@ -1,8 +1,6 @@
 
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
 import ReactMarkdown from 'react-markdown'
-import classnames from 'classnames'
 
 import MainSection from '../../components/MainSection'
 import Poster from '../../components/Poster'
@@ -15,6 +13,9 @@ import grid from '../../assets/css/grid.css'
 import scrollTo from '../../utils/scrollTo'
 import setSiteTitle from '../../utils/setSiteTitle'
 import { rollText } from '../../utils/transformText'
+
+import List from '../List'
+import Text from '../Text'
 
 class Page extends Component {
   componentDidMount() {
@@ -51,14 +52,21 @@ class Page extends Component {
       this.path = this.data.path
     }
 
+    let content = null
+
+    if (this.data.config.template === 'list') {
+      content = <List data={this.data} />
+    } else {
+      content = <Text data={this.data} />
+    }
+
     return (
       <div ref="node" className={style.page}>
         <Poster file={this.data.poster} text={this.data.header} />
         <MainSection data={this.data} content={this.data.content}>
-          <div ref="main" className={classnames(grid.container, grid.shortContainer)}>
-            <ReactMarkdown className={style.text} source={this.data.content} walker={markdown.handle.bind(this)} />
+          <div ref="main">
+            {content}
           </div>
-          {children}
           <Footer />
         </MainSection>
       </div>
