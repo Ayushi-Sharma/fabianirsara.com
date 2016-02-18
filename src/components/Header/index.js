@@ -52,7 +52,7 @@ class Header extends Component {
           <div className={style.logo}>
             <Link to="/">{logo}</Link>
           </div>
-          <Navigation className={style.nav} />
+          <Navigation location={this.props.location} className={style.nav} />
         </div>
       </header>
     )

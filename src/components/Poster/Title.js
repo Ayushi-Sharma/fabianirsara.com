@@ -20,7 +20,7 @@ class Title extends Component {
       if (content.subtitle) subtitle = <h2><span className={style.subtitleText}>{content.subtitle}</span></h2>
 
       return (
-        <div className={style.text}>
+        <div className={style.text} style={this.props.style}>
           <h1><span className={style.titleText}>{content.title}</span></h1>
           {subtitle}
         </div>

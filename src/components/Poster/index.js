@@ -82,6 +82,7 @@ class Poster extends Component {
       let arrowCss = {}
       let css = {}
       let imageCss = {}
+      let titleCss = {}
 
       if (this.state.loaded) {
         if (this.state.width / this.state.height > this.state.imageWidth / this.state.imageHeight) {
@@ -101,8 +102,11 @@ class Poster extends Component {
         options.y = 0 - difference * maxPercentage * Math.min(1, config.poster_move)
         options.blur = snap(Math.min(20, maxPercentage * 2 * 20), 1) * config.poster_blur
 
-        arrowCss.opacity = Math.min(config.poster_fade, Math.max(0, 1 - percentage * 2 * config.poster_fade))
-        css.opacity = Math.min(config.poster_fade, Math.max(0, 1 - percentage / 1.5 * config.poster_fade))
+        titleCss.marginTop = (0 - this.state.height * percentage * config.poster_title_move) + 'px'
+        titleCss.opacity = Math.max(1 - config.poster_title_fade, Math.max(0, 1 - percentage * config.poster_title_fade))
+
+        arrowCss.opacity = Math.max(1 - config.poster_fade, Math.max(0, 1 - percentage * 2 * config.poster_fade))
+        css.opacity = Math.max(1 - config.poster_fade, Math.max(0, 1 - percentage / 1.5 * config.poster_fade))
 
         css.transform = 'translate3d(0, ' + (0 - this.state.y / 4 * config.poster_parallax) + 'px, 0px)'
 
@@ -135,7 +139,7 @@ class Poster extends Component {
 
       return (
         <figure className={className} style={css}>
-          <Title content={text} />
+          <Title content={text} style={titleCss} />
           <div className={style.image} style={imageCss}>
             <img src={path} onLoad={::this.getImageSize} />
           </div>

@@ -5,9 +5,20 @@ import classnames from 'classnames'
 import style from './style.css'
 
 class Arrow extends Component {
+  state = {
+    active: false
+  };
+
+  toggle() {
+    this.setState({
+      active: ! this.state.active
+    })
+  }
+
   render() {
     let classes = classnames(
       style.arrow,
+      this.state.active ? style.active : null,
       this.props.bottom ? style.bottom : null,
       this.props.top ? style.top : null,
       this.props.left ? style.left : null,

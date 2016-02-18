@@ -1,6 +1,6 @@
 
 .poster {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -15,10 +15,6 @@
   backface-visibility: hidden;
   transform: translate3d(0, 0, 1px);
   transform-style: preserve-3d;
-}
-
-.poster.fixed {
-  position: fixed;
 }
 
 .poster.vignette:after {
@@ -116,6 +112,8 @@
   width: 100%;
   text-align: center;
   transform: translate(0, -50%);
+  transition: margin-top 170ms ease-out-quint;
+  will-change: margin-top;
 }
 
 .poster .text span {

@@ -10,5 +10,7 @@ poster_move: 1
 poster_blur: 1
 poster_fixed: true
 poster_fade: 1
+poster_title_move: 0.15
+poster_title_fade: 0
 poster_vignette: false
 poster_gradient: false

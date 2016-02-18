@@ -15,6 +15,7 @@
   position: relative;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 .nav a {
@@ -25,15 +26,35 @@
   padding: 20px 15px;
   text-transform: uppercase;
   transition: color 170ms ease;
-  font-size: 14px;
+  font-size: 20px;
   line-height: 1em;
-  font-weight: 400;
+  font-weight: 700;
 }
 
-.nav a:hover {
+.nav a:hover,
+.nav .pageActive a {
   color: $nav_color_active;
 }
 
 .navInner {
   position: relative;
+  float: left;
+
+  transition: all 170ms ease-out-quint;
+  transform: scale(0, 1);
+  transform-origin: 0 0;
+}
+
+.nav.active .navInner {
+  transform: scale(1, 1);
+}
+
+.burger {
+  width: 80px;
+  height: 80px;
+  float: left;
+  position: relative;
+  cursor: pointer;
+  margin-left: -25px;
+  top: -12px;
 }

@@ -13,13 +13,13 @@
 }
 
 .pageAppearActive {
-  transition: all 900ms ease-out-quint;
-  transition-delay: 500ms;
+  transition: all 450ms ease-out-quint;
+  transition-delay: 250ms;
 }
 
 .pageEnterActive {
-  transition: all 400ms ease-out-quad;
-  transition-delay: 800ms;
+  transition: all 200ms ease-out-quad;
+  transition-delay: 400ms;
 }
 
 .pageLeave {
@@ -30,6 +30,6 @@
 .pageLeaveActive {
   opacity: 0;
   -webkit-filter: blur(8px) saturate(0%);
-  transition: all 400ms ease-in-quad;
-  transition-delay: 200ms;
+  transition: all 200ms ease-in-quad;
+  transition-delay: 100ms;
 }

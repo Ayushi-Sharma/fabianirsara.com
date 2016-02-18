@@ -2,14 +2,18 @@
 .arrow {
   display: block;
   position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
 }
 
 .arrowInner {
   display: block;
   position: relative;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform: translate(-50%, -50%);
 }
 
 .line {
@@ -18,6 +22,11 @@
   width: 30px;
   height: 2px;
   background: $color_main;
+  transition: all 170ms ease;
+}
+
+.arrow:hover .line {
+  background: $color_active;
 }
 
 .line.first {
@@ -51,5 +60,30 @@
 }
 
 .menu .line {
+  transform: rotate(0deg) translate(-50%, -50%);
+  transform-origin: 0% 0%;
+  transition: all 340ms ease-out-quint;
+}
+
+.menu .line.first {
+  margin-top: -5px;
+}
+
+.menu .line.second {
+  margin-top: 5px;
+}
+
+.menu.active .line {
   background: $color_active;
+  transition: all 340ms ease-out-quint;
+}
+
+.menu.active .line.first {
+  transform: rotate(225deg) translate(-50%, -50%);
+  margin-top: 0;
+}
+
+.menu.active .line.second {
+  transform: rotate(-225deg) translate(-50%, -50%);
+  margin-top: 0;
 }

@@ -41,15 +41,15 @@ class App extends Component {
           <div className={classnames(style.line, style.right)} />
           <div className={classnames(style.line, style.bottom)} />
 
-          <Header />
+          <Header location={this.props.location} />
           <ReactCSSTransitionGroup
             transitionName="page"
             component="div"
             transitionName={transitionClasses}
             transitionAppear={true}
-            transitionAppearTimeout={1500}
-            transitionEnterTimeout={1300}
-            transitionLeaveTimeout={700}
+            transitionAppearTimeout={800}
+            transitionEnterTimeout={650}
+            transitionLeaveTimeout={350}
           >
             {React.cloneElement(this.props.children, {
               key: this.props.location.pathname
