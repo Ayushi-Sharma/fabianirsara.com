@@ -1,6 +1,5 @@
 
 import reqwest from 'reqwest'
-import jsyaml from 'js-yaml'
 import store from '../store'
 import variables from '../style.yaml'
 
@@ -15,13 +14,12 @@ export default function getStyle() {
 
   const { data } = store.getState()
 
-  if (data['style.yaml']) {
+  if (data.style) {
     loaded = true
-    let loadedConfig = jsyaml.load(data['style.yaml'].content)
 
     style = {
       ...variables,
-      ...loadedConfig
+      ...data.style.content
     }
   }
 

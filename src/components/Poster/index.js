@@ -120,7 +120,7 @@ class Poster extends Component {
       css.width = this.state.width + 'px'
       css.height = this.state.height + 'px'
 
-      imageCss.backgroundImage = 'url(' + path + ')'
+      imageCss.backgroundImage = 'url("' + path + '")'
       imageCss.backgroundSize = options.bgWidth + 'px ' + options.bgHeight + 'px'
       imageCss.WebkitFilter = 'blur(' + options.blur + 'px)'
 

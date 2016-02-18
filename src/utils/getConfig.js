@@ -1,5 +1,4 @@
 
-import jsyaml from 'js-yaml'
 import store from '../store'
 import variables from '../config.yaml'
 
@@ -13,13 +12,12 @@ export default function getConfig() {
 
   const { data } = store.getState()
 
-  if (data['config.yaml']) {
+  if (data.config) {
     loaded = true
-    let loadedConfig = jsyaml.load(data['config.yaml'].content)
 
     config = {
       ...variables,
-      ...loadedConfig
+      ...data.config.content
     }
   }
 

@@ -1,33 +1,35 @@
 
-import jsyaml from 'js-yaml'
 import store from '../store'
 
 export default function getContent(pathname) {
   let state = store.getState()
-  let folder = state.data.pages.home
-  let path = pathname.substring(1)
+  let folder = state.data.pages[state.data.config.content.index]
 
-  if (path.substring(path.length - 1) === '/') path = path.substring(0, path.length - 1)
-  if (path.length > 0 && state.data.pages[path] && state.data.pages[path]['index.md']) {
-    folder = state.data.pages[path]
+  for (let k in state.data.pages) {
+    if (state.data.pages[k].config.content.link === pathname) {
+      folder = state.data.pages[k]
+      break
+    }
   }
 
-  path = 'pages/' + (path || 'home')
+  let path = folder.config.lpath.substring(0, folder.config.lpath.lastIndexOf('/'))
+  path = path.substring(1)
+  path = path.substring(path.indexOf('/') + 1)
 
   let content = {
     poster: null,
     content: null,
+    config: null,
     header: null,
     meta: null,
-    path
+    path: path
   }
 
-  if (folder['poster.jpg']) content.poster = folder['poster.jpg'].localFile
-  if (folder['poster.png']) content.poster = folder['poster.png'].localFile
-
-  if (folder['index.md']) content.content = folder['index.md'].content
-  if (folder['header.yaml']) content.header = jsyaml.load(folder['header.yaml'].content)
-  if (folder['meta.yaml']) content.meta = jsyaml.load(folder['meta.yaml'].content)
+  if (folder.poster) content.poster = folder.poster.localFile
+  if (folder.index) content.content = folder.index.content
+  if (folder.config) content.config = folder.config.content
+  if (folder.header) content.header = folder.header.content
+  if (folder.meta) content.meta = folder.meta.content
 
   return content
 }

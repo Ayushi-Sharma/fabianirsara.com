@@ -14,21 +14,21 @@ class Header extends Component {
 
     let file = null
 
-    if (data[`${name}@2x.png`]) {
+    if (data[`${name}@2x`]) {
       file = (
         <img
-          src={imagepath(data[`${name}@2x.png`].localFile, 'full')}
-          width={data[`${name}@2x.png`].width / 2}
-          height={data[`${name}@2x.png`].height / 2} />
+          src={imagepath(data[`${name}@2x`].localFile, 'full')}
+          width={data[`${name}@2x`].width / 2}
+          height={data[`${name}@2x`].height / 2} />
       )
     }
 
-    if (data[`${name}.png`]) {
+    if (data[`${name}`]) {
       file = (
         <img
-          src={imagepath(data[`${name}.png`].localFile, 'full')}
-          width={data[`${name}.png`].width}
-          height={data[`${name}.png`].height} />
+          src={imagepath(data[`${name}`].localFile, 'full')}
+          width={data[`${name}`].width}
+          height={data[`${name}`].height} />
       )
     }
 

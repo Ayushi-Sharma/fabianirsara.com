@@ -7,7 +7,6 @@ import Arrow from '../Arrow'
 import classnames from 'classnames'
 import style from './style.css'
 import store from '../../store'
-import getPageContent from '../../utils/getPageContent'
 import { rollText } from '../../utils/transformText'
 
 class Navigation extends Component {
@@ -45,22 +44,16 @@ class Navigation extends Component {
     const { data } = store.getState()
 
     let pages = []
-    let keys = ['home']
 
     for (let k in data.pages) {
-      if (k === '404') continue
-      if (k === 'home') continue
-      if (! data.pages[k]['index.md']) continue
+      if (! data.pages[k].index) continue
+      if (! data.pages[k].config.content.navigation) continue
 
-      keys.push(k)
-    }
-
-    for (let i = 0, _len = keys.length; i < _len; i++) {
-      let k = keys[i]
       let page = {}
-      page.title = k
-      page.id = data.pages[k]['index.md'].rev
-      page.link = k === 'home' ? '/' : `/${k}`
+      page.config = data.pages[k].config.content
+      page.title = page.config.title
+      page.id = data.pages[k].index.rev
+      page.link = page.config.link
       page.active = page.link === this.props.location.pathname
       pages.push(page)
     }
