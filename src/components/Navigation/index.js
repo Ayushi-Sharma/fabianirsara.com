@@ -54,7 +54,11 @@ class Navigation extends Component {
       page.title = page.config.title
       page.id = data.pages[k].index.rev
       page.link = page.config.link
-      page.active = page.link.indexOf(this.props.location.pathname) === 0
+      page.active = page.link === this.props.location.pathname
+      if (page.link !== '/' && page.link.indexOf(this.props.location.pathname) === 0) {
+        page.active = true
+      }
+
       pages.push(page)
     }
 
