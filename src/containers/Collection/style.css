@@ -1,0 +1,15 @@
+
+.collection {
+  position: relative;
+}
+
+.collectionInner {
+  position: relative;
+  margin-top: 5vw;
+  margin-bottom: 10vw;
+}
+
+.masonry {
+  position: relative;
+  width: calc(100% + 10px);
+}

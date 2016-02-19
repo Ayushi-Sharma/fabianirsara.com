@@ -24,11 +24,19 @@ export default function getContent(pathname) {
   path = path.substring(path.indexOf('/') + 1)
 
   let children = {}
+  let items = {}
+  let images = {}
 
   for (let k in folder) {
     if (! folder[k].lpath) {
       children[k] = {...folder[k]}
       children[k].path = k
+    } else {
+      items[k] = {...folder[k]}
+
+      if (folder[k].mime_type === 'image/jpeg' || folder[k].mime_type === 'image/png') {
+        images[k] = {...folder[k]}
+      }
     }
   }
 
@@ -39,6 +47,8 @@ export default function getContent(pathname) {
     header: null,
     meta: null,
     children: children,
+    items: items,
+    images: images,
     path: path
   }
 

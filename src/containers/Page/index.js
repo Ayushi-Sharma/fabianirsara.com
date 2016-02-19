@@ -15,6 +15,7 @@ import setSiteTitle from '../../utils/setSiteTitle'
 
 import List from '../List'
 import Text from '../Text'
+import Collection from '../Collection'
 
 class Page extends Component {
   componentDidMount() {
@@ -45,6 +46,8 @@ class Page extends Component {
 
     if (this.data.config.template === 'list') {
       content = <List data={this.data} />
+    } else if (this.data.config.template === 'collection') {
+      content = <Collection data={this.data} />
     } else {
       content = <Text data={this.data} />
     }
