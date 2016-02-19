@@ -41,14 +41,16 @@
   background-position: center center;
   background-repeat: no-repeat;
   transform: translate3d(0, -50%, 0);
-  transition: height 240ms ease-out-quint, opacity 85ms 85ms ease;
-  will-change: height, opacity;
+  transition: height 240ms ease-out-quint, opacity 85ms 85ms ease, -webkit-filter 340ms 0ms ease-out-quart;
+  will-change: height, opacity, -webkit-filter;
+  -webkit-filter: blur(8px) saturate(20%);
 }
 
 .item:hover .previewImage {
   height: 100%;
   opacity: 1;
-  transition: height 240ms ease-out-quint, opacity 240ms ease;
+  transition: height 240ms ease-out-quint, opacity 240ms ease, -webkit-filter 340ms 85ms ease-out-quart;
+  -webkit-filter: blur(0px) saturate(100%);
 }
 
 .item:hover .itemText {

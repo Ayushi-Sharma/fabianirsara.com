@@ -23,6 +23,8 @@ export default function getContent(pathname) {
   path = path.substring(1)
   path = path.substring(path.indexOf('/') + 1)
 
+  // TODO: pass in next / prev page item
+
   let children = {}
   let items = {}
   let images = {}

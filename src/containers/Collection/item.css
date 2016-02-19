@@ -50,11 +50,13 @@
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  opacity: 0.5;
-  transition: transform 340ms ease-out-quart, opacity 170ms ease;
+  opacity: 0.6;
+  transition: transform 340ms ease-out-quart, opacity 170ms ease, -webkit-filter 290ms ease-out-quart;
+  -webkit-filter: saturate(60%);
 }
 
 .item:hover .previewImage {
   transform: scale(1.1);
   opacity: 1;
+  -webkit-filter: saturate(100%);
 }
