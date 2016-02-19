@@ -11,12 +11,55 @@ import Masonry from 'react-masonry-component'
 
 import Item from './Item'
 import Text from '../Text'
+import Lightbox from 'react-images'
+
+import imagepath from '../../utils/imagepath'
+
+const lightboxTheme = {}
 
 class Collection extends Component {
+  state = {
+    lightboxIsOpen: false,
+    currentImage: 0
+  };
+
   renderImage(image) {
     return (
-      <Item key={image.id} image={image} data={this.props.data} />
+      <Item
+        data-index={image.index}
+        key={image.id}
+        image={image}
+        data={this.props.data}
+        onClick={::this.openLightbox} />
     )
+  }
+
+  openLightbox(event) {
+    let index = parseFloat(event.currentTarget.getAttribute('data-index'))
+
+    this.setState({
+      lightboxIsOpen: true,
+      currentImage: index
+    })
+  }
+
+  closeLightbox() {
+    this.setState({
+      currentImage: 0,
+      lightboxIsOpen: false
+    })
+  }
+
+  gotoPrevious() {
+    this.setState({
+      currentImage: this.state.currentImage - 1,
+    })
+  }
+
+  gotoNext() {
+    this.setState({
+      currentImage: this.state.currentImage + 1,
+    })
   }
 
   render() {
@@ -27,12 +70,16 @@ class Collection extends Component {
     }
 
     let images = []
+    let lightboxImages = []
 
     for (let k in data.images) {
       let image = {}
+      image.index = images.length
       image.id = data.images[k].rev
       image.src = data.images[k].localFile
       images.push(image)
+
+      lightboxImages.push({src: imagepath(image.src, 'large')})
     }
 
     return (
@@ -43,6 +90,14 @@ class Collection extends Component {
             {images.map(::this.renderImage)}
           </Masonry>
         </div>
+        <Lightbox
+          currentImage={this.state.currentImage}
+          images={lightboxImages}
+          isOpen={this.state.lightboxIsOpen}
+          onClickPrev={::this.gotoPrevious}
+          onClickNext={::this.gotoNext}
+          onClose={::this.closeLightbox}
+          theme={lightboxTheme} />
       </section>
     )
   }

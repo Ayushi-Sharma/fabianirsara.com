@@ -17,7 +17,7 @@ class Item extends Component {
     }
 
     return (
-      <div className={style.item}>
+      <div {...this.props} className={style.item}>
         <img src={path} />
         <div className={style.preview}>
           <div className={style.previewImage} style={imageCss}>

@@ -10,7 +10,7 @@ body {
   background: $background_main;
   color: $color_main;
   font-weight: $font_weight;
-  overflow-y: scroll;
+  overflow-y: scroll !important;
   overflow-x: hidden;
 }
 
