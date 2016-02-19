@@ -26,9 +26,7 @@ class Poster extends Component {
   };
 
   componentDidMount() {
-    this._mounted = true
     this._oldScroll = null
-    this._handleScroll = ::this.handleScroll
 
     window.addEventListener('resize', (this._handleResize = ::this.handleResize))
     window.addEventListener('scroll', (this._handleScroll = ::this.handleScroll))
@@ -38,7 +36,6 @@ class Poster extends Component {
   }
 
   componentWillUnmount() {
-    this._mounted = false
     window.removeEventListener('resize', this._handleResize)
     window.removeEventListener('scroll', this._handleScroll)
   }

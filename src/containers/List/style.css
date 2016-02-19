@@ -2,3 +2,16 @@
 .list {
   position: relative;
 }
+
+.list ul,
+.list li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: block;
+}
+
+.list a {
+  display: block;
+  position: relative;
+}

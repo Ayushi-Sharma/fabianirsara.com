@@ -12,7 +12,6 @@ import style from './style.css'
 import grid from '../../assets/css/grid.css'
 import scrollTo from '../../utils/scrollTo'
 import setSiteTitle from '../../utils/setSiteTitle'
-import { rollText } from '../../utils/transformText'
 
 import List from '../List'
 import Text from '../Text'
@@ -24,12 +23,6 @@ class Page extends Component {
     scrollTo(0, 0.75)
     window.addEventListener('resize', (this._handleResize = ::this.handleResize))
     this.handleResize()
-
-    let tmp = this.refs.main.querySelectorAll('a')
-
-    for (let i = 0, _len = tmp.length; i < _len; i++) {
-      tmp[i].addEventListener('mouseover', this.handleMouseOver)
-    }
   }
 
   componentWillUnmount() {
@@ -38,10 +31,6 @@ class Page extends Component {
 
   handleResize() {
     this.refs.node.parentNode.style.height = this.refs.node.offsetHeight + 'px'
-  }
-
-  handleMouseOver(event) {
-    rollText(event.target)
   }
 
   render() {

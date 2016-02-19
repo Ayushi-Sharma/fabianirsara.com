@@ -15,7 +15,7 @@ let parseYaml = function(data) {
       data[k].content = jsyaml.load(data[k].content)
     }
 
-    if (typeof data[k] === 'object') {
+    if (data[k] !== null && typeof data[k] === 'object') {
       parseYaml(data[k])
     }
 

@@ -4,6 +4,7 @@
   top: 100px;
   left: 0;
   width: 100%;
+  height: 0;
   z-index: 20;
 }
 
@@ -16,7 +17,7 @@
 .header .nav {
   float: left;
   position: relative;
-  top: -13px;
+  margin-top: -13px;
   margin-left: 0;
 }
 
