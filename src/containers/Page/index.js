@@ -1,7 +1,11 @@
 
 import React, { Component } from 'react'
 import ReactMarkdown from 'react-markdown'
+import { Link } from 'react-router'
 
+import classnames from 'classnames'
+
+import Arrow from '../../components/Arrow'
 import MainSection from '../../components/MainSection'
 import Poster from '../../components/Poster'
 import Footer from '../../components/Footer'
@@ -52,8 +56,46 @@ class Page extends Component {
       content = <Text data={this.data} />
     }
 
+
+    let prev = null
+
+    if (this.data.prev) {
+      prev = (
+        <Link className={classnames(style.link, style.prevLink)} to={this.data.prev.config.link}>
+          <Arrow left />
+        </Link>
+      )
+    }
+
+
+    let next = null
+
+    if (this.data.next) {
+      next = (
+        <Link className={classnames(style.link, style.nextLink)} to={this.data.next.config.link}>
+          <Arrow right />
+        </Link>
+      )
+    }
+
+    let subnav = null
+
+    if (next || prev) {
+      subnav = (
+        <nav className={style.subnav}>
+          <div className={classnames(grid.container, style.subnavInner)}>
+            <div className={style.subnavWrapper}>
+              {prev}
+              {next}
+            </div>
+          </div>
+        </nav>
+      )
+    }
+
     return (
       <div ref="node" className={style.page}>
+        {subnav}
         <Poster file={this.data.poster} text={this.data.header} />
         <MainSection data={this.data} content={this.data.content}>
           <div ref="main">

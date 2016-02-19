@@ -72,22 +72,30 @@ export default function getContent(pathname) {
     let found = false
 
     for (let k in content.parent.children) {
-      if (! found) {
-        content.prev = getPageContent(content.parent.children[k])
-      }
-
       if (found) {
-        content.next = getPageContent(content.parent.children[k])
+        content.next = content.parent.children[k]
         break
       }
 
       if (content.parent.path + '/' + k === content.path) {
         found = true
       }
+
+      if (! found) {
+        content.prev = content.parent.children[k]
+      }
     }
 
-    if (content.prev.path === content.path) {
+    if (content.prev && content.prev.path === content.path) {
       delete content.prev
+    }
+
+    if (content.prev) {
+      content.prev = getPageContent(content.prev)
+    }
+
+    if (content.next) {
+      content.next = getPageContent(content.next)
     }
   }
 

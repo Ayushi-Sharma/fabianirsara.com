@@ -5,3 +5,40 @@
   left: 0;
   width: 100%;
 }
+
+.subnav {
+  position: fixed;
+  z-index: 10;
+  top: 150px;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+}
+
+.subnavWrapper {
+  position: relative;
+  left: 3px;
+  left: -10px;
+}
+
+.link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 26px;
+  height: 80px;
+  pointer-events: auto;
+}
+
+.nextLink {
+  left: 15px;
+  top: 20px;
+}
+
+.prevLink {
+}
+
+.link .line {
+  pointer-events: auto;
+}

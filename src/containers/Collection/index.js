@@ -95,6 +95,7 @@ class Collection extends Component {
         </div>
         <Lightbox
           currentImage={this.state.currentImage}
+          width={1900}
           images={lightboxImages}
           isOpen={this.state.lightboxIsOpen}
           onClickPrev={::this.gotoPrevious}
