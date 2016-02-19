@@ -90,7 +90,7 @@ module.exports = function(grunt){
         },
         src: 'api',
         dest: '/api',
-        exclusions: ['api/storage', 'api/cache', 'api/storage/**', 'api/cache/**', 'storage', 'cache', 'storage/**', 'cache/**']
+        exclusions: ['api/storage', 'api/cache', 'api/storage/**', 'api/cache/**', 'storage', 'cache', 'storage/**', 'cache/**', '!.htaccess', '!api/.htaccess']
       }
     },
 
