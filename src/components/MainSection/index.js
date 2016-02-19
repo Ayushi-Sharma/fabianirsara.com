@@ -16,7 +16,7 @@ class MainSection extends Component {
 
   handleResize() {
     if (this.props.data.poster) {
-      this.refs.node.style.paddingTop = (screenSize().height * (config.poster_height / 100)) + 'px'
+      this.refs.node.style.paddingTop = (screenSize().height * (this.config.poster_height / 100)) + 'px'
     } else {
       this.refs.node.style.paddingTop = ''
     }
@@ -24,6 +24,11 @@ class MainSection extends Component {
 
   render() {
     const { children, data, content } = this.props
+
+    this.config = {
+      ...config,
+      ...data.config
+    }
 
     return (
       <section ref="node" className={style.main}>

@@ -96,7 +96,7 @@ class Page extends Component {
     return (
       <div ref="node" className={style.page}>
         {subnav}
-        <Poster file={this.data.poster} text={this.data.header} />
+        <Poster file={this.data.poster} text={this.data.header} data={this.data} />
         <MainSection data={this.data} content={this.data.content}>
           <div ref="main">
             {content}

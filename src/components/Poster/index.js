@@ -60,7 +60,7 @@ class Poster extends Component {
   handleResize() {
     this.setState({
       width: screenSize().width,
-      height: screenSize().height * (config.poster_height / 100)
+      height: screenSize().height * (this.config.poster_height / 100)
     })
   }
 
@@ -69,7 +69,12 @@ class Poster extends Component {
   }
 
   render() {
-    const { file, text } = this.props
+    const { file, text, data } = this.props
+
+    this.config = {
+      ...config,
+      ...data.config
+    }
 
     if (file) {
       const path = imagepath(file, 'large')
@@ -94,18 +99,18 @@ class Poster extends Component {
         percentage = Math.max(0, this.state.y / (this.state.height / 2))
 
         let maxPercentage = Math.min(1, percentage)
-        let scale = 1 + config.poster_scale * maxPercentage
+        let scale = 1 + this.config.poster_scale * maxPercentage
 
-        options.y = 0 - difference * maxPercentage * Math.min(1, config.poster_move)
-        options.blur = snap(Math.min(20, maxPercentage * 2 * 20), 1) * config.poster_blur
+        options.y = 0 - difference * maxPercentage * Math.min(1, this.config.poster_move)
+        options.blur = snap(Math.min(20, maxPercentage * 2 * 20), 1) * this.config.poster_blur
 
-        titleCss.marginTop = (0 - this.state.height * percentage * config.poster_title_move) + 'px'
-        titleCss.opacity = Math.max(1 - config.poster_title_fade, Math.max(0, 1 - percentage * config.poster_title_fade))
+        titleCss.marginTop = (0 - this.state.height * percentage * this.config.poster_title_move) + 'px'
+        titleCss.opacity = Math.max(1 - this.config.poster_title_fade, Math.max(0, 1 - percentage * this.config.poster_title_fade))
 
-        arrowCss.opacity = Math.max(1 - config.poster_fade, Math.max(0, 1 - percentage * 2 * config.poster_fade))
-        css.opacity = Math.max(1 - config.poster_fade, Math.max(0, 1 - percentage / 1.5 * config.poster_fade))
+        arrowCss.opacity = Math.max(1 - this.config.poster_fade, Math.max(0, 1 - percentage * 2 * this.config.poster_fade))
+        css.opacity = Math.max(1 - this.config.poster_fade, Math.max(0, 1 - percentage / 1.5 * this.config.poster_fade))
 
-        css.transform = 'translate3d(0, ' + (0 - this.state.y / 4 * config.poster_parallax) + 'px, 0px)'
+        css.transform = 'translate3d(0, ' + (0 - this.state.y / 4 * this.config.poster_parallax) + 'px, 0px)'
 
         imageCss.width = options.bgWidth + 'px'
         imageCss.height = options.bgHeight + 'px'
@@ -123,14 +128,14 @@ class Poster extends Component {
 
       let className = classnames(
         this.state.loaded ? style.loaded : null,
-        config.poster_vignette ? style.vignette : null,
-        config.poster_fixed ? style.fixed : null,
+        this.config.poster_vignette ? style.vignette : null,
+        this.config.poster_fixed ? style.fixed : null,
         this.state.y > 50 ? style.scrolled : null,
         isTouch() && screen.width < 1025 ? style.touch : null,
         style.poster
       )
 
-      let gradient = config.poster_gradient
+      let gradient = this.config.poster_gradient
         ? <div className={style.gradient} />
         : null
 
