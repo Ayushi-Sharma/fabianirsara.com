@@ -79,7 +79,8 @@ module.exports = function(grunt){
           authKey: 'staging'
         },
         src: 'api',
-        dest: '/api'
+        dest: '/api',
+        exclusions: ['api/storage', 'api/cache', 'api/storage/**', 'api/cache/**', 'storage', 'cache', 'storage/**', 'cache/**']
       },
       api_production: {
         auth: {
@@ -88,7 +89,8 @@ module.exports = function(grunt){
           authKey: 'production'
         },
         src: 'api',
-        dest: '/api'
+        dest: '/api',
+        exclusions: ['api/storage', 'api/cache', 'api/storage/**', 'api/cache/**', 'storage', 'cache', 'storage/**', 'cache/**']
       }
     },
 
