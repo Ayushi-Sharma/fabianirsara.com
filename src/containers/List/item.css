@@ -54,6 +54,10 @@
 }
 
 .item:hover .itemText {
+  color: $color_active;
+}
+
+.item.hasImage:hover .itemText {
   color: $background_main;
 }
 
@@ -65,6 +69,10 @@
   }
 
   .item .itemText {
+    color: $color_main;
+  }
+
+  .item.hasImage .itemText {
     color: $background_main;
   }
 }

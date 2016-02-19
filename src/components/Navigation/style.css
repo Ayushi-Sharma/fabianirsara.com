@@ -49,6 +49,7 @@
 
 .nav.active .navInner {
   transform: scale(1, 1);
+  pointer-events: auto;
 }
 
 .burger {
@@ -59,4 +60,5 @@
   cursor: pointer;
   margin-left: -25px;
   margin-top: -12px;
+  pointer-events: auto;
 }

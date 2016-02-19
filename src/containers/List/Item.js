@@ -18,12 +18,17 @@ class Item extends Component {
       backgroundImage: `url("${path}")`
     }
 
+    let classes = classnames(
+      style.item,
+      page.preview ? style.hasImage : null
+    )
+
     return (
-      <article className={style.item}>
+      <article className={classes}>
         <header className={style.itemText}>
           <div className={classnames(grid.container, grid.shortContainer)}>
             <h2 className={style.itemSubTitle}>{page.category}</h2>
-            <h1 className={style.itemTitle}>{page.title}</h1>
+            <h1 className={style.itemTitle} dangerouslySetInnerHTML={{__html: page.title}} />
           </div>
         </header>
         <div className={style.preview}>

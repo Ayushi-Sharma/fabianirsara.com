@@ -34,7 +34,7 @@ class List extends Component {
       page.link = page.config.link
       page.path = this.props.data.path + '/' + data.children[k].path
       page.preview = page.config.preview
-      pages.push(page)
+      pages.unshift(page)
     }
 
     return (
