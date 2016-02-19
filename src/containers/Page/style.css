@@ -42,3 +42,9 @@
 .link .line {
   pointer-events: auto;
 }
+
+@media screen and (max-width: 800px) {
+  .link {
+    display: none !important;
+  }
+}

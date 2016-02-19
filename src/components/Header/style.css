@@ -67,3 +67,20 @@
 .logo:hover .logoActive {
   opacity: 1;
 }
+
+@media screen and (max-width: 800px) {
+  .header {
+    top: 0;
+  }
+
+  .headerInner {
+    max-width: none;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .logo {
+    left: 5vw;
+    top: 5vw;
+  }
+}

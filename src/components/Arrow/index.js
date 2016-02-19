@@ -15,6 +15,12 @@ class Arrow extends Component {
     })
   }
 
+  setActiveState(value) {
+    this.setState({
+      active: value
+    })
+  }
+
   render() {
     let classes = classnames(
       style.arrow,

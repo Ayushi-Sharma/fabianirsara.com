@@ -17,6 +17,18 @@ import getConfig from '../../utils/getConfig'
 import getStyle, { restyle } from '../../utils/getStyle'
 
 class App extends Component {
+  componentDidMount() {
+    document.body.addEventListener('click', (this._handleClick = ::this.handleClick))
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('closeNavigation', this._handleClick)
+  }
+
+  handleClick(event) {
+    window.dispatchEvent(new Event('closeNavigation'))
+  }
+
   render() {
     const { children, data, actions } = this.props
 

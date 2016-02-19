@@ -2,6 +2,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
 
+import classnames from 'classnames'
+
 import Navigation from '../Navigation'
 import style from './style.css'
 import store from '../../store'
@@ -48,7 +50,7 @@ class Header extends Component {
 
     return (
       <header className={style.header}>
-        <div className={grid.container}>
+        <div className={classnames(style.headerInner, grid.container)}>
           <div className={style.logo}>
             <Link to="/">{logo}</Link>
           </div>

@@ -9,6 +9,13 @@
   clear: fix;
 }
 
+@media screen and (max-width: 800px) {
+  .container {
+    padding-left: 4vw;
+    padding-right: 4vw;
+  }
+}
+
 .shortContainer {
   max-width: 1400px;
   margin-left: 0;

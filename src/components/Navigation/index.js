@@ -14,13 +14,25 @@ class Navigation extends Component {
     active: false
   };
 
+  componentDidMount() {
+    window.addEventListener('closeNavigation', (this._handleCloseNavigation = ::this.handleCloseNavigation))
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('closeNavigation', this._handleCloseNavigation)
+  }
+
+  handleCloseNavigation() {
+    this.setActiveState(false)
+  }
+
   renderPageItem(page) {
     let classes = classnames(
       page.active ? style.pageActive : null
     )
 
     return (
-      <li key={page.id} className={classes}>
+      <li key={page.id} className={classes} onClick={::this.handleClick}>
         <Link to={page.link} onMouseOver={::this.cycle} data-text={page.title}>
           {page.title}
         </Link>
@@ -28,8 +40,19 @@ class Navigation extends Component {
     )
   }
 
+  handleClick(event) {
+    event.stopPropagation()
+  }
+
   cycle(event) {
-    rollText(event.target)
+    if (window.innerWidth > 1025) {
+      rollText(event.target)
+    }
+  }
+
+  handleBurgerClick(event) {
+    event.stopPropagation()
+    this.toggleNav()
   }
 
   toggleNav() {
@@ -37,6 +60,14 @@ class Navigation extends Component {
 
     this.setState({
       active: ! this.state.active
+    })
+  }
+
+  setActiveState(value) {
+    this.refs.burger.setActiveState(value)
+
+    this.setState({
+      active: value
     })
   }
 
@@ -69,8 +100,8 @@ class Navigation extends Component {
     )
 
     return (
-      <nav className={classes}>
-        <div className={style.burger} onClick={::this.toggleNav}>
+      <nav ref="nav" id="nav" className={classes}>
+        <div className={style.burger} onClick={::this.handleBurgerClick}>
           <Arrow ref="burger" menu />
         </div>
         <div className={style.navInner}>

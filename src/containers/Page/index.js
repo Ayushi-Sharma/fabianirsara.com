@@ -28,6 +28,8 @@ class Page extends Component {
     scrollTo(0, 0.75)
     window.addEventListener('resize', (this._handleResize = ::this.handleResize))
     this.handleResize()
+
+    window.dispatchEvent(new Event('closeNavigation'))
   }
 
   componentWillUnmount() {

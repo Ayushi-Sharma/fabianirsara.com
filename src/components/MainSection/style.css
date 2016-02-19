@@ -12,6 +12,16 @@
   font-range: 420px 1400px;
 }
 
+@media screen and (max-width: 800px) {
+  .mainWrapper {
+    padding-top: 15vw;
+  }
+
+  .mainWrapperInner {
+    padding-top: 50px;
+  }
+}
+
 .mainWrapperInner {
   font-size: $font_size;
   line-height: $line_height;

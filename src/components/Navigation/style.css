@@ -62,3 +62,36 @@
   margin-top: -12px;
   pointer-events: auto;
 }
+
+@media screen and (max-width: 800px) {
+  .burger {
+    right: 5vw;
+    top: 5vw;
+    z-index: 10;
+    position: absolute;
+    float: none;
+  }
+
+  .navInner {
+    float: none;
+    height: 100vh;
+    background: $color_main;
+    padding-top: 75px;
+  }
+
+  .nav a {
+    color: $background_main;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .nav ul {
+    padding-top: 5vw;
+  }
+
+  .nav li {
+    display: block;
+    float: none;
+    overflow: visible;
+  }
+}
