@@ -60,3 +60,11 @@
   opacity: 1;
   -webkit-filter: saturate(100%);
 }
+
+@media screen and (max-width: 1025px) {
+  .item .previewImage {
+    transform: scale(1);
+    opacity: 1;
+    -webkit-filter: saturate(100%);
+  }
+}

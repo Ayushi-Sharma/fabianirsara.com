@@ -1,3 +1,5 @@
+// TODO: lazy load images!
+
 
 import React, { Component } from 'react'
 import { Link } from 'react-router'
@@ -16,6 +18,11 @@ import Lightbox from 'react-images'
 import imagepath from '../../utils/imagepath'
 
 const lightboxTheme = {}
+
+const masonryOptions = {
+  gutter: 10,
+  transitionDuration: 0
+}
 
 class Collection extends Component {
   state = {
@@ -64,10 +71,6 @@ class Collection extends Component {
 
   render() {
     const { data } = this.props
-    const masonryOptions = {
-      gutter: 10,
-      transitionDuration: 0
-    }
 
     let images = []
     let lightboxImages = []

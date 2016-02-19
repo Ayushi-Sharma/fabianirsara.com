@@ -1,29 +1,10 @@
 
 import store from '../store'
 
-export default function getContent(pathname) {
-  let state = store.getState()
-  let folder = state.data.pages[state.data.config.content.index]
-
-  for (let k in state.data.pages) {
-    if (state.data.pages[k].config.content.link === pathname) {
-      folder = state.data.pages[k]
-      break
-    }
-
-    for (let j in state.data.pages[k]) {
-      if (state.data.pages[k][j].config && state.data.pages[k][j].config.content.link === pathname) {
-        folder = state.data.pages[k][j]
-        break
-      }
-    }
-  }
-
+let getPageContent = function(folder) {
   let path = folder.config.lpath.substring(0, folder.config.lpath.lastIndexOf('/'))
   path = path.substring(1)
   path = path.substring(path.indexOf('/') + 1)
-
-  // TODO: pass in next / prev page item
 
   let children = {}
   let items = {}
@@ -59,6 +40,56 @@ export default function getContent(pathname) {
   if (folder.config) content.config = folder.config.content
   if (folder.header) content.header = folder.header.content
   if (folder.meta) content.meta = folder.meta.content
+
+  return content
+}
+
+export default function getContent(pathname) {
+  let state = store.getState()
+  let folder = {...state.data.pages[state.data.config.content.index]}
+  let parent = null
+
+  for (let k in state.data.pages) {
+    if (state.data.pages[k].config.content.link === pathname) {
+      folder = state.data.pages[k]
+      break
+    }
+
+    for (let j in state.data.pages[k]) {
+      if (state.data.pages[k][j].config && state.data.pages[k][j].config.content.link === pathname) {
+        folder = state.data.pages[k][j]
+        parent = state.data.pages[k]
+        break
+      }
+    }
+  }
+
+  let content = getPageContent(folder)
+
+  if (parent) {
+    content.parent = getPageContent(parent)
+
+    let found = false
+
+    for (let k in content.parent.children) {
+      if (! found) {
+        content.prev = getPageContent(content.parent.children[k])
+      }
+
+      if (found) {
+        content.next = getPageContent(content.parent.children[k])
+        break
+      }
+
+      if (content.parent.path + '/' + k === content.path) {
+        found = true
+      }
+    }
+
+    if (content.prev.path === content.path) {
+      delete content.prev
+    }
+  }
 
   return content
 }

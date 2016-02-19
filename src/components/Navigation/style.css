@@ -44,7 +44,7 @@
 
   transition: all 170ms ease-out-quint;
   transform: scale(0, 1);
-  transform-origin: 0 0;
+  transform-origin: 100% 0;
 }
 
 .nav.active .navInner {
@@ -55,10 +55,10 @@
 .burger {
   width: 80px;
   height: 80px;
-  float: left;
+  float: right;
   position: relative;
   cursor: pointer;
-  margin-left: -25px;
+  margin-right: -25px;
   margin-top: -12px;
   pointer-events: auto;
 }

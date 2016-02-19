@@ -13,7 +13,7 @@
   will-change: opacity, top, -webkit-transform, transform;
 
   backface-visibility: hidden;
-  transform: translate3d(0, 0, 1px);
+  transform: translate3d(0, 0, -1px);
   transform-style: preserve-3d;
 }
 

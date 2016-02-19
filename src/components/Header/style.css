@@ -16,7 +16,7 @@
 }
 
 .header .nav {
-  float: left;
+  float: right;
   position: relative;
   margin-top: -13px;
   margin-left: 0;
@@ -25,11 +25,11 @@
 .logo {
   position: relative;
   margin: auto;
-  float: right;
+  float: left;
   opacity: 0.85;
   transition: opacity 170ms ease;
   margin-top: -20px;
-  margin-right: -20px;
+  margin-left: -20px;
   pointer-events: auto;
 }
 
