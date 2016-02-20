@@ -15,15 +15,37 @@ class Navigation extends Component {
   };
 
   componentDidMount() {
+    this._justClicked = false
     window.addEventListener('closeNavigation', (this._handleCloseNavigation = ::this.handleCloseNavigation))
+    document.body.addEventListener('click', (this._handleBodyClick = ::this.handleBodyClick))
   }
 
   componentWillUnmount() {
     window.removeEventListener('closeNavigation', this._handleCloseNavigation)
+    document.body.removeEventListener('closeNavigation', this._handleBodyClick)
   }
 
   handleCloseNavigation() {
-    this.setActiveState(false)
+    setTimeout(::this.checkIfCanClose, 17)
+  }
+
+  handleBodyClick(event) {
+    window.dispatchEvent(new Event('closeNavigation'))
+  }
+
+  checkIfCanClose() {
+    if (! this._justClicked) {
+      this.setActiveState(false)
+    }
+  }
+
+  clicked() {
+    this._justClicked = true
+    setTimeout(::this.unlock, 85)
+  }
+
+  unlock() {
+    this._justClicked = false
   }
 
   renderPageItem(page) {
@@ -42,6 +64,7 @@ class Navigation extends Component {
 
   handleClick(event) {
     event.stopPropagation()
+    this.clicked()
   }
 
   cycle(event) {
@@ -53,6 +76,7 @@ class Navigation extends Component {
   handleBurgerClick(event) {
     event.stopPropagation()
     this.toggleNav()
+    this.clicked()
   }
 
   toggleNav() {
