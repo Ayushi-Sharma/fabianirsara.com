@@ -9,19 +9,27 @@
   clear: fix;
 }
 
-@media screen and (max-width: 800px) {
-  .container {
-    padding-left: 4vw;
-    padding-right: 4vw;
-  }
-}
-
 .shortContainer {
   max-width: 1400px;
   margin-left: 0;
   margin-right: 0;
   padding-left: 12vw;
   padding-right: 12vw;
+}
+
+@media screen and (max-width: 1200px) {
+  .shortContainer {
+    padding-left: 6vw;
+    padding-right: 6vw;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .container,
+  .shortContainer {
+    padding-left: 4vw;
+    padding-right: 4vw;
+  }
 }
 
 .clear {

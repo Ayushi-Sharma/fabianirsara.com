@@ -1,6 +1,7 @@
 
 .links {
   position: relative;
+  font-size: 0.5em;
 }
 
 .links ul,
@@ -23,7 +24,7 @@
 
 .links li a {
   display: block;
-  padding: 0.5em;
+  padding: 0.4em;
   position: relative;
 }
 
@@ -32,20 +33,31 @@
   position: relative;
 }
 
+.linkText:before,
 .linkText:after {
   position: absolute;
   content: ' ';
-  bottom: -0.5vw;
+  bottom: -0.25vw;
   left: 0;
   width: 100%;
-  border-bottom: 0.5vw solid $color_main;
+  left: 50%;
+  transform: translate(-50%, 0);
+  border-bottom: 0.25vw solid $color_main;
   transition: border 170ms ease;
 }
 
-.links li a:hover .linkText:after {
-  border-color: $color_active;
+.linkText:before {
+  z-index: 2;
+  width: 0;
+  transition: border 170ms ease, width 340ms ease-out-quart;
 }
 
+.links li a:hover .linkText:before {
+  border-color: $color_active;
+  width: 100%;
+}
+
+:global(body.inverse) .linkText:before,
 :global(body.inverse) .linkText:after {
   border-color: $background_main;
 }

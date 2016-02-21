@@ -21,7 +21,8 @@ export function rollText(node) {
 
   let tmpText = shuffle(node.innerHTML.split(''))
     .map(item => {
-      return String.fromCharCode(item.charCodeAt(0) - 10 + Math.floor(Math.random() * 20))
+      //return String.fromCharCode(item.charCodeAt(0) - 10 + Math.floor(Math.random() * 20))
+      return String.fromCharCode(item.charCodeAt(0))
     })
     .join('')
 
@@ -29,8 +30,10 @@ export function rollText(node) {
   node.style.textAlign = 'center'
 
   try {
-    TweenLite.to(node, 0.1, {text: tmpText, ease: Linear.easeNone, overwrite: 'all', onComplete: function() {
-      TweenLite.to(node, 0.1, {text: originalText, ease: Linear.easeNone, overwrite: 'all', onComplete: function() {
+    let duration = tmpText.length * 0.01;
+
+    TweenLite.to(node, duration, {text: tmpText, ease: Linear.easeNone, overwrite: 'all', onComplete: function() {
+      TweenLite.to(node, duration, {text: originalText, ease: Linear.easeNone, overwrite: 'all', onComplete: function() {
         node.style.width = ''
         node.style.textAlign = ''
         node._isRollingText = false

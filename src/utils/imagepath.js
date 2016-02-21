@@ -8,7 +8,7 @@ export default function imagepath(url, size) {
     return config.api + 'images/' + (size || 'large') + '?file=' + url
   }
 
-  return config.api + 'images/' + (size || 'large') + '/' + url.replace(/\//g, '___')
+  return config.api + 'cache/' + (size || 'large') + '___' + url.replace(/\//g, '___')
 }
 
 export function fetch(url, fromCurrentPath) {
