@@ -32,7 +32,7 @@ class Page extends Component {
 
     setTimeout(() => {
       window.dispatchEvent(new Event('closeNavigation'))
-    }, 170);
+    }, 170)
   }
 
   componentWillUnmount() {
