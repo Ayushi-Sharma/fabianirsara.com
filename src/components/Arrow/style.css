@@ -59,6 +59,11 @@
   transform: rotate(180deg);
 }
 
+.left .line,
+.right .line {
+  width: 15px;
+}
+
 .bottom .arrowInner {
   transform: rotate(90deg);
 }

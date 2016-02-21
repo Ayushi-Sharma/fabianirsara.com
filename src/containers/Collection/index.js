@@ -14,7 +14,6 @@ import Text from '../Text'
 import Lightbox from 'react-images'
 
 import imagepath from '../../utils/imagepath'
-import lightboxTheme from './lightboxTheme'
 
 const masonryOptions = {
   gutter: 10,
@@ -98,8 +97,7 @@ class Collection extends Component {
           onClickPrev={::this.gotoPrevious}
           onClickNext={::this.gotoNext}
           onClose={::this.closeLightbox}
-          backdropClosesModal={true}
-          theme={lightboxTheme} />
+          backdropClosesModal={true} />
       </section>
     )
   }

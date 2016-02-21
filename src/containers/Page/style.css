@@ -9,7 +9,7 @@
 .subnav {
   position: fixed;
   z-index: 10;
-  top: 150px;
+  top: 20vh;
   left: 0;
   width: 100%;
   pointer-events: none;
@@ -17,8 +17,7 @@
 
 .subnavWrapper {
   position: relative;
-  left: 3px;
-  left: -10px;
+  left: -13px;
 }
 
 .link {
@@ -32,11 +31,11 @@
 }
 
 .nextLink {
-  left: 15px;
-  top: 20px;
+  left: -4px;
 }
 
 .prevLink {
+  top: 40px;
 }
 
 .link .line {
