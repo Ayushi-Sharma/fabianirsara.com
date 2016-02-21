@@ -33,6 +33,13 @@
   pointer-events: auto;
 }
 
+@media screen and (max-width: 1200px) {
+  .logo {
+    margin-left: -20px;
+    transform: translate(0, 0);
+  }
+}
+
 .logo a {
   display: block;
 }
