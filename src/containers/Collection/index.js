@@ -1,5 +1,3 @@
-// TODO: lazy load images!
-
 
 import React, { Component } from 'react'
 import { Link } from 'react-router'
@@ -16,8 +14,7 @@ import Text from '../Text'
 import Lightbox from 'react-images'
 
 import imagepath from '../../utils/imagepath'
-
-const lightboxTheme = {}
+import lightboxTheme from './lightboxTheme'
 
 const masonryOptions = {
   gutter: 10,
@@ -101,6 +98,7 @@ class Collection extends Component {
           onClickPrev={::this.gotoPrevious}
           onClickNext={::this.gotoNext}
           onClose={::this.closeLightbox}
+          backdropClosesModal={true}
           theme={lightboxTheme} />
       </section>
     )
