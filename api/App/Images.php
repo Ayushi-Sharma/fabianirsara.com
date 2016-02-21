@@ -4,13 +4,30 @@ use \Eventviva\ImageResize;
 
 class Images extends Controller
 {
-  public function getAction()
+  public function generateAction()
   {
     $size = $this->param('size');
     $file = $this->param('file');
-    $config = Config::get('sizes');
-
     $file = str_replace('___', '/', $file);
+
+    return $this->getAction($size, $file);
+  }
+
+  public function fetchAction()
+  {
+    $file = $this->param('file');
+    $path = explode('___', $file);
+    $size = $path[0];
+
+    $file = str_replace($size.'___', '', $file);
+    $file = str_replace('___', '/', $file);
+
+    return $this->getAction($size, $file);
+  }
+
+  public function getAction($size, $file)
+  {
+    $config = Config::get('sizes');
 
     if (strpos(realpath(DOC_ROOT.$file), DOC_ROOT.'storage') === false)
     {
@@ -22,7 +39,7 @@ class Images extends Controller
       $size = 'full';
     }
 
-    $cacheFile = DOC_ROOT.Config::get('cache').'/'.str_replace('/', '_', $size.'/'.$file);
+    $cacheFile = DOC_ROOT.Config::get('cache').'/'.str_replace('/', '___', $size.'/'.$file);
 
     if (file_exists(DOC_ROOT.$file))
     {

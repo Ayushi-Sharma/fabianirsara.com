@@ -2,7 +2,12 @@
 
 $app->get('/images/{size}[/{file}]', function($request, $response, $args)
 {
-  return (new App\Images($request, $response, $args))->getAction();
+  return (new App\Images($request, $response, $args))->generateAction();
+});
+
+$app->get('/'.(App\Config::get('cache')).'/{file}', function($request, $response, $args)
+{
+  return (new App\Images($request, $response, $args))->fetchAction();
 });
 
 $app->get('/data', function($request, $response, $args)
