@@ -5,9 +5,6 @@ import classnames from 'classnames'
 import style from './style.css'
 import imagepath from '../../utils/imagepath'
 
-import Title from './Title'
-import Arrow from '../Arrow'
-
 import scrollTo from '../../utils/scrollTo'
 import snap from '../../utils/snap'
 import isTouch from '../../utils/isTouch'
@@ -81,10 +78,8 @@ class Poster extends Component {
 
       let percentage = 0
       let options = {}
-      let arrowCss = {}
       let css = {}
       let imageCss = {}
-      let titleCss = {}
 
       if (this.state.loaded) {
         if (this.state.width / this.state.height > this.state.imageWidth / this.state.imageHeight) {
@@ -104,12 +99,7 @@ class Poster extends Component {
         options.y = 0 - difference * maxPercentage * Math.min(1, this.config.poster_move)
         options.blur = snap(Math.min(20, maxPercentage * 2 * 20), 1) * this.config.poster_blur
 
-        titleCss.marginTop = (0 - this.state.height * percentage * this.config.poster_title_move) + 'px'
-        titleCss.opacity = Math.max(1 - this.config.poster_title_fade, Math.max(0, 1 - percentage * this.config.poster_title_fade))
-
-        arrowCss.opacity = Math.max(1 - this.config.poster_fade, Math.max(0, 1 - percentage * 2 * this.config.poster_fade))
         css.opacity = Math.max(1 - this.config.poster_fade, Math.max(0, 1 - percentage / 1.5 * this.config.poster_fade))
-
         css.transform = 'translate3d(0, ' + (0 - this.state.y / 4 * this.config.poster_parallax) + 'px, 0px)'
 
         imageCss.width = options.bgWidth + 'px'
@@ -125,6 +115,7 @@ class Poster extends Component {
       imageCss.backgroundImage = 'url("' + path + '")'
       imageCss.backgroundSize = options.bgWidth + 'px ' + options.bgHeight + 'px'
       imageCss.WebkitFilter = 'blur(' + options.blur + 'px)'
+      imageCss.opacity = this.config.poster_image_opacity
 
       let className = classnames(
         this.state.loaded ? style.loaded : null,
@@ -141,12 +132,8 @@ class Poster extends Component {
 
       return (
         <figure className={className} style={css}>
-          <Title content={text} style={titleCss} />
           <div className={style.image} style={imageCss}>
             <img src={path} onLoad={::this.getImageSize} />
-          </div>
-          <div className={style.arrow} style={arrowCss} onClick={::this.scrollToContent}>
-            <Arrow bottom />
           </div>
           {gradient}
         </figure>

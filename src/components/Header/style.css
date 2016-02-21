@@ -1,7 +1,7 @@
 
 .header {
   position: fixed;
-  top: 100px;
+  top: 6vw;
   left: 0;
   width: 100%;
   height: 0;
@@ -29,7 +29,7 @@
   opacity: 0.85;
   transition: opacity 170ms ease;
   margin-top: -20px;
-  margin-left: -20px;
+  transform: translate(-50%, 0);
   pointer-events: auto;
 }
 
@@ -56,6 +56,11 @@
   position: relative;
 }
 
+.logoDefault {
+  opacity: 1;
+  transition: opacity 711ms ease-out-quint;
+}
+
 .logoActive {
   position: absolute;
   top: 0;
@@ -64,7 +69,23 @@
   transition: opacity 400ms ease-out-quint;
 }
 
+.logoInverse {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 711ms ease-out-quint;
+}
+
 .logo:hover .logoActive {
+  opacity: 1;
+}
+
+:global(body.inverse) .logoDefault {
+  opacity: 0;
+}
+
+:global(body.inverse) .logoInverse {
   opacity: 1;
 }
 

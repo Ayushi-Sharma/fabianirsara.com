@@ -48,3 +48,12 @@
     display: none !important;
   }
 }
+
+:global(.template-contact) {
+  text-align: center;
+}
+
+:global(.template-collection) h1 {
+  color: $color_active;
+  text-transform: uppercase;
+}

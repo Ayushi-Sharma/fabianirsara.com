@@ -3,6 +3,10 @@
   position: relative;
 }
 
+.hasFooterLine {
+  margin-top: -1em;
+}
+
 .text {
 }
 

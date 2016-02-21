@@ -22,7 +22,7 @@ class Navigation extends Component {
 
   componentWillUnmount() {
     window.removeEventListener('closeNavigation', this._handleCloseNavigation)
-    document.body.removeEventListener('closeNavigation', this._handleBodyClick)
+    document.body.removeEventListener('click', this._handleBodyClick)
   }
 
   handleCloseNavigation() {
@@ -41,7 +41,7 @@ class Navigation extends Component {
 
   clicked() {
     this._justClicked = true
-    setTimeout(::this.unlock, 85)
+    setTimeout(::this.unlock, 170)
   }
 
   unlock() {

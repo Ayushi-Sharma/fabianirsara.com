@@ -88,7 +88,7 @@ class Collection extends Component {
     return (
       <section className={style.collection}>
         <Text data={data} />
-        <div className={classnames(grid.container, style.collectionInner)}>
+        <div className={classnames(grid.container, grid.shortContainer, style.collectionInner)}>
           <Masonry className={style.masonry} options={masonryOptions}>
             {images.map(::this.renderImage)}
           </Masonry>

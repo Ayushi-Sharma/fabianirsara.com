@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import style from './style.css'
 import grid from '../../assets/css/grid.css'
+import classnames from 'classnames'
 
 import Links from '../Links'
 
@@ -12,7 +13,11 @@ import { config } from '../../utils/getConfig'
 
 class Footer extends Component {
   componentDidMount() {
-    this.nextCycle()
+    const { data } = this.props
+
+    if (data.config.template === 'home') {
+      this.nextCycle()
+    }
   }
 
   componentWillUnmount() {
@@ -32,10 +37,18 @@ class Footer extends Component {
   }
 
   render() {
+    const { data } = this.props
+
+    let footerLine = data.config.template === 'home'
+      ? (
+        <p className={style.text}><strong>Have <span ref="word">{superb.prefix()}</span> {weekday()}</strong></p>
+      )
+      : null
+
     return (
-      <footer className={style.footer}>
-        <div className={grid.container}>
-          <p className={style.text}>Have <span ref="word">{superb.prefix()}</span> {weekday()}</p>
+      <footer className={classnames(style.footer, data.config.template === 'home' ? style.hasFooterLine : null)}>
+        <div className={classnames(grid.container, grid.shortContainer)}>
+          {footerLine}
           <Links links={config.links} />
         </div>
       </footer>

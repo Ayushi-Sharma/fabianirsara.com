@@ -3,8 +3,8 @@
   max-width: none;
   margin-left: 0;
   margin-right: 0;
-  padding-left: 7vw;
-  padding-right: 7vw;
+  padding-left: 6vw;
+  padding-right: 6vw;
 
   clear: fix;
 }
@@ -20,6 +20,8 @@
   max-width: 1400px;
   margin-left: 0;
   margin-right: 0;
+  padding-left: 12vw;
+  padding-right: 12vw;
 }
 
 .clear {

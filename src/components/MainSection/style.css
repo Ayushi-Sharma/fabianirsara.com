@@ -6,23 +6,18 @@
 
 .mainWrapper {
   position: relative;
-  padding-top: 15vw;
-  padding-bottom: 7vw;
+  padding-top: 24vh;
+  padding-bottom: 11vw;
   font-size: responsive 10px 25px;
-  font-range: 420px 1400px;
+  font-range: 420px 1600px;
 }
 
-@media screen and (max-width: 800px) {
-  .mainWrapper {
-    padding-top: 15vw;
-  }
-
-  .mainWrapperInner {
-    padding-top: 50px;
-  }
+.hasPoster .mainWrapper {
+  padding-top: 50vh;
 }
 
 .mainWrapperInner {
   font-size: $font_size;
+  font-weight: $font_weight;
   line-height: $line_height;
 }

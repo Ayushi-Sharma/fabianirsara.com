@@ -10,6 +10,7 @@ import Header from '../../components/Header'
 import store from '../../store'
 import style from './style.css'
 import transition from './transition.css'
+import getPageContent from '../../utils/getPageContent'
 
 import * as DataActions from '../../actions/data'
 
@@ -17,6 +18,12 @@ import getConfig from '../../utils/getConfig'
 import getStyle, { restyle } from '../../utils/getStyle'
 
 class App extends Component {
+  componentDidMount() {
+    setTimeout(() => {
+      document.body.classList.add('ready')
+    }, 170)
+  }
+
   render() {
     const { children, data, actions } = this.props
 
@@ -32,6 +39,14 @@ class App extends Component {
         leaveActive: transition.pageLeaveActive,
         appear: transition.pageAppear,
         appearActive: transition.pageAppearActive
+      }
+
+      const pageData = getPageContent(this.props.location.pathname)
+
+      if (pageData.config.inverse) {
+        document.body.classList.add('inverse')
+      } else {
+        document.body.classList.remove('inverse')
       }
 
       return (

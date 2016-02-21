@@ -2,6 +2,7 @@
 @import "normalize.css";
 @import "./base.css";
 @import "./scrollbar.css";
+@import "./typography.css";
 
 body {
   font-family: $font_family;
@@ -14,14 +15,8 @@ body {
   overflow-x: hidden;
 }
 
-a {
-  color: $color_main;
-  text-decoration: none;
-  transition: color 170ms ease, background 170ms ease;
-}
-
-a:hover {
-  color: $color_active;
+:global(body.ready) {
+  transition: color 711ms ease, background 711ms ease;
 }
 
 .line {
@@ -72,4 +67,9 @@ a:hover {
   .line {
     display: none;
   }
+}
+
+:global(body.inverse) {
+  background: $color_main;
+  color: $background_main;
 }

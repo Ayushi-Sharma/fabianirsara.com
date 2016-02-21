@@ -5,7 +5,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 5;
+  z-index: 1;
   overflow: hidden;
   margin: 0;
   padding: 0;
@@ -81,86 +81,6 @@
   background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, $background_main 95%, $background_main 100%);
   background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%, $background_main 95%, $background_main 100%);
   background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, $background_main 95%, $background_main 100%);
-}
-
-.poster .arrow {
-  position: absolute;
-  bottom: 10%;
-  left: 50%;
-  width: 80px;
-  height: 80px;
-  cursor: pointer;
-  margin-left: -40px;
-  z-index: 10;
-  opacity: 0.85;
-  transition: opacity 170ms ease;
-}
-
-.poster .arrow img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  margin: 0;
-  padding: 0;
-}
-
-.poster .arrow:hover {
-  opacity: 1;
-}
-
-.poster .text {
-  position: absolute;
-  z-index: 10;
-  top: 40%;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  transform: translate(0, -50%);
-  transition: margin-top 170ms ease-out-quint;
-  will-change: margin-top;
-}
-
-.poster .text span {
-  display: inline-block;
-}
-
-.poster h1,
-.poster h2 {
-  margin: 0;
-  padding: 0;
-}
-
-.poster h1 {
-  font-size: responsive 24px 56px;
-  font-range: 420px 1800px;
-  font-weight: $header_title_font_weight;
-  line-height: 1em;
-}
-
-.poster h2 {
-  font-size: responsive 12px 32px;
-  font-range: 420px 1800px;
-  font-weight: $header_subtitle_font_weight;
-  line-height: 1em;
-}
-
-.poster a {
-  color: $color_active;
-  text-decoration: none;
-}
-.poster a:hover {
-  color: $color_main;
-}
-
-.poster .titleText {
-  font-size: $header_title_font_size;
-  line-height: 1em;
-}
-
-.poster .subtitleText {
-  font-size: $header_subtitle_font_size;
-  margin-top: $header_title_spacing;
-  line-height: 1em;
 }
 
 .poster.touch {

@@ -8,6 +8,7 @@ import classnames from 'classnames'
 import Arrow from '../../components/Arrow'
 import MainSection from '../../components/MainSection'
 import Poster from '../../components/Poster'
+import Title from '../../components/Title'
 import Footer from '../../components/Footer'
 
 import markdown from '../../utils/markdown'
@@ -29,7 +30,9 @@ class Page extends Component {
     window.addEventListener('resize', (this._handleResize = ::this.handleResize))
     this.handleResize()
 
-    window.dispatchEvent(new Event('closeNavigation'))
+    setTimeout(() => {
+      window.dispatchEvent(new Event('closeNavigation'))
+    }, 170);
   }
 
   componentWillUnmount() {
@@ -54,6 +57,10 @@ class Page extends Component {
       content = <List data={this.data} />
     } else if (this.data.config.template === 'collection') {
       content = <Collection data={this.data} />
+    } else if (this.data.config.template === 'home') {
+      content = <Text data={this.data} />
+    } else if (this.data.config.template === 'contact') {
+      content = <Text data={this.data} />
     } else {
       content = <Text data={this.data} />
     }
@@ -96,14 +103,15 @@ class Page extends Component {
     }
 
     return (
-      <div ref="node" className={style.page}>
+      <div ref="node" className={classnames(style.page, 'template-' + this.data.config.template)}>
         {subnav}
-        <Poster file={this.data.poster} text={this.data.header} data={this.data} />
+        <Poster file={this.data.poster} data={this.data} />
         <MainSection data={this.data} content={this.data.content}>
+          <Title content={this.data.header} />
           <div ref="main">
             {content}
           </div>
-          <Footer />
+          <Footer data={this.data} />
         </MainSection>
       </div>
     )

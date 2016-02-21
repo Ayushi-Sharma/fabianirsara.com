@@ -21,7 +21,7 @@ export function rollText(node) {
 
   let tmpText = shuffle(node.innerHTML.split(''))
     .map(item => {
-      return String.fromCharCode(item.charCodeAt(0) + Math.floor(Math.random() * 10))
+      return String.fromCharCode(item.charCodeAt(0) - 10 + Math.floor(Math.random() * 20))
     })
     .join('')
 

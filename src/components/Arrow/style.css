@@ -25,6 +25,10 @@
   transition: all 170ms ease;
 }
 
+:global(body.inverse) .line {
+  background: $background_main;
+}
+
 .arrow:hover .line {
   background: $color_active;
 }

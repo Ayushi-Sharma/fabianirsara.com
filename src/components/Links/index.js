@@ -11,15 +11,15 @@ class Links extends Component {
   renderPageItem(link) {
     return (
       <li key={link.id}>
-        <Link to={link.link} target="_blank" onMouseOver={::this.cycle} data-text={link.title}>
-          {link.title}
+        <Link to={link.link} target="_blank" onMouseOver={::this.cycle}>
+          <span className={style.linkText} data-text={link.title}>{link.title}</span>
         </Link>
       </li>
     )
   }
 
   cycle(event) {
-    rollText(event.target)
+    rollText(event.currentTarget.querySelector('[data-text]'))
   }
 
   render() {

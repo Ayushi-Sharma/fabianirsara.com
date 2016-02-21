@@ -24,4 +24,28 @@
 .links li a {
   display: block;
   padding: 0.5em;
+  position: relative;
+}
+
+.linkText {
+  display: inline-block;
+  position: relative;
+}
+
+.linkText:after {
+  position: absolute;
+  content: ' ';
+  bottom: -0.5vw;
+  left: 0;
+  width: 100%;
+  border-bottom: 0.5vw solid $color_main;
+  transition: border 170ms ease;
+}
+
+.links li a:hover .linkText:after {
+  border-color: $color_active;
+}
+
+:global(body.inverse) .linkText:after {
+  border-color: $background_main;
 }

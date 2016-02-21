@@ -39,11 +39,13 @@ class Header extends Component {
 
   render() {
     let logoDefault = this.getFile('logo')
+    let logoInverse = this.getFile('logo.inverse')
     let logoActive = this.getFile('logo.active')
 
     let logo = (
       <div className={style.logoWrap}>
         <div className={style.logoDefault}>{logoDefault}</div>
+        <div className={style.logoInverse}>{logoInverse}</div>
         <div className={style.logoActive}>{logoActive}</div>
       </div>
     )
