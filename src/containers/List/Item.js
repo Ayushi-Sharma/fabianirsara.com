@@ -8,7 +8,16 @@ import grid from '../../assets/css/grid.css'
 import imagepath, { fetch } from '../../utils/imagepath'
 
 class Item extends Component {
-  handleMouseOver() {
+  componentDidMount() {
+    this._setSizeTimeout = setTimeout(::this.setSize, 170)
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this._setSizeTimeout)
+  }
+
+  setSize() {
+    console.log('size')
     let height = this.refs.node.offsetHeight
     this.refs.image.style.height = height + 'px'
   }
@@ -29,7 +38,7 @@ class Item extends Component {
     )
 
     return (
-      <article ref="node" className={classes} onMouseOver={::this.handleMouseOver}>
+      <article ref="node" className={classes} onMouseOver={::this.setSize}>
         <header className={style.itemText}>
           <div className={classnames(grid.container, grid.shortContainer)}>
             <h2 className={style.itemSubTitle}>{page.category}</h2>
@@ -38,7 +47,9 @@ class Item extends Component {
         </header>
         <div className={style.preview}>
           <div className={style.previewWrap}>
-            <div ref="image" className={style.previewImage} style={imageCss} />
+            <div ref="image" className={style.previewImage} style={imageCss}>
+              <img src={path} onLoad={::this.setSize} />
+            </div>
           </div>
         </div>
       </article>
