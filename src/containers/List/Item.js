@@ -59,9 +59,7 @@ class Item extends Component {
         </header>
         <div className={style.preview}>
           <div className={style.previewWrap}>
-            <div ref="image" className={style.previewImage} style={imageCss}>
-              <img src={path} onLoad={::this.setSize} />
-            </div>
+            <div ref="image" className={style.previewImage} style={imageCss} />
           </div>
         </div>
       </article>
