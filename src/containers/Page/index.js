@@ -102,12 +102,17 @@ class Page extends Component {
       )
     }
 
+    let classes = classnames(
+      style.page,
+      'template-' + this.data.config.template
+    )
+
     return (
-      <div ref="node" className={classnames(style.page, 'template-' + this.data.config.template)}>
+      <div ref="node" className={classes}>
         {subnav}
         <Poster file={this.data.poster} data={this.data} />
         <MainSection data={this.data} content={this.data.content}>
-          <Title content={this.data.header} />
+          <Title content={this.data.header} data={this.data} />
           <div ref="main">
             {content}
           </div>

@@ -15,8 +15,14 @@ class MainSection extends Component {
       ...data.config
     }
 
+    let classes = classnames(
+      'main-wrapper',
+      style.main,
+      this.props.data.poster ? style.hasPoster : null
+    )
+
     return (
-      <section ref="node" className={classnames('main-wrapper', style.main, this.props.data.poster ? style.hasPoster : null)}>
+      <section ref="node" className={classes}>
         <div className={style.mainWrapper}>
           <div className={style.mainWrapperInner}>
             {children}

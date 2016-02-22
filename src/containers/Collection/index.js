@@ -23,18 +23,26 @@ const masonryOptions = {
 class Collection extends Component {
   state = {
     lightboxIsOpen: false,
-    currentImage: 0
+    currentImage: 0,
+    loadedCount: 0
   };
 
   renderImage(image) {
     return (
       <Item
+        onReady={::this.nextImage}
         data-index={image.index}
         key={image.id}
         image={image}
         data={this.props.data}
         onClick={::this.openLightbox} />
     )
+  }
+
+  nextImage() {
+    this.setState({
+      loadedCount: this.state.loadedCount + 1
+    })
   }
 
   openLightbox(event) {
@@ -68,6 +76,7 @@ class Collection extends Component {
   render() {
     const { data } = this.props
 
+    let count = 0
     let images = []
     let lightboxImages = []
 
@@ -79,6 +88,9 @@ class Collection extends Component {
       images.push(image)
 
       lightboxImages.push({src: imagepath(image.src, 'large')})
+
+      count++
+      if (count >= this.state.loadedCount + 1) break
     }
 
     return (

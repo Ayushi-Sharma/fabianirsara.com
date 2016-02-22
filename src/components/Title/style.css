@@ -1,8 +1,12 @@
 
 .text {
   position: relative;
-  padding-bottom: 55vh;
+  padding-bottom: 10vh;
   margin-top: -1em !important;
+}
+
+.hasPoster {
+  padding-bottom: 55vh;
 }
 
 .text span {

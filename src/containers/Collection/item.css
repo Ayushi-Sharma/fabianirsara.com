@@ -5,6 +5,14 @@
   width: calc(25% - 10px);
   margin-bottom: 10px;
   cursor: zoom-in;
+  opacity: 0;
+  transition: opacity 340ms ease-out-quart, transform 340ms ease-out-quart;
+  transform: scale(0.9);
+}
+
+.item.loaded {
+  opacity: 1;
+  transform: scale(1);
 }
 
 @media screen and (min-width: 2200px) {

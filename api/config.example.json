@@ -32,6 +32,12 @@
         "height": 800
       }
     },
+    "mini": {
+      "fit": {
+        "width": 500,
+        "height": 500
+      }
+    },
     "preview": {
       "crop": {
         "width": 500,
