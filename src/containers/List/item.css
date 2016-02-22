@@ -55,6 +55,14 @@
   transform: translate3d(0, -50%, -1px);
 }
 
+.previewImage img {
+  display: block;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .item:hover .previewWrap {
   height: 100%;
   opacity: 1;

@@ -24,6 +24,12 @@ class Item extends Component {
     }
   }
 
+  handleLoad() {
+    if (! this._setSizeTimeout) {
+      this._setSizeTimeout = setTimeout(::this.setSize, 170)
+    }
+  }
+
   setSize() {
     if (this._setSizeTimeout) {
       clearTimeout(this._setSizeTimeout)
@@ -59,7 +65,9 @@ class Item extends Component {
         </header>
         <div className={style.preview}>
           <div className={style.previewWrap}>
-            <div ref="image" className={style.previewImage} style={imageCss} />
+            <div ref="image" className={style.previewImage} style={imageCss}>
+              <img src={path} onLoad={::this.handleLoad} />
+            </div>
           </div>
         </div>
       </article>
