@@ -9,15 +9,27 @@ import imagepath, { fetch } from '../../utils/imagepath'
 
 class Item extends Component {
   componentDidMount() {
+    window.addEventListener('resize', (this._handleResize = ::this.handleResize))
     this._setSizeTimeout = setTimeout(::this.setSize, 170)
   }
 
   componentWillUnmount() {
+    window.removeEventListener('resize', this._handleResize)
     clearTimeout(this._setSizeTimeout)
   }
 
+  handleResize() {
+    if (! this._setSizeTimeout) {
+      this._setSizeTimeout = setTimeout(::this.setSize, 170)
+    }
+  }
+
   setSize() {
-    console.log('size')
+    if (this._setSizeTimeout) {
+      clearTimeout(this._setSizeTimeout)
+      this._setSizeTimeout = null
+    }
+
     let height = this.refs.node.offsetHeight
     this.refs.image.style.height = height + 'px'
   }
