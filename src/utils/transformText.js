@@ -30,7 +30,7 @@ export function rollText(node) {
   node.style.textAlign = 'center'
 
   try {
-    let duration = tmpText.length * 0.01;
+    let duration = tmpText.length * 0.01
 
     TweenLite.to(node, duration, {text: tmpText, ease: Linear.easeNone, overwrite: 'all', onComplete: function() {
       TweenLite.to(node, duration, {text: originalText, ease: Linear.easeNone, overwrite: 'all', onComplete: function() {
