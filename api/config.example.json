@@ -20,6 +20,11 @@
         "height": 1800
       }
     },
+    "page": {
+      "fit": {
+        "width": 1800
+      }
+    },
     "medium": {
       "fit": {
         "width": 1200,

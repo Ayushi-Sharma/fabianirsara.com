@@ -54,7 +54,18 @@ class Images extends Controller
 
         if (isset($sizeDefinition->fit))
         {
-          $image->resizeToBestFit($sizeDefinition->fit->width, $sizeDefinition->fit->height);
+          if (isset($sizeDefinition->fit->width) && isset($sizeDefinition->fit->height))
+          {
+            $image->resizeToBestFit($sizeDefinition->fit->width, $sizeDefinition->fit->height);
+          }
+          elseif (isset($sizeDefinition->fit->width))
+          {
+            $image->resizeToWidth($sizeDefinition->fit->width);
+          }
+          elseif (isset($sizeDefinition->fit->height))
+          {
+            $image->resizeToHeight($sizeDefinition->fit->height);
+          }
         }
         else if (isset($sizeDefinition->crop))
         {

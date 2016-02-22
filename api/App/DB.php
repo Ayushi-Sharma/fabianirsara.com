@@ -104,6 +104,7 @@ class DB
               @unlink($localPath);
               @unlink(DOC_ROOT.Config::get('cache').'/full_'.strtolower(str_replace('/', '_', $item['localFile'])));
               @unlink(DOC_ROOT.Config::get('cache').'/large_'.strtolower(str_replace('/', '_', $item['localFile'])));
+              @unlink(DOC_ROOT.Config::get('cache').'/page_'.strtolower(str_replace('/', '_', $item['localFile'])));
               @unlink(DOC_ROOT.Config::get('cache').'/medium_'.strtolower(str_replace('/', '_', $item['localFile'])));
               @unlink(DOC_ROOT.Config::get('cache').'/small_'.strtolower(str_replace('/', '_', $item['localFile'])));
               @unlink(DOC_ROOT.Config::get('cache').'/preview_'.strtolower(str_replace('/', '_', $item['localFile'])));
