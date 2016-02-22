@@ -11,6 +11,30 @@
   margin-top: $line_heightem;
 }
 
+.text h1 {
+  margin-top: $h1_font_spacing;
+}
+
+.text h2 {
+  margin-top: $h2_font_spacing;
+}
+
+.text h3 {
+  margin-top: $h3_font_spacing;
+}
+
+.text h4 {
+  margin-top: $h4_font_spacing;
+}
+
+.text h5 {
+  margin-top: $h5_font_spacing;
+}
+
+.text h6 {
+  margin-top: $h6_font_spacing;
+}
+
 .text :first-child {
   margin-top: 0;
 }

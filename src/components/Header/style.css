@@ -29,15 +29,8 @@
   opacity: 0.85;
   transition: opacity 170ms ease;
   margin-top: -20px;
-  transform: translate(-50%, 0);
+  margin-left: -20px;
   pointer-events: auto;
-}
-
-@media screen and (max-width: 1200px) {
-  .logo {
-    margin-left: -20px;
-    transform: translate(0, 0);
-  }
 }
 
 .logo a {

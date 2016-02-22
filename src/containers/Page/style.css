@@ -17,7 +17,7 @@
 
 .subnavWrapper {
   position: relative;
-  left: -13px;
+  left: 2px;
 }
 
 @media screen and (max-width: 1200px) {
@@ -61,4 +61,37 @@
 :global(.template-collection) h1 {
   color: $color_active;
   text-transform: uppercase;
+}
+
+:global(.columns) {
+  column-gap: 10px;
+}
+
+:global(.columns) img {
+  margin-top: 0;
+  display: block;
+}
+
+:global(.columns.two) {
+  columns: 2;
+}
+
+:global(.columns.three) {
+  columns: 3;
+}
+
+:global(.columns.four) {
+  columns: 4;
+}
+
+:global(.columns.five) {
+  columns: 4;
+}
+
+:global(iframe) {
+  border: none;
+  outline: none;
+  display: block;
+  width: 100%;
+  height: 50vh;
 }

@@ -11,7 +11,7 @@ markdown.handle = function(event) {
   let node = event.node
 
   if (node.type === 'Image') {
-    node.destination = imagepath(fetch(node.destination, this.path), 'large')
+    node.destination = imagepath(fetch(node.destination, this.path), 'page')
   } else if (node.type === 'HtmlBlock' && node.literal.indexOf('<img') !== -1) {
     let match = null
     let url = null
@@ -22,7 +22,7 @@ markdown.handle = function(event) {
 
       url = match[1] || match[2] || match[3]
 
-      node.literal = node.literal.replace(`src="${url}"`, `src="${imagepath(fetch(url, this.path), 'large')}"`, node.destination)
+      node.literal = node.literal.replace(`src="${url}"`, `src="${imagepath(fetch(url, this.path), 'page')}"`, node.destination)
     }
   }
 }
