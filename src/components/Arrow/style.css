@@ -71,7 +71,7 @@
 .menu .line {
   transform: rotate(0deg) translate(-50%, -50%);
   transform-origin: 0% 0%;
-  transition: all 340ms ease-out-quint;
+  transition: transform 340ms ease-out-quint, margin-top 340ms ease-out-quint, background 200ms ease;
 }
 
 .menu .line.first {
@@ -82,9 +82,22 @@
   margin-top: 5px;
 }
 
+.menu:hover .line {
+  transition: transform 340ms ease-out-quint, margin-top 340ms ease-out-quint, top 340ms ease-out-quint, background 200ms ease;
+}
+
+.menu:hover .line.first {
+  top: 10px;
+}
+
+.menu:hover .line.second {
+  top: -10px;
+}
+
 .menu.active .line {
+  top: 50% !important;
   background: $color_active;
-  transition: all 340ms ease-out-quint;
+  transition: transform 340ms ease-out-quint, top 340ms ease-out-quint, margin-top 340ms ease-out-quint, background 200ms ease;
 }
 
 .menu.active .line.first {
