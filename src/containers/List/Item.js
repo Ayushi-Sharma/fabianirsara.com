@@ -8,6 +8,10 @@ import grid from '../../assets/css/grid.css'
 import imagepath, { fetch } from '../../utils/imagepath'
 
 class Item extends Component {
+  state = {
+    twocol: false
+  };
+
   componentDidMount() {
     window.addEventListener('resize', (this._handleResize = ::this.handleResize))
     this._setSizeTimeout = setTimeout(::this.setSize, 170)
@@ -38,10 +42,20 @@ class Item extends Component {
 
     let height = this.refs.node.offsetHeight
     this.refs.image.style.height = height + 'px'
+
+    if (this.props.data.config.twocol && window.innerWidth > 1300) {
+      this.setState({
+        twocol: true
+      })
+    } else {
+      this.setState({
+        twocol: false
+      })
+    }
   }
 
   render() {
-    const { page } = this.props
+    const { page, data } = this.props
     const path = page.preview
       ? imagepath(fetch(page.preview, page.path), 'large')
       : ''
@@ -52,13 +66,14 @@ class Item extends Component {
 
     let classes = classnames(
       style.item,
-      page.preview ? style.hasImage : null
+      page.preview ? style.hasImage : null,
+      this.state.twocol ? style.twocol : null
     )
 
     return (
       <article ref="node" className={classes} onMouseOver={::this.setSize}>
         <header className={style.itemText}>
-          <div className={classnames(grid.container, grid.shortContainer)}>
+          <div className={classnames(grid.container, grid.shortContainer, style.itemInner)}>
             <h2 className={style.itemSubTitle}>{page.category}</h2>
             <h1 className={style.itemTitle} dangerouslySetInnerHTML={{__html: page.title}} />
           </div>

@@ -1,12 +1,59 @@
 
 import React, { Component } from 'react'
 import { Link } from 'react-router'
+import classnames from 'classnames'
 
+import grid from '../../assets/css/grid.css'
 import style from './style.css'
 import Item from './Item'
 import Text from '../Text'
 
 class List extends Component {
+  state = {
+    twocol: false
+  };
+
+  componentDidMount() {
+    window.addEventListener('resize', (this._handleResize = ::this.handleResize))
+    this._setSizeTimeout = setTimeout(::this.handleResize, 170)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this._handleResize)
+    clearTimeout(this._setSizeTimeout)
+  }
+
+  handleResize() {
+    if (this.props.data.config.twocol && window.innerWidth > 1300) {
+      this.setState({
+        twocol: true
+      })
+    } else {
+      this.setState({
+        twocol: false
+      })
+    }
+
+    let tmp = this.refs.list.querySelectorAll('li')
+
+    for (let i = 0, _len = tmp.length; i < _len; i++) {
+      tmp[i].style.height = ''
+    }
+
+    if (this.props.data.config.twocol && window.innerWidth > 1300) {
+      let maxHeight = 0
+
+      for (let i = 0, _len = tmp.length; i < _len; i++) {
+        maxHeight = Math.max(maxHeight, tmp[i].offsetHeight)
+
+        if ((i + 1) % 2 === 0) {
+          tmp[i].style.height = `${maxHeight}px`
+          tmp[i - 1].style.height = `${maxHeight}px`
+        }
+      }
+    }
+  }
+
   renderPageItem(page) {
     return (
       <li key={page.id}>
@@ -37,11 +84,16 @@ class List extends Component {
       pages.unshift(page)
     }
 
+    let classes = classnames(
+      style.list,
+      this.state.twocol ? style.twocol : null
+    )
+
     return (
-      <section className={style.list}>
+      <section className={classes}>
         <Text data={data} />
         <div className={style.listInner}>
-          <ul>
+          <ul ref="list" className={grid.clear}>
             {pages.map(::this.renderPageItem)}
           </ul>
         </div>

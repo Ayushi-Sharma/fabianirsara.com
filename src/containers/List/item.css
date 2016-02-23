@@ -1,7 +1,15 @@
 
 .item {
   position: relative;
-  padding: 1em 0;
+}
+
+.twocol {
+  height: 100%;
+}
+
+.twocol .itemInner {
+  padding-left: 12%;
+  padding-right: 12%;
 }
 
 .itemText {
@@ -9,6 +17,7 @@
   z-index: 2;
   color: $color_main;
   transition: color 270ms ease;
+  padding: 1em 0;
 }
 
 .itemTitle {
