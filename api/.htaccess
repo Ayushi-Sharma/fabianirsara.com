@@ -1,8 +1,8 @@
 
 RewriteEngine On
 RewriteRule ^index\.php$ - [L]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(config)\.json - [L,R=404]
 RewriteRule ^(storage) - [L,R=404]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . index.php [L]
