@@ -34,7 +34,7 @@ export default handleActions({
 
       if (action.payload.files) {
         for (let k in action.payload.files) {
-          if (k.indexOf('poster.jpg') >= 0 || k.indexOf('poster.png') >= 0) {
+          if (k.indexOf('poster.jpg') >= 0 || k.indexOf('poster.png') >= 0 || k.indexOf('poster.gif') >= 0) {
             reqwest({
               method: 'get',
               url: imagepath(action.payload.files[k].localFile, 'large'),
