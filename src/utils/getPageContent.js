@@ -17,7 +17,7 @@ let getPageContent = function(folder) {
     } else {
       items[k] = {...folder[k]}
 
-      if (folder[k].mime_type === 'image/jpeg' || folder[k].mime_type === 'image/png') {
+      if (folder[k].mime_type === 'image/jpeg' || folder[k].mime_type === 'image/png' || folder[k].mime_type === 'image/gif') {
         images[k] = {...folder[k]}
       }
     }
