@@ -1,12 +1,12 @@
 
 .text {
   position: relative;
-  padding-bottom: 10vh;
+  padding-bottom: $title_spacing;
   margin-top: -1em !important;
 }
 
 .hasPoster {
-  padding-bottom: 55vh;
+  padding-bottom: $title_spacing;
 }
 
 .text span {
