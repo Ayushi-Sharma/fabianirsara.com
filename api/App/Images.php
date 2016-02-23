@@ -47,32 +47,39 @@ class Images extends Controller
       {
         @mkdir(dirname($cacheFile), 0777, true);
 
-        $image = new ImageResize(DOC_ROOT.$file);
-        $image->quality_jpg = Config::get('quality_jpg');
-
-        $sizeDefinition = $config->$size;
-
-        if (isset($sizeDefinition->fit))
+        if (substr($file, -4) === '.gif')
         {
-          if (isset($sizeDefinition->fit->width) && isset($sizeDefinition->fit->height))
-          {
-            $image->resizeToBestFit($sizeDefinition->fit->width, $sizeDefinition->fit->height);
-          }
-          elseif (isset($sizeDefinition->fit->width))
-          {
-            $image->resizeToWidth($sizeDefinition->fit->width);
-          }
-          elseif (isset($sizeDefinition->fit->height))
-          {
-            $image->resizeToHeight($sizeDefinition->fit->height);
-          }
+          copy(DOC_ROOT.$file, $cacheFile);
         }
-        else if (isset($sizeDefinition->crop))
+        else
         {
-          $image->crop($sizeDefinition->crop->width, $sizeDefinition->crop->height);
-        }
+          $image = new ImageResize(DOC_ROOT.$file);
+          $image->quality_jpg = Config::get('quality_jpg');
 
-        $image->save($cacheFile);
+          $sizeDefinition = $config->$size;
+
+          if (isset($sizeDefinition->fit))
+          {
+            if (isset($sizeDefinition->fit->width) && isset($sizeDefinition->fit->height))
+            {
+              $image->resizeToBestFit($sizeDefinition->fit->width, $sizeDefinition->fit->height);
+            }
+            elseif (isset($sizeDefinition->fit->width))
+            {
+              $image->resizeToWidth($sizeDefinition->fit->width);
+            }
+            elseif (isset($sizeDefinition->fit->height))
+            {
+              $image->resizeToHeight($sizeDefinition->fit->height);
+            }
+          }
+          else if (isset($sizeDefinition->crop))
+          {
+            $image->crop($sizeDefinition->crop->width, $sizeDefinition->crop->height);
+          }
+
+          $image->save($cacheFile);
+        }
       }
     }
 

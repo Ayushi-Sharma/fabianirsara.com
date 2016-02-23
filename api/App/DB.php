@@ -113,6 +113,11 @@ class DB
           }
         }
 
+        if (substr($item['path'], -3) === '.md' || substr($item['path'], -5) === '.yaml' || substr($item['path'], -5) === '.json' || substr($item['path'], -4) === '.txt')
+        {
+          $shouldDownload = true;
+        }
+
         if ($shouldDownload)
         {
           $file = fopen($localPath, 'w+b');
@@ -125,7 +130,7 @@ class DB
           $item['content'] = file_get_contents($localPath);
         }
 
-        if (substr($item['path'], -4) === '.jpg' || substr($item['path'], -5) === '.jpeg' || substr($item['path'], -4) === '.png')
+        if (substr($item['path'], -4) === '.jpg' || substr($item['path'], -5) === '.jpeg' || substr($item['path'], -4) === '.png' || substr($item['path'], -4) === '.gif')
         {
           $size = @getimagesize($localPath);
           $item['width'] = @$size[0];
