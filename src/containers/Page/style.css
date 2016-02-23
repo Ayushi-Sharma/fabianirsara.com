@@ -85,7 +85,18 @@
 }
 
 :global(.columns.five) {
-  columns: 4;
+  columns: 5;
+}
+
+@media screen and (max-width: 700px) {
+  :global(.columns.two),
+  :global(.columns.three) {
+    columns: 1;
+  }
+
+  :global(.columns.four) {
+    columns: 2;
+  }
 }
 
 :global(iframe) {
