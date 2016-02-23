@@ -4,9 +4,11 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import classnames from 'classnames'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import GoogleAnalytics from 'react-g-analytics'
 
 import Header from '../../components/Header'
 
+import config from '../../config'
 import store from '../../store'
 import style from './style.css'
 import transition from './transition.css'
@@ -28,8 +30,8 @@ class App extends Component {
     const { children, data, actions } = this.props
 
     if (data.pages) {
+      const globalConfig = getConfig()
       getStyle()
-      getConfig()
       restyle()
 
       let transitionClasses = {
@@ -49,8 +51,13 @@ class App extends Component {
         document.body.classList.remove('inverse')
       }
 
+      let analytics = (config.env === 'production' && globalConfig.analytics)
+        ? (<GoogleAnalytics id={globalConfig.analytics} />)
+        : null
+
       return (
         <div className={style.wrapper}>
+          {analytics}
           <div className={classnames(style.line, style.left)} />
           <div className={classnames(style.line, style.top)} />
           <div className={classnames(style.line, style.right)} />
