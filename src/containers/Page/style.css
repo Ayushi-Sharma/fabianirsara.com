@@ -97,6 +97,10 @@
   :global(.columns.four) {
     columns: 2;
   }
+
+  :global(.columns) img {
+    margin-top: 0.5em;
+  }
 }
 
 :global(iframe) {
