@@ -11,7 +11,7 @@ import Masonry from 'react-masonry-component'
 
 import Item from './Item'
 import Text from '../Text'
-import Lightbox from 'react-images'
+import Lightbox from '../../components/Lightbox'
 
 import imagepath from '../../utils/imagepath'
 
