@@ -1,6 +1,7 @@
 
 import reqwest from 'reqwest'
 import store from '../store'
+import config from '../config'
 import variables from '../style.yaml'
 
 let loaded = false
@@ -51,6 +52,9 @@ export function restyle() {
     let tag = document.createElement('style')
     tag.innerHTML = css
     document.getElementsByTagName('head')[0].appendChild(tag)
-    ss.parentNode.removeChild(ss)
+
+    if (config.env !== 'development') {
+      ss.parentNode.removeChild(ss)
+    }
   })
 }
