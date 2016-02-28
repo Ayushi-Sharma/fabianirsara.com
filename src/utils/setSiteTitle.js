@@ -9,14 +9,14 @@ export default function setSiteTitle(data) {
   }
 
   if (data.meta && data.meta.keywords) {
-    document.querySelector('meta[name="keywords"]').innerHTML = data.meta.keywords
+    document.querySelector('meta[name="keywords"]').setAttribute('content', data.meta.keywords)
   } else {
-    document.querySelector('meta[name="keywords"]').innerHTML = config.site_keywords
+    document.querySelector('meta[name="keywords"]').setAttribute('content', config.site_keywords)
   }
 
   if (data.meta && data.meta.description) {
-    document.querySelector('meta[name="description"]').innerHTML = data.meta.description
+    document.querySelector('meta[name="description"]').setAttribute('content', data.meta.description)
   } else {
-    document.querySelector('meta[name="description"]').innerHTML = config.site_description
+    document.querySelector('meta[name="description"]').setAttribute('content', config.site_description)
   }
 }
