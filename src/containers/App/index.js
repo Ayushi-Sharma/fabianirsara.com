@@ -26,6 +26,14 @@ class App extends Component {
     }, 170)
   }
 
+  componentWillReceiveProps(nextProps) {
+    const { children, data, actions } = this.props
+
+    setTimeout(() => {
+      actions.cachePage(this.props.location.pathname)
+    }, 1000)
+  }
+
   render() {
     const { children, data, actions } = this.props
 

@@ -30,3 +30,8 @@ $app->get('/bust', function($request, $response, $args)
   @unlink(DOC_ROOT.App\Config::get('storage').'/data.json');
   return App\FS::rimraf(DOC_ROOT.App\Config::get('cache'));
 });
+
+$app->post('/cachePage', function($request, $response, $args)
+{
+  return (new App\Data($request, $response, $args))->cacheAction();
+});

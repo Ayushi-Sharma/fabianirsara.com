@@ -32,6 +32,8 @@ export function restyle() {
   restyled = true
 
   let ss = document.getElementById('stylesheet')
+  if (! ss) return
+
   let href = ss.getAttribute('href')
 
   reqwest({

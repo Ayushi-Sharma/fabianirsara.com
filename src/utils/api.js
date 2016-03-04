@@ -7,12 +7,13 @@ class API {
     return this.request('data')
   }
 
-  request(path) {
+  request(path, method = 'get', data = null) {
     return new Promise((resolve, reject) => {
       reqwest({
-        method: 'get',
+        method: method,
         url: config.api + path,
-        crossOrigin: true
+        crossOrigin: true,
+        data: data
       }).then(function(data) {
         if (typeof data !== 'object') {
           data = JSON.parse(data)
@@ -22,6 +23,13 @@ class API {
       }).fail(function(data) {
         reject(data)
       })
+    })
+  }
+
+  cachePage(page) {
+    return this.request('cachePage', 'post', {
+      page: page,
+      html: document.getElementsByTagName('html')[0].innerHTML
     })
   }
 }

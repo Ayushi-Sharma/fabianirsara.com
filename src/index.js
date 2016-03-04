@@ -12,6 +12,9 @@ import config from './config'
 
 import * as DataActions from './actions/data'
 
+document.body.classList.remove('ready');
+document.getElementById('root').innerHTML = '';
+
 ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
