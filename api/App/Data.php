@@ -14,7 +14,7 @@ class Data extends Controller
     $html = $_POST['html'];
 
     $page = substr($page, 1);
-    $page = str_replace('/', '___', $page);
+    $page = 'page_'.str_replace('/', '___', $page);
     $pagePath = DOC_ROOT.Config::get('storage').'/pages/'.$page.'.html';
     @mkdir(DOC_ROOT.Config::get('storage').'/pages', 0777, true);
 
