@@ -32,7 +32,8 @@ class API {
       title: document.getElementsByTagName('title')[0].innerHTML,
       keywords: document.querySelector('meta[name="keywords"]').getAttribute('content'),
       description: document.querySelector('meta[name="description"]').getAttribute('content'),
-      html: document.getElementById('root').innerHTML
+      html: document.getElementById('root').innerHTML,
+      style: document.getElementById('dst').innerHTML
     })
   }
 }

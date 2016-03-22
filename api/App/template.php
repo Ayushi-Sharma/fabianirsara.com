@@ -13,6 +13,7 @@
 
     <link rel="icon" href="/assets/public/favicon.png" type="image/x-icon">
     <link rel="shortcut icon" href="/assets/public/favicon.png" type="image/x-icon">
+    <style type="text/css"><?php echo $style; ?></style>
   </head>
   <body>
     <div id="root"><?php echo $html; ?></div>

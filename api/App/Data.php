@@ -24,7 +24,8 @@ class Data extends Controller
         'title' => $_POST['title'],
         'keywords' => $_POST['keywords'],
         'description' => $_POST['description'],
-        'html' => $_POST['html']
+        'html' => $_POST['html'],
+        'style' => $_POST['style']
       );
 
       extract($template_vars);
