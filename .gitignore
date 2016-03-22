@@ -9,6 +9,7 @@ api/config.json
 api/storage
 api/cache
 api/vendor
+api/App/template.dist.php
 
 cache
 storage
