@@ -29,7 +29,10 @@ class API {
   cachePage(page) {
     return this.request('cachePage', 'post', {
       page: page,
-      html: document.getElementsByTagName('html')[0].innerHTML
+      title: document.getElementsByTagName('title')[0].innerHTML,
+      keywords: document.querySelector('meta[name="keywords"]').getAttribute('content'),
+      description: document.querySelector('meta[name="description"]').getAttribute('content'),
+      html: document.getElementById('root').innerHTML
     })
   }
 }

@@ -18,7 +18,20 @@ class Data extends Controller
     $pagePath = DOC_ROOT.Config::get('storage').'/pages/'.$page.'.html';
     @mkdir(DOC_ROOT.Config::get('storage').'/pages', 0777, true);
 
-    $html = '<!doctype html><html>'.$html.'</html>';
+
+    $template_vars = array(
+      'title' => $_POST['title'],
+      'keywords' => $_POST['keywords'],
+      'description' => $_POST['description'],
+      'html' => $_POST['html']
+    );
+
+    extract($template_vars);
+
+    ob_start();
+    include dirname(__FILE__).'/template.php';
+    $html = ob_get_contents();
+    ob_end_clean();
 
     file_put_contents($pagePath, $html);
 
