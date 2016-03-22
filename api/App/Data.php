@@ -29,7 +29,7 @@ class Data extends Controller
     extract($template_vars);
 
     ob_start();
-    include dirname(__FILE__).'/template.php';
+    include dirname(__FILE__).'/template.dist.php';
     $html = ob_get_contents();
     ob_end_clean();
 

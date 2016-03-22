@@ -14,6 +14,12 @@ module.exports = function(grunt){
             src: ['**/*', '!**/.DS_Store'],
             dest: 'dist/assets/public',
             cwd: 'src/assets/public'
+          },
+          {
+            expand: false,
+            src: ['api/App/template.php'],
+            dest: 'api/App/template.dist.php',
+            filter: 'isFile'
           }
         ]
       }
@@ -48,7 +54,8 @@ module.exports = function(grunt){
           '!dist/assets/public/fonts/**/**.css'
         ],
         dest: [
-          'dist/**/**.html'
+          'dist/**/**.html',
+          'api/App/template.dist.php'
         ]
       }
     },
