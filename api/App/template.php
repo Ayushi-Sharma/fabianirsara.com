@@ -13,10 +13,10 @@
 
     <link rel="icon" href="/assets/public/favicon.png" type="image/x-icon">
     <link rel="shortcut icon" href="/assets/public/favicon.png" type="image/x-icon">
-    <style type="text/css"><?php echo $style; ?></style>
+    <style type="text/css"><?php echo str_replace("\n", ' ', $style); ?></style>
   </head>
   <body>
-    <div id="root"><?php echo $html; ?></div>
+    <div id="root" style="opacity: 0;"><?php echo $html; ?></div>
     <script src="/vendor.js"></script>
     <script src="/build.js"></script>
   </body>

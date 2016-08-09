@@ -19,6 +19,10 @@ body {
   transition: color 711ms ease, background 711ms ease;
 }
 
+:global(body.ready #root) {
+  opacity: 1 !important;
+}
+
 .line {
   content: " ";
   display: block;
