@@ -22,6 +22,7 @@ $app->get('/sync', function($request, $response, $args)
 
 $app->get('/sync/force', function($request, $response, $args)
 {
+  App\FS::rimraf(DOC_ROOT.App\Config::get('storage').'/pages');
   return App\DB::instance()->sync(true);
 });
 
