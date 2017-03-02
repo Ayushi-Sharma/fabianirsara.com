@@ -1,6 +1,11 @@
 
-import BaseLightbox from 'react-images'
-import useSheet from 'react-jss'
-import style from './style'
+import React from 'react';
 
-export default useSheet(BaseLightbox.wrapped, style)
+import BaseLightbox from 'react-images'
+import theme from './theme'
+
+const Lightbox = (props) => {
+  return <BaseLightbox {...props} theme={theme} />
+}
+
+export default Lightbox;

@@ -22,7 +22,7 @@ class Item extends Component {
   }
 
   render() {
-    const { image } = this.props
+    const { image, onReady, ...rest } = this.props
     const path = image.src
       ? imagepath(image.src, 'mini')
       : ''
@@ -37,7 +37,7 @@ class Item extends Component {
     )
 
     return (
-      <div {...this.props} className={classes}>
+      <div {...rest} className={classes}>
         <img src={path} onLoad={::this.loaded} />
         <div className={style.preview}>
           <div className={style.previewImage} style={imageCss}>

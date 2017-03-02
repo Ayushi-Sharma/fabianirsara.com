@@ -57,7 +57,14 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx'],
+    root: path.resolve(__dirname),
+    alias: {
+      TweenLite: 'gsap/src/uncompressed/TweenLite',
+      Easing: 'gsap/src/uncompressed/easing/EasePack',
+      ScrollToPlugin: 'gsap/src/uncompressed/plugins/ScrollToPlugin',
+      TextPlugin: 'gsap/src/uncompressed/plugins/TextPlugin'
+    }
   },
   postcss: [
     rucksack({
