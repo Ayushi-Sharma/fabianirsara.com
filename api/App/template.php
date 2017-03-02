@@ -14,6 +14,7 @@
     <link rel="icon" href="/assets/public/favicon.png" type="image/x-icon">
     <link rel="shortcut icon" href="/assets/public/favicon.png" type="image/x-icon">
     <style type="text/css"><?php echo str_replace("\n", ' ', $style); ?></style>
+    <script type="text/javascript">window.API_DATA = <?php echo json_encode($data); ?></script>
   </head>
   <body>
     <div id="root" style="opacity: 0;"><?php echo $html; ?></div>

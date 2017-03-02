@@ -4,7 +4,11 @@ import reqwest from 'reqwest'
 
 class API {
   pullData() {
-    return this.request('data')
+    if (window.API_DATA) {
+      return window.API_DATA
+    } else {
+      return this.request('data')
+    }
   }
 
   request(path, method = 'get', data = null) {
