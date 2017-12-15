@@ -8,9 +8,9 @@
     "psr-0": {"App": "api"}
   },
   "require": {
-    "dropbox/dropbox-sdk": "^1.1",
     "slim/slim": "^3.0",
-    "eventviva/php-image-resize": "^1.5"
+    "eventviva/php-image-resize": "^1.5",
+    "kunalvarma05/dropbox-php-sdk": "^0.2.1"
   },
   "license": "MIT",
   "authors": [

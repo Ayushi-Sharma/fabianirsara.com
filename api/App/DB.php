@@ -65,7 +65,8 @@ class DB
       $this->data['data'] = array();
       $this->data['files'] = array();
 
-      $this->client = new \Dropbox\Client(Config::get('token'), 'DB/1.0');
+      $dropboxService = new \Kunnu\Dropbox\DropboxApp(Config::get('key'), Config::get('secret'), Config::get('token'));
+      $this->client = new \Kunnu\Dropbox\Dropbox($dropboxService);
       $this->_sync('/'.Config::get('db'));
       $this->_store();
     }
@@ -74,18 +75,22 @@ class DB
   private function _sync($folder)
   {
     $localFolder = DOC_ROOT.strtolower(Config::get('storage').'/db'.$folder);
-    $meta = $this->client->getMetadataWithChildren($folder);
+    $folderItems = $this->client->listFolder($folder)->getItems()->all();
 
     @mkdir($localFolder, 0777, true);
 
-    foreach ($meta['contents'] as $item)
+    foreach ($folderItems as $dropboxItem)
     {
-      if ($item['is_dir'])
+      $item = $this->client->getMetadata($dropboxItem->getPathDisplay())->getData();
+
+      if ($item['.tag'] === 'folder')
       {
-        $this->_sync($item['path']);
+        $this->_sync($dropboxItem->getPathDisplay());
       }
       else
       {
+        $item['path'] = $item['path_lower'];
+        $item['modified'] = $item['server_modified'];
         $item['lpath'] = strtolower($item['path']);
 
         $localPath = DOC_ROOT.strtolower(Config::get('storage').'/db'.$item['path']);
@@ -120,9 +125,7 @@ class DB
 
         if ($shouldDownload)
         {
-          $file = fopen($localPath, 'w+b');
-          $this->client->getFile($item['path'], $file);
-          fclose($file);
+          $this->client->download($item['path'], $localPath);
         }
 
         if (substr($item['path'], -3) === '.md' || substr($item['path'], -5) === '.yaml' || substr($item['path'], -5) === '.json' || substr($item['path'], -4) === '.txt')
