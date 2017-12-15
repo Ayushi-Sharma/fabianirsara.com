@@ -100,7 +100,17 @@ class Navigation extends Component {
 
     let pages = []
 
+    let pageKeys = []
+
     for (let k in data.pages) {
+      pageKeys.push(k)
+    }
+
+    pageKeys.sort()
+
+    for (let i = 0; i < pageKeys.length; i++) {
+      let k = pageKeys[i]
+
       if (! data.pages[k].index) continue
       if (! data.pages[k].config.content.navigation) continue
 
