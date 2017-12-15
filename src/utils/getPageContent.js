@@ -17,7 +17,15 @@ let getPageContent = function(folder) {
     } else {
       items[k] = {...folder[k]}
 
-      if (folder[k].mime_type === 'image/jpeg' || folder[k].mime_type === 'image/png' || folder[k].mime_type === 'image/gif') {
+      let pathLower = folder[k].localFile.toLowerCase()
+
+      if (
+        pathLower.substring(pathLower.length - 5) === '.jpeg' ||
+        pathLower.substring(pathLower.length - 4) === '.jpg' ||
+        pathLower.substring(pathLower.length - 4) === '.png' ||
+        pathLower.substring(pathLower.length - 4) === '.gif' ||
+        folder[k].mime_type === 'image/jpeg' || folder[k].mime_type === 'image/png' || folder[k].mime_type === 'image/gif'
+      ) {
         images[k] = {...folder[k]}
       }
     }
